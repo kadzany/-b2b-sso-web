@@ -18,6 +18,7 @@
     "jquery": "^3.4.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-dropdown": "^2.4.1",
+    "semantic-ui-transition": "^2.3.1",
     "vanilla-router": "^1.2.7"
   }
 }

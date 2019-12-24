@@ -1,8 +1,13 @@
 (function () {
     const el = $('#app');
-
-
     // Router Declaration
+
+    const routingDefinition = {
+        '/': null,
+        '/contract-list': 'tpl/seller/contract_list.html',
+        '/product-catalog': 'tpl/seller/product_catalog.html'
+    };
+
     const router = new Router({
         mode: 'history',
         page404: (path) => {
@@ -12,18 +17,15 @@
     });
 
     router.add('/', () => {
-        el.html('');
-        console.log('home');
+        appendIframe('/');
     });        
 
     router.add('/contract-list', () => {
-        el.html('');
-        console.log('contract list');
+       appendIframe('/contract-list'); 
     });
 
     router.add('/product-catalog', () => {
-        el.html('');
-        console.log('product catalog');
+        appendIframe('/product-catalog'); 
     });
 
     // Navigate app to current url
@@ -57,5 +59,13 @@
         const path = href.substr(href.lastIndexOf('/'));
         router.navigateTo(path);
     });
+
+    function appendIframe(routeUrl){
+        var templatePath = routingDefinition[routeUrl];
+        if(!templatePath) return;
+        el.html('');
+        el.append(`<iframe src="${templatePath}"></iframe>`);        
+        console.log(routeUrl);
+    }
 
 })();
