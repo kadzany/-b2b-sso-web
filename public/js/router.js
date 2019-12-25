@@ -1,31 +1,31 @@
 (function () {
     const el = $('#app');
+    
     // Router Declaration
-
     const routingDefinition = {
         '/': null,
-        '/contract-list': 'tpl/seller/contract_list.html',
-        '/product-catalog': 'tpl/seller/product_catalog.html'
+        '/contract-list': 'pages/seller/contract_list.html',
+        '/product-catalog': 'pages/seller/product_catalog.html'
     };
 
     const router = new Router({
         mode: 'history',
-        page404: (path) => {
+        page404: () => {
             const html = $('#error-template').html()
             el.html(html);
         },
     });
 
     router.add('/', () => {
-        appendIframe('/');
+        appendToIframe('/');
     });        
 
     router.add('/contract-list', () => {
-       appendIframe('/contract-list'); 
+       appendToIframe('/contract-list'); 
     });
 
     router.add('/product-catalog', () => {
-        appendIframe('/product-catalog'); 
+        appendToIframe('/product-catalog'); 
     });
 
     // Navigate app to current url
@@ -60,9 +60,12 @@
         router.navigateTo(path);
     });
 
-    function appendIframe(routeUrl){
+    function appendToIframe(routeUrl){
         var templatePath = routingDefinition[routeUrl];
-        if(!templatePath) return;
+        if(!templatePath) {
+            el.html('');
+            return;
+        }
         el.html('');
         el.append(`<iframe src="${templatePath}"></iframe>`);        
         console.log(routeUrl);
