@@ -1,11 +1,13 @@
 (function () {
+    // Check local storage for login
     const el = $('#app');
     
     // Router Declaration
     const routingDefinition = {
         '/': null,
-        '/contract-list': 'pages/seller/contract_list.html',
-        '/product-catalog': 'pages/seller/product_catalog.html'
+        '/login': '/login.html',
+        '/contract-list': 'app/views/seller/contract_list.html',
+        '/product-catalog': 'app/views/seller/product_catalog.html'
     };
 
     const router = new Router({
@@ -18,8 +20,13 @@
 
     router.add('/', () => {
         appendToIframe('/');
-    });        
-
+    });   
+    
+    router.add('/login', () => {
+        body.html('');
+        body.append(`<iframe src="${routingDefinition['/login']}"></iframe>`);
+    }); 
+    
     router.add('/contract-list', () => {
        appendToIframe('/contract-list'); 
     });
