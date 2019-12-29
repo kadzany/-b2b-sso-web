@@ -67,6 +67,12 @@ var copyNpmDeps = function (done) {
 		.pipe(dest(paths.lib.output));
 }
 
+var copyLib = function (done) {
+	return src(paths.lib.input)
+		.pipe(dest(paths.lib.output));
+}
+
+
 // Copy images
 var copyImg = function(done){
 	var imgTasks = lazypipe()
@@ -220,6 +226,7 @@ exports.default = series(
 		buildScripts,
 		lintScripts,
 		buildStyles,
+		copyLib,
 		copyImg,
 		copyViews,
 		copyHtml,

@@ -28,14 +28,6 @@
             max-width: 450px;
         }
     </style>
-    <script>
-        $(document).ready(function () {
-            $('#loginButton').click(function(){
-                window.location = 'home.html';
-                sessionStorage.setItem('token', '1234567890');
-            });                
-        });
-    </script>
 </head>
 
 <body style="background: #fff !important;">
@@ -47,7 +39,7 @@
                     Log-in to your account
                 </div>
             </h2>
-            <form class="ui large form">
+            <form class="ui large form" name="loginForm">
                 <div class="ui stacked segment">
                     <div class="field">
                         <div class="ui left icon input">
@@ -63,13 +55,20 @@
                     </div>
                     <div id="loginButton" class="ui fluid large red submit button">Login</div>
                 </div>
-
                 <div class="ui error message"></div>
-
             </form>
         </div>
     </div>
-
+    
+    <!-- Scripts -->
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/axios/dist/axios.min.js"></script>
+    <script src="lib/vanilla-router/dist/vanilla-router.min.js"></script>
+    <script src="lib/semantic-ui-transition/transition.min.js"></script>
+    <script src="lib/semantic-ui-dropdown/dropdown.min.js"></script>
+    <script src="app/config.min.js"></script>
+    <script src="app/app.min.js"></script>
+    <script src="app/router.min.js"></script>
+    <script src="app/controllers.min.js"></script>
 </body>
-
 </html>
