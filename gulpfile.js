@@ -1,105 +1,57 @@
-/**
- * Settings
- * Turn on/off build features
- */
-
 var settings = {
 	clean: true,
 	scripts: true,
-	polyfills: true,
-	styles: true,
-	svgs: true,
-	copy: true,
-	reload: true
+	reload: true,
+	styles: true
 };
 
-
-/**
- * Paths to project folders
- */
-
 var paths = {
-	input: 'src/',
-	output: 'dist/',
+	input: './src/',
+	output: './dist/',
+	html: {
+		input: './src/*.html',
+		output: './dist/'
+	},
 	scripts: {
-		input: 'src/js/*',
+		input: 'src/app/*',
 		polyfills: '.polyfill.js',
-		output: 'dist/js/'
+		output: './dist/app/'
 	},
 	styles: {
-		input: 'src/sass/**/*.{scss,sass}',
-		output: 'dist/css/'
+		input: './src/style/**/*',
+		output: './dist/style/'
 	},
-	svgs: {
-		input: 'src/svg/*.svg',
-		output: 'dist/svg/'
+	img: {
+		input: './src/img/*.{svg,jpg,jpeg,png,gif}',
+		output: './dist/img/'
 	},
-	copy: {
-		input: 'src/copy/**/*',
-		output: 'dist/'
+	lib: {
+		input: './src/lib/**/*',
+		output: './dist/lib/'
+	},
+	views: {
+		input: './src/app/views/**/*',
+		output: './dist/app/views/'
 	},
 	reload: './dist/'
 };
 
 
-/**
- * Template for banner to add to file headers
- */
-
-var banner = {
-	main:
-		'/*!' +
-		' <%= package.name %> v<%= package.version %>' +
-		' | (c) ' + new Date().getFullYear() + ' <%= package.author.name %>' +
-		' | <%= package.license %> License' +
-		' | <%= package.repository.url %>' +
-		' */\n'
-};
-
-
-/**
- * Gulp Packages
- */
-
-// General
-var {gulp, src, dest, watch, series, parallel} = require('gulp');
-var del = require('del');
+var { gulp, src, dest, watch, series, parallel } = require('gulp');
 var flatmap = require('gulp-flatmap');
+var del = require('del');
 var lazypipe = require('lazypipe');
 var rename = require('gulp-rename');
-var header = require('gulp-header');
-var package = require('./package.json');
-
-// Scripts
 var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
 var concat = require('gulp-concat');
 var uglify = require('gulp-terser');
 var optimizejs = require('gulp-optimize-js');
-
-// Styles
-var sass = require('gulp-sass');
-var postcss = require('gulp-postcss');
-var prefix = require('autoprefixer');
-var minify = require('cssnano');
-
-// SVGs
-var svgmin = require('gulp-svgmin');
+var npmDist = require('gulp-npm-dist');
 
 // BrowserSync
 var browserSync = require('browser-sync');
 
-
-/**
- * Gulp Tasks
- */
-
-// Remove pre-existing content from output folders
 var cleanDist = function (done) {
-
-	// Make sure this feature is activated before running
-	if (!settings.clean) return done();
-
 	// Clean the dist folder
 	del.sync([
 		paths.output
@@ -110,26 +62,63 @@ var cleanDist = function (done) {
 
 };
 
-// Repeated JavaScript tasks
-var jsTasks = lazypipe()
-	.pipe(header, banner.main, {package: package})
-	.pipe(optimizejs) 
-	.pipe(dest, paths.scripts.output)
-	.pipe(rename, {suffix: '.min'})
-	.pipe(uglify)
-	.pipe(optimizejs)
-	.pipe(header, banner.main, {package: package})
-	.pipe(dest, paths.scripts.output);
+var copyNpmDeps = function (done) {
+	return src(npmDist(), { base: './node_modules' })
+		.pipe(dest(paths.lib.output));
+}
+
+// Copy images
+var copyImg = function(done){
+	var imgTasks = lazypipe()
+		.pipe(dest, paths.img.output);
+
+	return src(paths.img.input)
+		.pipe(flatmap(function (stream, file) {
+			return stream.pipe(imgTasks());
+		}));
+
+}
+
+// Copy views (html)
+var copyViews = function(done){
+	var viewsTasks = lazypipe()
+		.pipe(dest, paths.views.output);
+
+	return src(paths.views.input)
+		.pipe(flatmap(function (stream, file) {
+			return stream.pipe(viewsTasks());
+		}));
+
+}
+
+// Copy htmls
+var copyHtml = function (done) {
+	var htmlTasks = lazypipe()
+		.pipe(dest, paths.html.output);
+
+	return src(paths.html.input)
+		.pipe(flatmap(function (stream, file) {
+			return stream.pipe(htmlTasks());
+		}));
+
+}
 
 // Lint, minify, and concatenate scripts
 var buildScripts = function (done) {
+
+	// Repeated JavaScript tasks
+	var jsTasks = lazypipe()
+		.pipe(rename, { suffix: '.min' })
+		.pipe(uglify)
+		.pipe(optimizejs)
+		.pipe(dest, paths.scripts.output);
 
 	// Make sure this feature is activated before running
 	if (!settings.scripts) return done();
 
 	// Run tasks on script files
 	return src(paths.scripts.input)
-		.pipe(flatmap(function(stream, file) {
+		.pipe(flatmap(function (stream, file) {
 
 			// If the file is a directory
 			if (file.isDirectory()) {
@@ -188,52 +177,7 @@ var buildStyles = function (done) {
 
 	// Run tasks on all Sass files
 	return src(paths.styles.input)
-		.pipe(sass({
-			outputStyle: 'expanded',
-			sourceComments: true
-		}))
-		.pipe(postcss([
-			prefix({
-				cascade: true,
-				remove: true
-			})
-		]))
-		.pipe(header(banner.main, {package: package}))
-		.pipe(dest(paths.styles.output))
-		.pipe(rename({suffix: '.min'}))
-		.pipe(postcss([
-			minify({
-				discardComments: {
-					removeAll: true
-				}
-			})
-		]))
 		.pipe(dest(paths.styles.output));
-
-};
-
-// Optimize SVG files
-var buildSVGs = function (done) {
-
-	// Make sure this feature is activated before running
-	if (!settings.svgs) return done();
-
-	// Optimize SVG files
-	return src(paths.svgs.input)
-		.pipe(svgmin())
-		.pipe(dest(paths.svgs.output));
-
-};
-
-// Copy static files into output folder
-var copyFiles = function (done) {
-
-	// Make sure this feature is activated before running
-	if (!settings.copy) return done();
-
-	// Copy static files
-	return src(paths.copy.input)
-		.pipe(dest(paths.copy.output));
 
 };
 
@@ -255,23 +199,18 @@ var startServer = function (done) {
 
 };
 
-// Reload the browser when files change
-var reloadBrowser = function (done) {
-	if (!settings.reload) return done();
-	browserSync.reload();
-	done();
-};
-
 // Watch for changes
 var watchSource = function (done) {
+	// Reload the browser when files change
+	var reloadBrowser = function (done) {
+		if (!settings.reload) return done();
+		browserSync.reload();
+		done();
+	};
+
 	watch(paths.input, series(exports.default, reloadBrowser));
 	done();
 };
-
-
-/**
- * Export Tasks
- */
 
 // Default task
 // gulp
@@ -281,10 +220,13 @@ exports.default = series(
 		buildScripts,
 		lintScripts,
 		buildStyles,
-		buildSVGs,
-		copyFiles
+		copyImg,
+		copyViews,
+		copyHtml,
+		copyNpmDeps
 	)
 );
+
 
 // Watch and reload
 // gulp watch
