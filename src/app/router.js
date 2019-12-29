@@ -13,7 +13,7 @@
     const router = new Router({
         mode: 'history',
         page404: () => {
-            const html = $('#error-template').html()
+            const html = $('#error-template').html();
             el.html(html);
         },
     });

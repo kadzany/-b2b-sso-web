@@ -1,24 +1,46 @@
 {
-  "name": "sso-crash",
-  "version": "1.0.0",
-  "description": "SSO division telkom",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "keywords": [],
-  "author": "khaer",
-  "license": "MIT",
-  "dependencies": {
-    "axios": "^0.19.0",
-    "body-parser": "^1.19.0",
-    "dotenv": "^8.0.0",
-    "express": "^4.17.1",
-    "jquery": "^3.4.1",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-dropdown": "^2.4.1",
-    "semantic-ui-transition": "^2.3.1",
-    "vanilla-router": "^1.2.7"
-  }
+		"name": "sso-crash",
+		"version": "1.0.0",
+		"description": "telkom eProcurement",
+		"main": "./dist/app.js",
+		"browserslist": [
+				"last 2 versions",
+				"> 0.25%"
+		],
+		"keywords": [],
+		"author": "khaer",
+		"license": "MIT",
+		"dependencies": {
+				"axios": "^0.19.0",
+				"body-parser": "^1.19.0",
+				"dotenv": "^8.0.0",
+				"express": "^4.17.1",
+				"jquery": "^3.4.1",
+				"semantic-ui-css": "^2.4.1",
+				"semantic-ui-dropdown": "^2.4.1",
+				"semantic-ui-transition": "^2.3.1",
+				"vanilla-router": "^1.2.7"
+		},
+		"devDependencies": {
+				"autoprefixer": "9.6.1",
+				"browser-sync": "2.26.7",
+				"cssnano": "4.1.10",
+				"del": "3.0.0",
+				"gulp": "4.0.2",
+				"gulp-concat": "2.6.1",
+				"gulp-flatmap": "1.0.2",
+				"gulp-header": "2.0.5",
+				"gulp-jshint": "2.1.0",
+				"gulp-npm-dist": "^1.0.3",
+				"gulp-optimize-js": "1.1.0",
+				"gulp-postcss": "8.0.0",
+				"gulp-rename": "1.4.0",
+				"gulp-sass": "4.0.2",
+				"gulp-svgmin": "2.1.0",
+				"gulp-terser": "1.1.7",
+				"jshint": "2.9.6",
+				"jshint-stylish": "2.2.1",
+				"lazypipe": "1.0.1",
+				"node-sass": "4.13.0"
+		}
 }
