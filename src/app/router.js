@@ -6,8 +6,9 @@
     const routingDefinition = {
         '/': null,
         '/login': '/login.html',
-        '/contract-list': 'app/views/seller/contract_list.html',
-        '/product-catalog': 'app/views/seller/product_catalog.html'
+        '/invalid.html': '/invalid.html',
+        '/contract-list.html': 'app/views/seller/contract_list.html',
+        '/product-catalog.html': 'app/views/seller/product_catalog.html'
     };
 
     const router = new Router({
@@ -60,7 +61,7 @@
         // Navigate to clicked url
         const href = target.attr('href');
         if(!href) {
-            router.navigateTo('/invalid');
+            router.navigateTo('/invalid.html');
             return;
         }
         const path = href.substr(href.lastIndexOf('/'));

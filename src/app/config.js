@@ -1,5 +1,5 @@
 (function(){
     window.config = {
-        baseURL: '/api'
+        baseURL: 'http://localhost:8000'
     };
 })();
