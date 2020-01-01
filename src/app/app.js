@@ -5,7 +5,9 @@
     }
   }
 
+  // Instantiate semantic dropdown
   $('.ui.dropdown').dropdown();
+
   // Instantiate api handler
   window.api = axios.create({
     baseURL: window.config.baseURL,
