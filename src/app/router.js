@@ -19,6 +19,6 @@
         var templatePath = routingDefinition[routeUrl];
         if (!templatePath) templatePath = "app/views/invalid.html";
         el.html('');
-        el.append(`<iframe src="${templatePath}"></iframe>`);
+        el.append(`<iframe id="contentIframe" onload="iframeLoaded()" scrolling="no" src="${templatePath}"></iframe>`);
     }
 })();
