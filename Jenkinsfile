@@ -40,7 +40,6 @@ pipeline {
                 anyOf {
                     branch 'master'
                     branch 'develop'
-                    branch 'demodadakan'
                 }
             }
             agent {label "HELIO"}
