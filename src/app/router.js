@@ -2,6 +2,7 @@
     // Check local storage for login
     const el = $('#app');
     var routingDefinition = {
+        'product': 'app/views/product/product.html',
         'product_catalog_list': 'app/views/product_catalog/product_catalog_list.html',
         'pr_list': 'app/views/purchase_req/pr_list.html',
         'pr_approval_list': 'app/views/purchase_req_approval/pr_approval_list.html',

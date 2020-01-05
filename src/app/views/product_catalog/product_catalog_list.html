@@ -9,6 +9,7 @@
 	<script src="/lib/jquery/dist/jquery.min.js"></script>
 	<script src="/lib/jszip.min.js"></script>
 	<script src="/lib/kendo.all.min.js"></script>
+	<script src="product_catalog_list.js"></script>
     
     
 </head>
@@ -16,45 +17,31 @@
 <div id="example">
     <h3>Product Catalog</h3>
     <hr/>
-    <div id="grid"></div>
-    <script>
-        $(document).ready(function () {
-            $("#grid").kendoGrid({
-                dataSource: {
-                    type: "odata",
-                    transport: {
-                        read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
-                    },
-                    pageSize: 20
-                },
-                height: 550,
-                groupable: true,
-                sortable: true,
-                pageable: {
-                    refresh: true,
-                    pageSizes: true,
-                    buttonCount: 5
-                },
-                columns: [{
-                    template: "<div class='customer-photo'" +
-                    "style='background-image: url(../content/web/Customers/#:data.CustomerID#.jpg);'></div>" +
-                    "<div class='customer-name'>#: ContactName #</div>",
-                    field: "ContactName",
-                    title: "Contact Name",
-                    width: 240
-                }, {
-                    field: "ContactTitle",
-                    title: "Contact Title"
-                }, {
-                    field: "CompanyName",
-                    title: "Company Name"
-                }, {
-                    field: "Country",
-                    width: 150
-                }]
-            });
-        });
+    <div id="listView"></div>
+    <script type="text/x-kendo-template" id="productTemplate">
+        <div class="product">
+            <img src="#:images[0].url#" style="max-width: 100px"/>
+            <h3>#:name#</h3>
+        </div>
     </script>
+ 
+	<div class="k-card">
+		<div class="k-card-header">
+			<h5 class="k-card-title">Rome</h5>
+			<h6 class="k-card-subtitle">Capital of Italy</h6>
+		</div>
+		<img class="k-card-image" src="../content/web/cards/rome.jpg">
+		<div class="k-card-body">
+			<p>Rome is a sprawling, cosmopolitan city with nearly 3,000 years of globally influential art, architecture and culture on display.</p>
+			<p>Ancient ruins such as the Forum and the Colosseum evoke the power of the former Roman Empire. </p>
+		</div>
+		<div class="k-card-actions k-card-actions-stretched">
+			<span class="k-card-action"><span class="k-button k-flat k-primary">Map</span></span>
+			<span class="k-card-action"><span class="k-button k-flat k-primary">Weather</span></span>
+		</div>
+	</div>
+	<br><br>
+    <!-- <div id="grid"></div> -->
 </div>
 
 <style type="text/css">
