@@ -17,6 +17,10 @@
 		<!-- You may remove the datasources.js script if you are not using Designer sample data. -->
 		<script src="http://designer.igniteui.com/js/datasources.js"></script>
 		<script id="code">
+			let _products = [{
+				test: 123
+			}];
+			console.log(_products);
 			$(document).ready(function () {
 				$("#grid1").igGrid({
 					dataSource: defaultGridData1,
@@ -87,7 +91,15 @@
 	</head>
 	<body>
         <h1>Product Catalog</h1>
-        <hr/>
+		<hr/>
+		<div class="k-card">
+            <img class="k-card-image" src="https://dummyimage.com/285x190/4f9aff/fff">
+            <div class="k-card-body">
+                <p>Rome is a sprawling, cosmopolitan city with nearly 3,000 years of globally influential art, architecture and culture on display.</p>
+                <p>Ancient ruins such as the Forum and the Colosseum evoke the power of the former Roman Empire. </p>
+            </div>
+		</div>
+		<br><br>
         <div id="grid1"></div>
 	</body>
 </html>

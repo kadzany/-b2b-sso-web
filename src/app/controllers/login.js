@@ -1,5 +1,10 @@
 (function () {
     $('#loginButton').click(function () {
+        // need to be removed later
+        window.location = 'home.html';
+        sessionStorage.setItem('token', 'asdfg');
+
+        
         const form = document.forms['loginForm'];
 
         if (!form) return;
