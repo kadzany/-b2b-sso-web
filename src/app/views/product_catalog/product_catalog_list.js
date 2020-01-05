@@ -11,6 +11,12 @@
                     dataSource: dataSource,
                     template: kendo.template($("#productTemplate").html())
                 });
+
+                $('.product').click(function () {
+                    console.log('tes');
+                    window.parent.location = '/home.html?view=product';
+                });
             }
         });
+
     });
