@@ -1,93 +1,82 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="http://designer.igniteui.com/packages/bootstrap/bootstrap.min.css">
-		<link rel="stylesheet" href="http://designer.igniteui.com/css/themes/infragistics/infragistics.theme.css">
-		<link rel="stylesheet" href="http://designer.igniteui.com/css/structure/infragistics.css">
-		<!--
-			Update the Ignite UI script references to your licensed copies before deploying.
-			Ignite UI License: http://www.infragistics.com/legal/license/ultimate/
-		-->
-		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-		<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
-		<script src="http://designer.igniteui.com/js/infragistics.core.js"></script>
-		<script src="http://designer.igniteui.com/js/infragistics.lob.js"></script>
-		<!-- You may remove the datasources.js script if you are not using Designer sample data. -->
-		<script src="http://designer.igniteui.com/js/datasources.js"></script>
-		<script id="code">
-			$(document).ready(function () {
-				$("#grid1").igGrid({
-					dataSource: defaultGridData1,
-					width: "100%",
-					height: "450",
-					renderCheckboxes: true,
-					autoGenerateColumns: false,
-					columns: [
-						{
-							key: "active",
-							headerText: "Active",
-							dataType: "bool",
-							width: "7%"
-						},
-						{
-							key: "registered",
-							headerText: "Registered",
-							dataType: "date",
-							format: "d MMM yyyy",
-							width: "13%"
-						},
-						{
-							key: "name",
-							headerText: "Name",
-							width: "20%"
-						},
-						{
-							key: "company",
-							headerText: "Company",
-							width: "15%"
-						},
-						{
-							key: "phone",
-							headerText: "Phone",
-							width: "15%"
-						},
-						{
-							key: "email",
-							headerText: "Email",
-							template: "<a href='mailto:${email}'>${email}</a>",
-							width: "30%"
-						}
-					],
-					features: [
-						{
-							name: "Filtering",
-							language: "en"
-						},
-						{
-							name: "Paging",
-							showPageSizeDropDown: false,
-							language: "en"
-						},
-						{
-							name: "Sorting",
-							language: "en"
-						},
-						{
-							name: "Selection",
-							language: "en",
-							inherit: true
-						}
-					]
-				});
+<head>
+    <title>Product Catalog</title>
+    <meta charset="utf-8">
+    <link href="/style/kendo.common.min.css" rel="stylesheet">
+    <link href="/style/kendo.default.min.css" rel="stylesheet">
+    <link href="/style/style.css" rel="stylesheet">
+	<script src="/lib/jquery/dist/jquery.min.js"></script>
+	<script src="/lib/jszip.min.js"></script>
+	<script src="/lib/kendo.all.min.js"></script>
+    
+    
+</head>
+<body>    
+<div id="example">
+    <h3>Product Catalog</h3>
+    <hr/>
+    <div id="grid"></div>
+    <script>
+        $(document).ready(function () {
+            $("#grid").kendoGrid({
+                dataSource: {
+                    type: "odata",
+                    transport: {
+                        read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
+                    },
+                    pageSize: 20
+                },
+                height: 550,
+                groupable: true,
+                sortable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5
+                },
+                columns: [{
+                    template: "<div class='customer-photo'" +
+                    "style='background-image: url(../content/web/Customers/#:data.CustomerID#.jpg);'></div>" +
+                    "<div class='customer-name'>#: ContactName #</div>",
+                    field: "ContactName",
+                    title: "Contact Name",
+                    width: 240
+                }, {
+                    field: "ContactTitle",
+                    title: "Contact Title"
+                }, {
+                    field: "CompanyName",
+                    title: "Company Name"
+                }, {
+                    field: "Country",
+                    width: 150
+                }]
+            });
+        });
+    </script>
+</div>
 
-			});
-		</script>
-	</head>
-	<body>
-        <h1>Product Catalog</h1>
-        <hr/>
-        <div id="grid1"></div>
-	</body>
+<style type="text/css">
+    .customer-photo {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-size: 32px 35px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 32px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-left: 5px;
+    }
+
+    .customer-name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 32px;
+        padding-left: 3px;
+    }
+</style>
+</body>
 </html>
