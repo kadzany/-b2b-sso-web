@@ -20,8 +20,5 @@
         //         }
         //     }
         // );
-
-        window.location = 'home.html';
-        sessionStorage.setItem('token', 'res.token');
     });
 })();
