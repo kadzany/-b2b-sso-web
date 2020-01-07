@@ -4,8 +4,7 @@
         window.location = 'home.html';
         sessionStorage.setItem('token', 'asdfg');
 
-        
-        const form = document.forms['loginForm'];
+        const form = document.forms.loginForm;
 
         if (!form) return;
 
@@ -20,8 +19,5 @@
         //         }
         //     }
         // );
-
-        window.location = 'home.html';
-        sessionStorage.setItem('token', 'res.token');
     });
 })();

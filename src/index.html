@@ -9,8 +9,7 @@
 
     <!-- Site Properties -->
     <title>Login - eProc</title>
-    <link rel="stylesheet" href="lib/semantic-ui-css/semantic.min.css">
-    <script src="lib/jquery/dist/jquery.min.js"></script>
+    @@include('./partials/styles.html')
     <style type="text/css">
         body {
             background-color: #DADADA;
@@ -59,15 +58,8 @@
             </form>
         </div>
     </div>
-
-    <!-- Scripts -->
-    <script src="lib/jquery/dist/jquery.min.js"></script>
-    <script src="lib/axios/dist/axios.min.js"></script>
-    <script src="lib/vanilla-router/dist/vanilla-router.min.js"></script>
-    <script src="lib/semantic-ui-transition/transition.min.js"></script>
-    <script src="lib/semantic-ui-dropdown/dropdown.min.js"></script>
-    <script src="app/config.min.js"></script>
-    <script src="app/app.min.js"></script>
-    <script src="app/controllers.min.js"></script>
+    @@include('./partials/scripts.html')
+    <script src="js/index.min.js"></script>
 </body>
+
 </html>
