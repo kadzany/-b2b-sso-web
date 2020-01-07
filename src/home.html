@@ -5,60 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="lib/semantic-ui-css/semantic.min.css">
-  <link rel="stylesheet" href="lib/semantic-ui-dropdown/dropdown.min.css">
-  <link rel="stylesheet" href="style/style.css">
+  @@include('./partials/styles.html')
   <title>SSO eProcurement</title>
 </head>
 
 <body>
   <div class="ui container">
-    <div class="ui text menu">
-      <div class="item">
-        <a href="/">
-          <img style="width: 2.5rem" src="/img/logo.jpg">
-        </a>
-      </div>
-      <div class="ui right dropdown item">
-        User menu
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <div class="item" id="logoutButton">Logout</div>
-        </div>
-      </div>
-    </div>
+    @@include('./partials/header.html')
     <div class="ui grid">
       <div class="three wide column">
-        <!-- Navigation Menu -->
-        <div class="ui vertical left fluid menu">
-          <div class="item">
-            <div class="header">Vendor</div>
-            <div class="menu">
-              <a class="item vendor_list" href="?view=vendor_list">Vendor List</a>
-            </div>
-          </div>
-          <div class="item">
-            <div class="header">Katalog</div>
-            <div class="menu">
-              <a class="item product_catalog_list" href="?view=product_catalog_list">Katalog Produk</a>
-            </div>
-          </div>
-          <div class="item">
-            <div class="header">Purchasing</div>
-            <div class="menu">
-              <a class="item pr_list" href="?view=pr_list">Purchase Requisition</a>
-            </div>
-            <div class="menu">
-              <a class="item pr_approval_list" href="?view=pr_approval_list">Purchase Requisition Approval</a>
-            </div>
-            <div class="menu">
-              <a class="item po_list" href="?view=po_list">Purchase Order</a>
-            </div>
-            <div class="menu">
-              <a class="item procurement_list" href="?view=procurement_list">Procurement</a>
-            </div>
-          </div>
-        </div>
+        @@include('./partials/sidebar.html')
       </div>
       <div class="thirteen wide column">
         <!-- Page content -->
@@ -67,17 +23,9 @@
       </div>
     </div>
     <!-- Scripts -->
-    <script src="lib/jquery/dist/jquery.min.js"></script>
-    <script src="lib/axios/dist/axios.min.js"></script>
-    <script src="lib/vanilla-router/dist/vanilla-router.min.js"></script>
-    <script src="lib/semantic-ui-transition/transition.min.js"></script>
-    <script src="lib/semantic-ui-dropdown/dropdown.min.js"></script>
-    <script src="lib/jszip.min.js"></script>
-    <script src="lib/kendo.all.min.js"></script>
-    <script src="app/config.min.js"></script>
-    <script src="app/app.min.js"></script>
-    <script src="app/router.min.js"></script>
-    <script src="app/controllers.min.js"></script>
+    @@include('./partials/scripts.html')
+    <script src="js/home.min.js"></script>
   </div>
 </body>
+
 </html>

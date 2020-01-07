@@ -14,13 +14,7 @@
     timeout: 5000,
   });
 
-  // Iframe management
-  window.iframeLoaded = function () {
-    var iframeId = document.getElementById('contentIframe');
-    if (iframeId) {
-      // here you can make the height, I delete it first, then I make it again
-      iframeId.height = "";
-      iframeId.height = (iframeId.contentWindow.document.body.scrollHeight * 2) + "px";
-    }
-  }
+  // Navigation menu highlighting
+  let view = new URL(window.location.href).pathname.replace('/','').replace('.html','');
+  $(`a.item.${view}`).addClass('active');
 })();

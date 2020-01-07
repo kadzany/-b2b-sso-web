@@ -13,13 +13,13 @@ var paths = {
 		output: './dist/'
 	},
 	scripts: {
-		input: 'src/app/*',
+		input: 'src/js/*',
 		polyfills: '.polyfill.js',
-		output: './dist/app/'
+		output: './dist/js/'
 	},
 	styles: {
-		input: './src/style/**/*',
-		output: './dist/style/'
+		input: './src/css/**/*',
+		output: './dist/css/'
 	},
 	img: {
 		input: './src/img/*.{svg,jpg,jpeg,png,gif}',
@@ -47,6 +47,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-terser');
 var optimizejs = require('gulp-optimize-js');
 var npmDist = require('gulp-npm-dist');
+var fileinclude = require('gulp-file-include');
 
 // BrowserSync
 var browserSync = require('browser-sync');
@@ -85,27 +86,20 @@ var copyImg = function(done){
 
 }
 
-// Copy views (html)
-var copyViews = function(done){
-	var viewsTasks = lazypipe()
-		.pipe(dest, paths.views.output);
-
-	return src(paths.views.input)
-		.pipe(flatmap(function (stream, file) {
-			return stream.pipe(viewsTasks());
-		}));
-
-}
-
 // Copy htmls
 var copyHtml = function (done) {
 	var htmlTasks = lazypipe()
 		.pipe(dest, paths.html.output);
 
 	return src(paths.html.input)
+		.pipe(fileinclude({
+			prefix: '@@',
+			basepath: '@file'
+		}))
 		.pipe(flatmap(function (stream, file) {
 			return stream.pipe(htmlTasks());
-		}));
+		}))
+		;
 
 }
 
@@ -228,7 +222,6 @@ exports.default = series(
 		buildStyles,
 		copyLib,
 		copyImg,
-		copyViews,
 		copyHtml,
 		copyNpmDeps
 	)

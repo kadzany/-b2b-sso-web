@@ -27,7 +27,6 @@ html
 {
     top: 0;
     left: 0;
-    overflow-y:scroll;
     font:75% Arial, Helvetica, sans-serif;
     background: unset;
 }
