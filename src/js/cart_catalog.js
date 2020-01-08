@@ -48,10 +48,17 @@
             navigatable: true,
             pageable: true,
             height: 550,
-            toolbar: ["create", "save", "cancel"],
+            // toolbar: ["create", "save", "cancel"],
             columns: [
                 { selectable: true, width: "50px" },
-                "ProductName",
+                {
+                    template: "<div class='product-photo'" +
+                    "style='background-image: url(../content/web/Products/#:data.ProductID#.jpg);'></div>" +
+                    "<div class='product-name'>#: ProductName #</div>",
+                    field: "ProductName",
+                    title: "Product Name",
+                    width: 240
+                },
                 { field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: 120 },
                 { field: "UnitsInStock", title: "Units In Stock", width: 120 },
                 { command: "destroy", title: "&nbsp;", width: 150 }],

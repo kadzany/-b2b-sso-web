@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   @@include('./partials/styles.html')
+  <link href="css/cart_catalog.css" rel="stylesheet">
+  <link href="css/button.css" rel="stylesheet">
   <title>SSO eProcurement</title>
 </head>
 
@@ -20,11 +22,14 @@
         <!-- Page content -->
         <div id="app">
           <h2>Shopping Cart</h2>
+          <br>
           <h3>Product from Catalog</h3>
           <div id="cart-catalog"></div>
-
-          <h3>Product from Catalog</h3>
+          <br><br>
+          <h3>Product Request</h3>
           <div id="cart-request"></div>
+          <br><br>
+          <button id="primaryTextButton" class="k-primary">Checkout</button>
         </div>
       </div>
     </div>
@@ -32,6 +37,7 @@
     @@include('./partials/scripts.html')
     <script src="js/cart_catalog.js"></script>
     <script src="js/cart_request.js"></script>
+    <script src="js/button.js"></script>
   </div>
 </body>
 

@@ -49,7 +49,8 @@
             navigatable: true,
             pageable: true,
             height: 550,
-            toolbar: ["create", "save", "cancel"],
+            // toolbar: ["create", "save", "cancel"],
+            toolbar: ["create", "save"],
             columns: [
                 "ProductName",
                 { field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: 120 },
