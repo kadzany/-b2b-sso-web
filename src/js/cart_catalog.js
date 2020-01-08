@@ -1,6 +1,6 @@
 (function(){
     $(document).ready(function () {
-        $("#grid").kendoGrid({
+        $("#cart-catalog").kendoGrid({
             dataSource: {
                 batch: true,
                 type: "odata-v4",
@@ -37,9 +37,8 @@
                         id: "ProductID",
                         fields: {
                             ProductID: { editable: false },
-                            ProductName: { validation: { required: true } },
-                            UnitPrice: { type: "number", validation: { required: true, min: 1 } },
-                            // Discontinued: { type: "boolean" },
+                            ProductName: { editable: false },
+                            UnitPrice: { type: "number", editable: false },
                             UnitsInStock: { type: "number", validation: { min: 0, required: true } }
                         }
                     }
@@ -51,10 +50,10 @@
             height: 550,
             toolbar: ["create", "save", "cancel"],
             columns: [
+                { selectable: true, width: "50px" },
                 "ProductName",
                 { field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: 120 },
                 { field: "UnitsInStock", title: "Units In Stock", width: 120 },
-                // { field: "Discontinued", width: 120, editor: customBoolEditor },
                 { command: "destroy", title: "&nbsp;", width: 150 }],
             editable: true
         });
@@ -62,7 +61,6 @@
 
     function customBoolEditor(container, options) {
         var guid = kendo.guid();
-        $('<input class="k-checkbox" id="' + guid + '" type="checkbox" name="Discontinued" data-type="boolean" data-bind="checked:Discontinued">').appendTo(container);
         $('<label class="k-checkbox-label" for="' + guid + '">&#8203;</label>').appendTo(container);
     }
 })();
