@@ -17,4 +17,12 @@
   // Navigation menu highlighting
   let view = new URL(window.location.href).pathname.replace('/','').replace('.html','');
   $(`a.item.${view}`).addClass('active');
+
+  // Logout
+  $('#logoutButton').click(function(){
+    sessionStorage.clear();
+    setTimeout(function (){
+        window.location = 'index.html';
+    }, 500);
+});
 })();

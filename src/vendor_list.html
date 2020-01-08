@@ -1,37 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Vendor List</title>
-    <meta charset="utf-8">
-    @@include('./partials/styles.html')
-    <script type="text/x-kendo-template" id="productTemplate">
-        <div class="product">
-            <img src="#:images[0].url#" style="max-width: 100px"/>
-            <h3>#:name#</h3>
-        </div>
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  @@include('./partials/styles.html')
+  <title>SSO eProcurement</title>
 </head>
 
-<body>        
-    <div class="ui container">
-        @@include('./partials/header.html')
-        <div class="ui grid">
-          <div class="three wide column">
-            @@include('./partials/sidebar.html')
-          </div>
-          <div class="thirteen wide column">
-            <!-- Page content -->
-            <div id="app">
-                <h3>Vendor List</h3>
-                <div id="listView"></div>
-            </div>
-          </div>
-        </div>
-        <!-- Scripts -->
-        @@include('./partials/scripts.html')
-        <script src="js/vendor_list.min.js"></script>
+<body>
+  <div class="ui container">
+    @@include('./partials/header.html')
+    <div class="ui grid">
+      <div class="three wide column">
+        @@include('./partials/menu.html')
       </div>
+      <div class="thirteen wide column">
+        <!-- Page content -->
+        <div id="app">
+          <h2>Vendor List</h2>
+          <div id="grid"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Scripts -->
+    @@include('./partials/scripts.html')
+    <script src="js/vendor_list.js"></script>
+  </div>
 </body>
 
 </html>
