@@ -3,7 +3,8 @@
     float: left;
     width: 220px;
     height: 110px;
-    margin: 0;
+    margin: 1rem 2rem;
+    margin-bottom: 2rem;
     padding: 5px;
     cursor: pointer;
 }
@@ -35,4 +36,9 @@
     height: 0;
     clear: both;
     visibility: hidden;
+}
+#listView {
+    display: inline-block;
+    padding: 2rem;
+    border: transparent;
 }
