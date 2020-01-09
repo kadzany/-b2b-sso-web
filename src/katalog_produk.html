@@ -2,40 +2,44 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  @@include('./partials/styles.html')
-  <link href="/css/katalog_produk.css" rel="stylesheet" />
-  <title>SSO eProcurement</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @@include('./partials/styles.html')
+    <link href="/css/katalog_produk.css" rel="stylesheet" />
+    <title>SSO eProcurement</title>
 </head>
 
 <body>
-  <div class="ui container">
-    @@include('./partials/header.html')
-    <div class="ui grid">
-      <div class="three wide column">
-        @@include('./partials/menu.html')
-      </div>
-      <div class="thirteen wide column">
-        <!-- Page content -->
-        <div id="app">
-          <h2>Katalog Produk</h2>
-            <div id="listView"></div>
-            <div id="pager" class="k-pager-wrap"></div>
+    <div class="ui container">
+        @@include('./partials/header.html')
+        <div class="ui grid">
+            <div class="three wide column">
+                @@include('./partials/menu.html')
+            </div>
+            <div class="thirteen wide column">
+                <!-- Page content -->
+                <div id="app">
+                    <h2>Katalog Produk</h2>
+                    <div id="listView"></div>
+                    <div id="pager" class="k-pager-wrap"></div>
+                </div>
+            </div>
         </div>
-      </div>
+        <!-- Scripts -->
+        @@include('./partials/scripts.html')
+        <script src="js/katalog_produk.js"></script>
     </div>
-    <!-- Scripts -->
-    @@include('./partials/scripts.html')
-    <script src="js/katalog_produk.js"></script>
-  </div>
-  <script type="text/x-kendo-tmpl" id="template">
+    <script type="text/x-kendo-template" id="productTemplate">
     <div class="product">
-        <img src="../content/web/foods/#:ProductID#.jpg" alt="#:ProductName# image" />
-        <h3>#:ProductName#</h3>
+        <img src="#:images[0].url#" style="max-width: 100px"/>
+        <h3>#:name#</h3>        
+        <div style="display: inline-block;">
+            <button id="buyProduct" class="k-primary" style="padding: 5px; margin: 0px 5px;">Beli Barang</button>
+            <button id="viewProduct" style="padding: 5px; margin: 0px 5px;">Lihat</button>
+        </div>
     </div>
-</script>
+    </script>
 </body>
 
 </html>

@@ -1,27 +1,6 @@
 (function(){
     $(document).ready(function() {
-        var dataSource = new kendo.data.DataSource({
-                transport: {
-                    read: {
-                        url: "https://demos.telerik.com/kendo-ui/service/Products",
-                        dataType: "jsonp"
-                    }
-                },
-                pageSize: 15
-            });
-    
-        $("#pager").kendoPager({
-            dataSource: dataSource
-        });
-    
-        $("#listView").kendoListView({
-            dataSource: dataSource,
-            selectable: "multiple",
-            dataBound: onDataBound,
-            change: onChange,
-            template: kendo.template($("#template").html())
-        });
-    
+
         function onDataBound() {
             kendoConsole.log("ListView data bound");
         }
@@ -34,5 +13,26 @@
     
             kendoConsole.log("Selected: " + selected.length + " item(s), [" + selected.join(", ") + "]");
         }
+
+        const catalogUrl = 'https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=100&offset=8&sort=-created_at';
+        window.api.get(catalogUrl).then(function (res) {
+            if (res && res.data && res.data.data) {
+                var dataSource = new kendo.data.DataSource({
+                    data: res.data.data,
+                    pageSize: 12
+                });
+
+                $("#pager").kendoPager({
+                    dataSource: dataSource
+                });
+            
+                $("#listView").kendoListView({
+                    dataSource: dataSource,
+                    dataBound: onDataBound,
+                    change: onChange,
+                    template: kendo.template($("#productTemplate").html())
+                });
+            }
+        });
     });
 })();
