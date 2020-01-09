@@ -135,3 +135,13 @@
     line-height: 32px;
     padding-left: 3px;
 }
+
+.k-card {
+    width: 100%;
+    margin-bottom: 3%;
+    margin-top: 2%;
+}
+
+.k-primary {
+    min-width: 150px;
+}

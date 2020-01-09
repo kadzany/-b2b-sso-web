@@ -19,7 +19,7 @@
             <div class="thirteen wide column">
                 <div id="app">
                     <div class="print-button">
-                        <button class="export-pdf k-button" onclick="getPDF('.pdf-page')">Print invoice</button>
+                        <button class="export-pdf k-button k-primary" onclick="getPDF('.pdf-page')">Print invoice</button>
                     </div>
                     <script>
                         function getPDF(selector) {
@@ -95,13 +95,26 @@
                                           <h5>Total Harga</h5>
                                           <div id="subtotal-request"></div>
                                         </div>
-                                    </div>
-                                    
+                                    </div>                                
+                                    <div class="k-card">
+                                        <div class="k-card-header">
+                                          <h5 class="k-card-title">Ringkasan Belanja</h5>
+                                        </div>
+                                        <div class="k-card-body">
+                                          <h5 class="k-card-title">Total Harga PO dan Procurement</h5>
+                                          <div style="text-align: right;">
+                                            <h5>Jumlah Barang</h5>
+                                            <div id="totalPrice"></div>
+                                            <h5>Total Harga</h5>
+                                            <div id="totalUnit"></div>
+                                          </div>
+                                        </div>
+                                        
+                                      </div>
                                     <p class="signature">
                                         Signature: ________________ <br /><br />
                                         Date: 12.03.2014
                                     </p>
-
                                     <div class="pdf-footer">
                                         <p>
                                             Blauer See Delikatessen<br />
