@@ -11,6 +11,8 @@
 </head>
 
 <body>
+    <script>
+    </script>
     <div class="ui container">
         @@include('./partials/header.html')
         <div class="ui grid">
@@ -35,8 +37,8 @@
         <img src="#:images[0].url#" style="max-width: 100px"/>
         <h3>#:name#</h3>        
         <div style="display: inline-block;">
-            <button id="buyProduct" class="k-primary" style="padding: 5px; margin: 0px 5px;">Beli Barang</button>
-            <button id="viewProduct" style="padding: 5px; margin: 0px 5px;">Lihat</button>
+            <button id="buyProduct" class="k-primary" style="padding: 5px; margin: 0px 5px;" onClick="beliBarang()">Beli Barang</button>
+            <button id="viewProduct" style="padding: 5px; margin: 0px 5px;" onClick="lihatBarang()">Lihat</button>
         </div>
     </div>
     </script>
