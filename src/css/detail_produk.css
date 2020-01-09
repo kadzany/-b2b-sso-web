@@ -1,0 +1,46 @@
+#scrollview-home .photo {
+    display: inline-block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.photo1 {
+    background-image: url("https://via.placeholder.com/320x240");
+}
+
+.photo2 {
+    background-image: url("https://via.placeholder.com/320x240");
+}
+
+.photo3 {
+    background-image: url("https://via.placeholder.com/320x240");
+}
+
+.photo4 {
+    background-image: url("https://via.placeholder.com/320x240");
+}
+
+.photo5 {
+    background-image: url("https://via.placeholder.com/320x240");
+}
+
+.photo6 {
+    background-image: url("https://via.placeholder.com/320x240");
+}
+
+.photo7 {
+    background-image: url("https://via.placeholder.com/320x240");
+}
+
+.photo8 {
+    background-image: url("https://via.placeholder.com/320x240");
+}
+
+.photo9 {
+    background-image: url("https://via.placeholder.com/320x240");
+}
+
+.photo10 {
+    background-image: url("https://via.placeholder.com/320x240");
+}
