@@ -18,24 +18,27 @@
             </div>
             <div class="thirteen wide column">
                 <div id="app">
-                    <div class="box-col">
+                    <div class="print-button">
                         <button class="export-pdf k-button" onclick="getPDF('.pdf-page')">Print invoice</button>
                     </div>
-                    <div class="page-container hidden-on-narrow">
-                        <div class="pdf-page size-a4">
+                    <script>
+                        function getPDF(selector) {
+                            kendo.drawing.drawDOM($(selector)).then(function (group) {
+                                kendo.drawing.pdf.saveAs(group, "Invoice.pdf");
+                            });
+                        }
+                    </script>
+
+                    <div class="page-container">
+
+                        <div class="pdf-page">
                             <div class="inner-page">
                                 <div class="pdf-header">
-                                    <span class="company-logo">Blauer See Delikatessen
+                                    <span class="company-logo">Nama Perusahaan
                                     </span>
                                     <span class="invoice-number">Invoice #23543</span>
                                 </div>
-                                <div class="pdf-footer">
-                                    <p>
-                                        Blauer See Delikatessen<br />
-                                        Lützowplatz 456<br />
-                                        Berlin, Germany,  10785
-                                    </p>
-                                </div>
+                                
                                 <div class="addresses">
                                     <div class="for">
                                         <h3>Invoice For</h3>
@@ -60,13 +63,28 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div id="grid-invoice"></div>
+                                
                                 <div class="pdf-body">
+                                    <div id="checkout-box">
+                                        <div id="grid-store-invoice"></div>
+                                    </div>
+                                    
+                                    <div id="checkout-box">
+                                        <div id="grid-request-invoice"></div>
+                                    </div>
                                     
                                     <p class="signature">
                                         Signature: ________________ <br /><br />
                                         Date: 12.03.2014
                                     </p>
+
+                                    <div class="pdf-footer">
+                                        <p>
+                                            Blauer See Delikatessen<br />
+                                            Lützowplatz 456<br />
+                                            Berlin, Germany,  10785
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
