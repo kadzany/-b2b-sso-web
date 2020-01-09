@@ -65,9 +65,9 @@
             editable: true
         });
     });
+})();
 
     function customBoolEditor(container, options) {
         var guid = kendo.guid();
         $('<label class="k-checkbox-label" for="' + guid + '">&#8203;</label>').appendTo(container);
     }
-})();
