@@ -33,9 +33,26 @@
               <span class="k-button k-flat k-primary">Kirim ke beberapa alamat</span>
           </div>
           </div>
-          <div id="grid-store-checkout"></div>
-          <h3>Checkout Procurement</h3>
-          <div id="grid-request-checkout"></div>
+
+          <script type="text/x-kendo-template" id="template">
+            <div class="product">
+                <img src="../img/logo.jpg" alt="#: productName # image" />
+                <h2>#:productName#</h2>
+                <h3>#:kendo.toString(unitPrice, "c")#</h3>
+                <p>
+                  #:qty# (#:uom#)
+                </p>
+            </div>
+          </script>
+          <div id="checkout-box">
+            <div id="listView-store-checkout"></div>
+          </div>
+          
+
+          <div id="checkout-box">
+            <h3>Checkout Procurement</h3>
+            <div id="grid-request-checkout"></div>
+          </div>    
           <div class="k-card">
             <div class="k-card-header">
               <h5 class="k-card-title">Ringkasan Belanja</h5>
