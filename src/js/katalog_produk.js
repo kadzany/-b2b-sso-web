@@ -1,3 +1,11 @@
+function beliBarang(id){
+    window.location = 'shopping_cart.html';
+}
+
+function lihatBarang(id){
+    window.location = 'detail_produk.html';
+}    
+
 (function(){
     $(document).ready(function() {
 
