@@ -46,12 +46,22 @@
           </script>
           <div id="checkout-box">
             <div id="listView-store-checkout"></div>
+            <div id="total-section">
+              <h3>Sub Total</h3>
+              <div id="sum-order-store"></div>
+              <div id="subtotal-store"></div>
+            </div>
           </div>
-          
+
 
           <div id="checkout-box">
             <h3>Checkout Procurement</h3>
             <div id="grid-request-checkout"></div>
+            <div id = "total-section">
+              <h3>Sub Total</h3>
+              <div id="sum-order-request"></div>
+              <div id="subtotal-request"></div>
+            </div>
           </div>    
           <div class="k-card">
             <div class="k-card-header">
@@ -59,9 +69,8 @@
             </div>
             <div class="k-card-body">
               <h5 class="k-card-title">Total Harga PO dan Procurement</h5>
-                <p>
-                    Jumlah Barang...
-                </p>
+              <div id="totalPrice"></div>
+              <div id="totalUnit"></div>
             </div>
             <div class="k-card-actions">
               <button id="primaryTextButton" class="k-primary"  onclick = "window.location='/cetak_invoice.html'">Cetak Invoice</button>

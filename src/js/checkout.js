@@ -52,27 +52,40 @@
             }
         ];
 
-        var dataSource = new kendo.data.DataSource({
+        let dataSource = new kendo.data.DataSource({
             data: data,
         })
 
         $("#listView-store-checkout").kendoListView({
             dataSource: dataSource,
             scrollable:"true",
-            template: kendo.template($("#template").html(),)
+            template: kendo.template($("#template").html())
         });
 
-        $("#grid-store-checkout").kendoGrid({
-            dataSource: {
-                data: data,
-                aggregate: store_aggregate,
-                schema: store_schema
-            },
-            editable:false,
-            sortable: false,
-            scrollable:true,
-            columns: store_columns
-        });
+        let subTotal = function(data){
+            let total = 0;
+            data.forEach(function (arrayItem){
+                total += arrayItem.qty * arrayItem.unitPrice;
+            })
+
+            return total;
+        }
+
+        let sumOrder = function(data){
+            let sum = 0;
+            data.forEach(function (arrayItem){
+                sum += arrayItem.qty;
+            })
+
+            return sum;
+        }
+
+        let subTotalStore = subTotal(data);
+        let sumOrderStore = sumOrder(data);
+
+        $("#subtotal-store").text(subTotalStore);
+
+        $("#sum-order-store").text(sumOrderStore);
 
         let request_schema = {
             model: {
@@ -101,7 +114,8 @@
         let request_columns = [
             { 
                 field: "num", 
-                title: "Nomor"
+                title: "Nomor",
+                width: 80
             },                
             { 
                 field: "productName", 
@@ -143,6 +157,25 @@
             scrollable:true,
             columns: request_columns
         });
+
+        let subTotalRequest = subTotal(data);
+        let sumOrderRequest = sumOrder(data);
+
+        $("#subtotal-request").text(subTotalRequest);
+
+        $("#sum-order-request").text(sumOrderRequest);
+
+        let totalPrice = function(subtotal_store,subtotal_request){
+            return subtotal_store + subtotal_request;
+        }
+
+        $("#totalPrice").text(totalPrice(subTotalStore,subTotalRequest));
+
+        let totalUnit = function(sum_unit_store,sum_unit_request){
+            return sum_unit_store + sum_unit_request;
+        }
+
+        $("#totalUnit").text(totalUnit(sumOrderStore,sumOrderRequest));
 
     });
 })();

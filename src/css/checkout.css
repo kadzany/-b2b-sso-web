@@ -2,7 +2,7 @@
     display: inline-block;
     width: 100px;
     height: 100px;
-    background-size: 32px 35px;
+    background-size: 100px 100px;
     background-position: center center;
     vertical-align: middle;
     line-height: 32px;
@@ -49,4 +49,15 @@
 
 #checkout-box {
     margin-top: 2%;
+}
+
+#total-section {
+    margin: 0 auto 2%;
+    padding: 1em;
+    border: 1px solid rgba(20,53,80,0.14);
+    text-align: right;
+}
+
+#total-section h3 {
+    text-align: left;
 }
