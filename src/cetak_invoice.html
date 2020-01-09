@@ -28,7 +28,16 @@
                             });
                         }
                     </script>
-
+                    <script type="text/x-kendo-template" id="template">
+                        <div class="product">
+                            <img src="../img/logo.jpg" alt="#: productName # image" />
+                            <h2>#:productName#</h2>
+                            <h3>#:kendo.toString(unitPrice, "c")#</h3>
+                            <p>
+                            #:qty# (#:uom#)
+                            </p>
+                        </div>
+                    </script>
                     <div class="page-container">
 
                         <div class="pdf-page">
@@ -66,11 +75,26 @@
                                 
                                 <div class="pdf-body">
                                     <div id="checkout-box">
-                                        <div id="grid-store-invoice"></div>
+                                        <div id="listView-store-checkout"></div>
+                                        <div id="total-section">
+                                          <h3>Sub Total</h3>
+                                          <h5>Jumlah Barang</h5>
+                                          <div id="sum-order-store"></div>
+                                          <h5>Total Harga</h5>
+                                          <div id="subtotal-store"></div>
+                                        </div>
                                     </div>
                                     
                                     <div id="checkout-box">
-                                        <div id="grid-request-invoice"></div>
+                                        <h3>Checkout Procurement</h3>
+                                        <div id="grid-request-checkout"></div>
+                                        <div id = "total-section">
+                                          <h3>Sub Total</h3>
+                                          <h5>Jumlah Barang</h5>
+                                          <div id="sum-order-request"></div>
+                                          <h5>Total Harga</h5>
+                                          <div id="subtotal-request"></div>
+                                        </div>
                                     </div>
                                     
                                     <p class="signature">

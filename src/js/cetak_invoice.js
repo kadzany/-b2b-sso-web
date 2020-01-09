@@ -1,5 +1,6 @@
 (function(){    
     $(document).ready(function() {
+
         let data = [
             { productName: "QUESO CABRALES", unitPrice: 1000, qty: 5,uom:'kg', remark:"Budget maksimal Rp 3.000.000,00" },
             { productName: "ALICE MUTTON", unitPrice: 2000, qty: 7,uom:'kg',remark:"Budget maksimal Rp 3.000.000,00" },
@@ -7,45 +8,40 @@
             { productName: "CHARTREUSE VERTE", unitPrice: 4000, qty: 1,uom:'kg',remark:"Budget maksimal Rp 3.000.000,00" }
         ];
 
-        let store_schema = {
-            model: {
-                productName: { type: "string" },
-                unitPrice: { type: "number"},
-                qty: { type: "number" }
-            },
-            parse: function (data) {
-                $.each(data, function () {
-                    this.total = this.qty * this.unitPrice;
-                });
-                return data;
-            }
-        };
-        let store_columns = [
-            { 
-                field: "productName", 
-                title: "Nama Produk",
-            },{
-                field: "unitPrice", 
-                title: "Harga per Unit",                   
-            },{
-                field: "qty", 
-                title: "Quantity"
-            },{
-                field: "total",
-                title: "Total",
-            }
-        ];
-
-        $("#grid-store-invoice").kendoGrid({
-            dataSource: {
-                data: data,
-                schema: store_schema
-            },
-            editable:false,
-            sortable: false,
-            scrollable:true,
-            columns: store_columns
+        let dataSource = new kendo.data.DataSource({
+            data: data,
         });
+
+        $("#listView-store-checkout").kendoListView({
+            dataSource: dataSource,
+            scrollable:"true",
+            template: kendo.template($("#template").html())
+        });
+
+        let subTotal = function(data){
+            let total = 0;
+            data.forEach(function (arrayItem){
+                total += arrayItem.qty * arrayItem.unitPrice;
+            })
+
+            return total;
+        }
+
+        let sumOrder = function(data){
+            let sum = 0;
+            data.forEach(function (arrayItem){
+                sum += arrayItem.qty;
+            })
+
+            return sum;
+        }
+
+        let subTotalStore = subTotal(data);
+        let sumOrderStore = sumOrder(data);
+
+        $("#subtotal-store").text(subTotalStore);
+
+        $("#sum-order-store").text(sumOrderStore);
 
         let request_schema = {
             model: {
@@ -58,33 +54,28 @@
             },
             parse: function (data) {
                 $.each(data, function (i) {
-                    this.total = this.qty * this.unitPrice;
                     this.num = i+1;
                 });
                 return data;
             }
         }
 
-        let request_aggregate = [
-            { field: "qty", aggregate: "sum" },
-            { field: "unitPrice", aggregate: "sum" },
-            { field: "total", aggregate: "sum" }
-        ];
-
         let request_columns = [
             { 
                 field: "num", 
-                title: "Nomor"
+                title: "Nomor",
+                width: 80
             },                
             { 
                 field: "productName", 
                 title: "Item Description",
+                template: "<div class='product-photo'" +
+                "style='background-image: url(../img/logo.jpg);'></div>" +
+                "<div class='product-name'>#: productName #</div>"
             },
             {
                 field: "qty", 
-                title: "Quantity", 
-                aggregates: ["sum"], 
-                footerTemplate: "Jumlah Barang: #=sum#"
+                title: "Quantity"
             },
             { 
                 field: "uom", 
@@ -92,9 +83,7 @@
             },
             {
                 field: "unitPrice", 
-                title: "Harga per Unit", 
-                aggregates: ["sum"], 
-                footerTemplate: "Sub Total: #=sum#"
+                title: "Harga per Unit"
             },
             { 
                 field: "remark", 
@@ -102,10 +91,9 @@
             }
         ];
 
-        $("#grid-request-invoice").kendoGrid({
+        $("#grid-request-checkout").kendoGrid({
             dataSource: {
                 data: data,
-                aggregate: request_aggregate,
                 schema: request_schema
             },
             editable: false,
@@ -113,5 +101,24 @@
             scrollable:true,
             columns: request_columns
         });
+
+        let subTotalRequest = subTotal(data);
+        let sumOrderRequest = sumOrder(data);
+
+        $("#subtotal-request").text(subTotalRequest);
+
+        $("#sum-order-request").text(sumOrderRequest);
+
+        let totalPrice = function(subtotal_store,subtotal_request){
+            return subtotal_store + subtotal_request;
+        }
+
+        $("#totalPrice").text(totalPrice(subTotalStore,subTotalRequest));
+
+        let totalUnit = function(sum_unit_store,sum_unit_request){
+            return sum_unit_store + sum_unit_request;
+        }
+
+        $("#totalUnit").text(totalUnit(sumOrderStore,sumOrderRequest));
     });
 })();

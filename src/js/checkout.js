@@ -10,7 +10,7 @@
 
         let dataSource = new kendo.data.DataSource({
             data: data,
-        })
+        });
 
         $("#listView-store-checkout").kendoListView({
             dataSource: dataSource,
