@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @@include('./partials/styles.html')
+    <link href="/css/cetak_invoice.css" rel="stylesheet" />
+    
+    <title>Cetak Invoice</title>
+</head>
+<body>
+    <div class="ui container">
+        @@include('./partials/header.html')
+        <div class="ui grid">
+            <div class="three wide column">
+                @@include('./partials/menu.html')
+            </div>
+            <div class="thirteen wide column">
+                <div id="app">
+                    <div class="box-col">
+                        <button class="export-pdf k-button" onclick="getPDF('.pdf-page')">Print invoice</button>
+                    </div>
+                    <div class="page-container hidden-on-narrow">
+                        <div class="pdf-page size-a4">
+                            <div class="inner-page">
+                                <div class="pdf-header">
+                                    <span class="company-logo">Blauer See Delikatessen
+                                    </span>
+                                    <span class="invoice-number">Invoice #23543</span>
+                                </div>
+                                <div class="pdf-footer">
+                                    <p>
+                                        Blauer See Delikatessen<br />
+                                        Lützowplatz 456<br />
+                                        Berlin, Germany,  10785
+                                    </p>
+                                </div>
+                                <div class="addresses">
+                                    <div class="for">
+                                        <h3>Invoice For</h3>
+                                        <p>
+                                            Antonio Moreno<br />
+                                            Naucalpan de Juárez<br />
+                                            México D.F., Mexico, 53500
+                                        </p>
+                                    </div>
+                
+                                    <div class="from">
+                                        <h3>From</h3>
+                                        <p>
+                                            Hanna Moos <br />
+                                            Lützowplatz 456<br />
+                                            Berlin, Germany,  10785
+                                        </p>
+                                        <p>
+                                            Invoice ID: 23543<br />
+                                            Invoice Date: 12.03.2014<br />
+                                            Due Date: 27.03.2014
+                                        </p>
+                                    </div>
+                                </div>
+                                <div id="grid-invoice"></div>
+                                <div class="pdf-body">
+                                    
+                                    <p class="signature">
+                                        Signature: ________________ <br /><br />
+                                        Date: 12.03.2014
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        @@include('./partials/scripts.html')
+        <script src="js/cetak_invoice.js"></script>
+    </div>
+    
+</body>
+</html>
