@@ -1,0 +1,147 @@
+.pdf-page {
+    position: relative;
+    margin: 0 auto;
+    padding: .4in .3in;
+    color: #333;
+    background-color: #fff;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,.3);
+    box-sizing: border-box;
+}
+
+.pdf-header {
+    padding-bottom: .2in;
+    margin-bottom: .3in;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.invoice-number {
+    padding-top: .1in;
+    float: right;
+}
+
+.pdf-footer {
+    position: absolute;
+    bottom: .25in;
+    left: .3in;
+    right: .3in;
+    padding-top: 0.05in;
+    border-top: 1px solid #e5e5e5;
+    font-size: 0.9em;
+    text-align: right;
+    color: #787878;
+}
+
+.print-button {
+    margin-bottom: 2%;
+    text-align: right;
+}
+
+.addresses {
+    font-size: 12px;
+}
+
+    .addresses:after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+
+.for {
+    float: left;
+}
+
+.from {
+    float: right;
+}
+
+.addresses p {
+    color: #787878;
+    padding: .05in 0;
+    border-top: 1px solid #e5e5e5;
+}
+
+.addresses p:first-of-type {
+    border-top: 0;
+}
+
+.pdf-body {
+    margin-top: .3in;
+}
+
+.company-logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #3aabf0;
+}
+
+.signature {
+    padding-top: .3in;
+}
+
+.pdf-page {
+    font-family: "DejaVu Sans", "Arial", sans-serif;
+}
+
+#checkout-box {
+    margin-top: 2%;
+}
+
+#total-section {
+    margin: 0 auto 2%;
+    padding: 1em;
+    border: 1px solid rgba(20,53,80,0.14);
+    text-align: right;
+}
+
+#total-section h3 {
+    text-align: left;
+}
+
+.product-photo {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-size: 100px 100px;
+    background-position: center center;
+    vertical-align: middle;
+    line-height: 32px;
+    margin-left: 5px;
+}
+
+.product
+{
+    height: 110px;
+    margin: 0;
+    padding: 5px;
+}
+
+.product img
+{
+    float: left;
+    width: 110px;
+    height: 110px;
+}
+.product h2
+{
+    margin: 0;
+    padding: 10px 0 0 10px;
+    font-size: .9em;
+    font-weight: bold;
+}
+
+.product-name {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 32px;
+    padding-left: 3px;
+}
+
+.k-card {
+    width: 100%;
+    margin-bottom: 3%;
+    margin-top: 2%;
+}
+
+.k-primary {
+    min-width: 150px;
+}
