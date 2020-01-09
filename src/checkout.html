@@ -14,11 +14,42 @@
   <div class="ui container">
     @@include('./partials/header.html')
     <div class="ui grid">
+      <div class="three wide column">
+        @@include('./partials/menu.html')
+      </div>
       <div class="thirteen wide column">
         <!-- Page content -->
         <div id="app">
           <h2>Checkout PO</h2>
-            <div id="grid"></div>
+          <div class="k-card">
+            <div class="k-card-body">
+              <h5 class="k-card-title">Alamat Pengiriman</h5>
+                <p>
+                    Alamat pengiriman...
+                </p>
+            </div>
+            <div class="k-card-actions">
+              <span class="k-button k-flat k-primary">Pilih alamat lain</span>
+              <span class="k-button k-flat k-primary">Kirim ke beberapa alamat</span>
+          </div>
+          </div>
+          <div id="grid-store-checkout"></div>
+          <h3>Checkout Procurement</h3>
+          <div id="grid-request-checkout"></div>
+          <div class="k-card">
+            <div class="k-card-header">
+              <h5 class="k-card-title">Ringkasan Belanja</h5>
+            </div>
+            <div class="k-card-body">
+              <h5 class="k-card-title">Total Harga PO dan Procurement</h5>
+                <p>
+                    Jumlah Barang...
+                </p>
+            </div>
+            <div class="k-card-actions">
+              <button class="export-pdf k-button" onclick="getPDF('.pdf-page')">Cetak Invoice</button>
+          </div>
+          </div>
         </div>
       </div>
     </div>
