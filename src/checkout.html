@@ -29,8 +29,8 @@
                 </p>
             </div>
             <div class="k-card-actions">
-              <span class="k-button k-flat k-primary">Pilih alamat lain</span>
-              <span class="k-button k-flat k-primary">Kirim ke beberapa alamat</span>
+              <span class="k-button k-primary">Pilih alamat lain</span>
+              <span class="k-button k-primary">Kirim ke beberapa alamat</span>
           </div>
           </div>
 
@@ -48,7 +48,9 @@
             <div id="listView-store-checkout"></div>
             <div id="total-section">
               <h3>Sub Total</h3>
+              <h5>Jumlah Barang</h5>
               <div id="sum-order-store"></div>
+              <h5>Total Harga</h5>
               <div id="subtotal-store"></div>
             </div>
           </div>
@@ -59,7 +61,9 @@
             <div id="grid-request-checkout"></div>
             <div id = "total-section">
               <h3>Sub Total</h3>
+              <h5>Jumlah Barang</h5>
               <div id="sum-order-request"></div>
+              <h5>Total Harga</h5>
               <div id="subtotal-request"></div>
             </div>
           </div>    
@@ -69,8 +73,12 @@
             </div>
             <div class="k-card-body">
               <h5 class="k-card-title">Total Harga PO dan Procurement</h5>
-              <div id="totalPrice"></div>
-              <div id="totalUnit"></div>
+              <div style="text-align: right;">
+                <h5>Jumlah Barang</h5>
+                <div id="totalPrice"></div>
+                <h5>Total Harga</h5>
+                <div id="totalUnit"></div>
+              </div>
             </div>
             <div class="k-card-actions">
               <button id="primaryTextButton" class="k-primary"  onclick = "window.location='/cetak_invoice.html'">Cetak Invoice</button>
