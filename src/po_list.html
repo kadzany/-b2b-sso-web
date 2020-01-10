@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  @@include('./partials/styles.html')
+  <link href="/css/po_list.css" rel="stylesheet" />
+  <title>Daftar Purchase Order</title>
+</head>
+
+<body>
+  <div class="ui container">
+    @@include('./partials/header.html')
+    <div class="ui grid">
+      <div class="three wide column">
+        @@include('./partials/menu.html')
+      </div>
+      <div class="thirteen wide column">
+        <!-- Page content -->
+        <div id="app">
+          <h2>Daftar Purchase Order</h2>
+          <div id="po-box">
+            <div id="grid-po-list"></div>
+            <div id="details">
+                <div id="grid"></div>
+            </div>
+            <script type="text/x-kendo-template" id="template">
+                <div id="details-container">
+                    <h2>#= poNumber #</h2>
+                    <dl>
+                        <dt>Created Date: #= kendo.toString(createdDate, "dd/MM/yyyy") #</dt>
+                    </dl>
+                    <p>#=poFromStore[1].productName #</p>
+                    <div id = "grid"></div>
+                </div>
+            </script>
+          </div>    
+        </div>
+      </div>
+    </div>
+    <!-- Scripts -->
+    @@include('./partials/scripts.html')
+    <script src="js/po_list.js"></script>
+  </div>
+</body>
+
+</html>
