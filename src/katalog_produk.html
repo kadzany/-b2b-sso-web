@@ -33,14 +33,19 @@
         <script src="js/katalog_produk.js"></script>
     </div>
     <script type="text/x-kendo-template" id="productTemplate">
-    <div class="product">
-        <img src="#:images[0].url#" style="max-width: 100px"/>
-        <h3>#:name#</h3>        
-        <div style="display: inline-block;">
-            <button id="buyProduct" class="k-primary" style="padding: 5px; margin: 0px 5px;" onClick="beliBarang('#:id#')">Beli Barang</button>
-            <button id="viewProduct" style="padding: 5px; margin: 0px 5px;" onClick="lihatBarang('#:id#')">Lihat</button>
+        <div class="product">
+            <div class="image">
+                <img src="#:images[0].url#">
+            </div>
+            <div class="extra">
+                <p class="product-name">#:name#</p>               
+                <p class="product-price"><strong>Rp. #:max_price#</strong></p>
+            </div>
+            <div class="footer">
+                <button id="buyProduct" class="k-button k-primary" onClick="beliBarang('#:id#')">Beli Barang</button>
+                <button id="viewProduct" class="k-button" onClick="lihatBarang('#:id#')">Lihat Detail</button>
+            </div>
         </div>
-    </div>
     </script>
 </body>
 

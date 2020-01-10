@@ -22,11 +22,18 @@ function lihatBarang(id){
             console.log("Selected: " + selected.length + " item(s), [" + selected.join(", ") + "]");
         }
 
-        const catalogUrl = 'https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=10&offset=1&sort=-created_at';
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        const catalogUrl = 'https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=100&offset=1&sort=-created_at';
         window.api.get(catalogUrl).then(function (res) {
             if (res && res.data && res.data.data) {
                 var dataSource = new kendo.data.DataSource({
-                    data: res.data.data,
+                    data: res.data.data.map(function(m){
+                        m.max_price = numberWithCommas(m.max_price);
+                        return m;
+                    }),
                     pageSize: 12
                 });
 

@@ -21,7 +21,19 @@
         <!-- Page content -->
         <div id="app">
           <h2>Detail Produk</h2>
-          <div id="scrollView"></div>
+
+          <div class="leftpanel">
+            <div id="scrollView"></div>
+          </div>
+          <div class="rightpanel k-grid">
+            <p id="vendor"></p>
+            <h2 id="name"></h2>
+            <h3 id="price"></h3>
+            <div class="footer k-pager-wrap k-grid-pager k-widget k-floatwrap k-pager-lg">              
+              <button id="viewProduct" class="k-button" onClick="tutupLihatBarang()">Tutup</button>
+              <button id="buyProduct" class="k-button k-primary" onClick="beliBarang()">Tambah ke Keranjang</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
