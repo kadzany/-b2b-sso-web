@@ -86,7 +86,7 @@
             columns: request_columns
         });
 
-        let editor = $("#editor").kendoEditor().data("kendoEditor");
+        // let editor = $("#editor").kendoEditor().data("kendoEditor");
 
         let dialog = $("#editorDialog").kendoDialog({
             width: "500px",
@@ -94,23 +94,23 @@
             closable: true,
             modal: false,
             content: "<h3>Masukkan catatan</h3>",
-            open: function(){
-                editor.refresh();
-            },
             actions: [
                 { text: 'Setujui', primary: true},
                 { text: 'Batalkan'}
             ],
+            open: function(){
+                editor.refresh();
+            }
         });
     
         $("#approveBtn").click(function(){
-            dialog.data("kendoDialog").open();
+            dialog.open();
         });
     
         function updateText(){
             $("#content").html(editor.value());
         };
-        
+
         $("#requester").text(po_data[0].customer);
         $("#approver").text(po_data[0].approver);
         $("#req-date").text(po_data[0].createdDate);
