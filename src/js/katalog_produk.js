@@ -1,16 +1,16 @@
 function beliBarang(id){
-    window.location = 'shopping_cart.html';
+    window.location = 'shopping_cart.html?id=' + id;
 }
 
 function lihatBarang(id){
-    window.location = 'detail_produk.html';
+    window.location = 'detail_produk.html?id=' + id;
 }    
 
 (function(){
     $(document).ready(function() {
 
         function onDataBound() {
-            kendoConsole.log("ListView data bound");
+            console.log("ListView data bound");
         }
     
         function onChange() {
@@ -19,10 +19,10 @@ function lihatBarang(id){
                     return data[$(item).index()].ProductName;
                 });
     
-            kendoConsole.log("Selected: " + selected.length + " item(s), [" + selected.join(", ") + "]");
+            console.log("Selected: " + selected.length + " item(s), [" + selected.join(", ") + "]");
         }
 
-        const catalogUrl = 'https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=100&offset=8&sort=-created_at';
+        const catalogUrl = 'https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=10&offset=1&sort=-created_at';
         window.api.get(catalogUrl).then(function (res) {
             if (res && res.data && res.data.data) {
                 var dataSource = new kendo.data.DataSource({

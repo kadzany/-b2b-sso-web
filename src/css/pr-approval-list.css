@@ -1,0 +1,13 @@
+#action-button {
+    margin-bottom: 100px;
+}
+
+.product-name {
+    color: red;
+    font-weight: bold;
+}
+
+.product-photo {
+    width: 100px;
+    height: 100px;
+}
