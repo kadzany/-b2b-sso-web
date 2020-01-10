@@ -3,6 +3,10 @@ const id = params.get('id');
 
 function tutupLihatBarang(){
     window.location = "katalog_produk.html";
+}        
+
+function beliBarang(){
+    window.location = "shopping_cart.html?prodid=" + id;
 }
 
 (function () {

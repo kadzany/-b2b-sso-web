@@ -1,5 +1,5 @@
 function beliBarang(id){
-    window.location = 'shopping_cart.html?id=' + id;
+    window.location = 'shopping_cart.html?prodid=' + id;
 }
 
 function lihatBarang(id){
