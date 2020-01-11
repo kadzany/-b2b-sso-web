@@ -11,63 +11,100 @@
 </head>
 
 <body>
-  <div class="ui container">
-    @@include('./partials/header.html')
-    <div class="ui grid">
-        <div class="three wide column">
-            @@include('./partials/menu.html')
-        </div>
-        <div class="thirteen wide column">
-            <!-- Page content -->
-            <div id="app">
-                <h2>Checkout</h2>
-
-                <div class="box-top">
-                    <h3>Checkout Shopping Cart</h3>                
-                    <small>Cek kembali pesanan anda sebelum melanjutkan.</small>
-                </div>
-
-                <div class="box-top">
-                    <h3>Alamat Pengiriman</h3>
-                    <b>Muhammad Faisal (Kantor)</b>
-                    <p>Menara Multimedia Lt. 17 Jalan Kebon Sirih No. 12<br />Jakarta Pusat 10110, DKI Jakarta</p>  
-                    <br />
-
-                    <a class="action-link primary" href="#">Kirim Ke Alamat Lain</a>
-                    <a class="action-link secondary" href="#">Kirim ke Beberapa Alamat</a>
-                    <br />
-                    &nbsp;
-                </div>
-    
-                <div id="grid"></div>
-
-                <div class="box-bottom">
-                    <h3>Ringkasan Belanja</h3>
-                    <p>Jumlah Barang : </p>
-                    <p>Total : </p>                
-                </div>
-
-                <br />
-                <div style="margin-bottom: 80px; text-align: right;">
-                    <button id="lihatInvoice" class="k-button k-primary" onClick="lihatInvoice()">Lihat Invoice</button>
-                </div>
-
+    <div class="ui container">
+        @@include('./partials/header.html')
+        <div class="ui grid">
+            <div class="three wide column">
+                @@include('./partials/menu.html')
             </div>
-        </div>
-    </div>
-    
-    <!-- Scripts -->
-    <script id="template" type="text/x-kendo-template">
-        <label class="search-label" for="searchBox">Search Grid:</label>
-        <input type="search" id="searchBox" class="k-textbox" style="width: 250px"/>
-        <input type="button" id="btnSearch" class="k-button" value="Search"/>
-        <input type="button" id="btnReset" class="k-button" value="Reset"/>
-    </script>
+            <div class="thirteen wide column">
+                <!-- Page content -->
+                <div id="app">
+                    <h2>Checkout</h2>
 
-    @@include('./partials/scripts.html')
-    <script src="https://demos.telerik.com/kendo-ui/content/shared/js/products.js"></script>
-    <script src="js/checkout.js"></script>
-  </div>
+                    <div class="box-top">
+                        <h3>Checkout Shopping Cart</h3>
+                        <small>Cek kembali pesanan anda sebelum melanjutkan.</small>
+                    </div>
+
+                    <div class="box-top">
+                        <h3>Alamat Pengiriman</h3>
+                        <b>Muhammad Faisal (Kantor)</b>
+                        <p>Menara Multimedia Lt. 17 Jalan Kebon Sirih No. 12<br />Jakarta Pusat 10110, DKI Jakarta</p>
+                        <br />
+
+                        <button id="kirimAlamatLain" class="k-button k-primary">Kirim Ke Alamat Lain</button>
+                        <button id="kirimBeberapaAlamat" class="k-button">Kirim ke Beberapa Alamat</button>
+                        <br />
+                        &nbsp;
+                    </div>
+
+                    <script type="text/x-kendo-template" id="template">
+                    <div class="product">
+                        <img src="../img/logo.jpg" alt="#: productName # image" />
+                        <h2>#:productName#</h2>
+                        <h3>#:kendo.toString(unitPrice, "c")#</h3>
+                        <p>
+                          #:qty# (#:uom#)
+                        </p>
+                    </div>
+                  </script>
+                    <div id="checkout-box">
+                        <div id="listView-store-checkout"></div>
+                        <div id="total-section">
+                            <h3>Sub Total</h3>
+                            <h5>Jumlah Barang</h5>
+                            <div id="sum-order-store"></div>
+                            <h5>Total Harga</h5>
+                            <div id="subtotal-store"></div>
+                        </div>
+                    </div>
+
+
+                    <div id="checkout-box">
+                        <h3>Checkout Procurement</h3>
+                        <div id="grid-request-checkout"></div>
+                        <div id="total-section">
+                            <h3>Sub Total</h3>
+                            <h5>Jumlah Barang</h5>
+                            <div id="sum-order-request"></div>
+                            <h5>Total Harga</h5>
+                            <div id="subtotal-request"></div>
+                        </div>
+                    </div>
+                    <div class="k-card">
+                        <div class="k-card-header">
+                            <h5 class="k-card-title">Ringkasan Belanja</h5>
+                        </div>
+                        <div class="k-card-body">
+                            <h5 class="k-card-title">Total Harga PO dan Procurement</h5>
+                            <div style="text-align: right;">
+                                <h5>Jumlah Barang</h5>
+                                <div id="totalPrice"></div>
+                                <h5>Total Harga</h5>
+                                <div id="totalUnit"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 80px; text-align: right;">
+                        <button id="lihatInvoice" class="k-button k-primary" onClick="lihatInvoice()">Lihat
+                            Invoice</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scripts -->
+            <script id="template" type="text/x-kendo-template">
+                <label class="search-label" for="searchBox">Search Grid:</label>
+                <input type="search" id="searchBox" class="k-textbox" style="width: 250px"/>
+                <input type="button" id="btnSearch" class="k-button" value="Search"/>
+                <input type="button" id="btnReset" class="k-button" value="Reset"/>
+            </script>
+
+            @@include('./partials/scripts.html')
+            <script src="https://demos.telerik.com/kendo-ui/content/shared/js/products.js"></script>
+            <script src="js/checkout.js"></script>
+        </div>
 </body>
 
 </html>
