@@ -6,6 +6,24 @@ function tutupLihatBarang(){
 }        
 
 function beliBarang(){
+    $(document).ready(function () {
+        function onClose (){
+            return;
+        }
+
+        $("#window").kendoWindow({
+            width: "600px",
+            title: "Produk berhasil ditambahkan ke dalam keranjang.",
+            visible: false,
+            actions: [
+                "Close"
+            ],
+            close: onClose
+        }).data("kendoWindow").center().open();
+    });
+}
+
+function lihatCart(){
     window.location = "shopping_cart.html?prodid=" + id;
 }
 
@@ -33,6 +51,12 @@ function beliBarang(){
                 $('#vendor').html(res.data.supplier.store_name);
                 $('#name').html(res.data.name);
                 $('#price').html("Rp. " + numberWithCommas(res.data.max_price));
+                
+                // also set for the popup confirmatin window
+                $('#popUpVendor').html(res.data.supplier.store_name);
+                $('#popUpName').html(res.data.name);
+                $('#popUpPrice').html("Rp. " + numberWithCommas(res.data.max_price));
+                $('#popUpImg').attr("src", res.data.images[0].url);
             }
         });
     });

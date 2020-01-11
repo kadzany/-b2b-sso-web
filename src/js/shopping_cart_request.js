@@ -1,51 +1,22 @@
 (function(){
     $(document).ready(function () {
-        $("#cart-request").kendoGrid({
-            dataSource: {
-                batch: true,
-                type: "odata-v4",
-                transport: {
-                    read: {
-                        url: function () {
-                            return "https://demos.telerik.com/kendo-ui/service-v4/odata/Products";
-                        }
+        let serviceBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/products?limit=4&offset=16&sort=-created_at";
+        let cartDataSource = {
+            transport: {
+                read: {
+                    url: function () {
+                        return '';
                     },
-                    update: {
-                        url: function (dataItem) {
-                            return "https://demos.telerik.com/kendo-ui/service-v4/odata/Products(" + dataItem.ProductID + ")";
-                        }
-                    },
-                    batch: {
-                        url: function () {
-                            return "https://demos.telerik.com/kendo-ui/service-v4/odata/$batch";
-                        }
-                    },
-                    create: {
-                        url: function (dataItem) {
-                            delete dataItem.ProductID;
-                            return "https://demos.telerik.com/kendo-ui/service-v4/odata/Products";
-                        }
-                    },
-                    destroy: {
-                        url: function (dataItem) {
-                            return "https://demos.telerik.com/kendo-ui/service-v4/odata/Products(" + dataItem.ProductID + ")";
-                        }
-                    }
-                },
-                schema: {
-                    model: {
-                        id: "ProductID",
-                        fields: {
-                            ProductID: { editable: false },
-                            ProductName: { validation: { required: true } },
-                            UnitPrice: { type: "number", validation: { required: true, min: 1 } },
-                            // Discontinued: { type: "boolean" },
-                            UnitsInStock: { type: "number", validation: { min: 0, required: true } }
-                        }
-                    }
-                },
-                pageSize: 20
+                    dataType: "json"
+                }
             },
+            schema: {
+                data: "data"
+            }
+        };
+
+        $("#cart-request").kendoGrid({
+            dataSource: cartDataSource,
             navigatable: true,
             pageable: true,
             height: 550,

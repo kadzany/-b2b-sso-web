@@ -25,13 +25,15 @@
           <div class="leftpanel">
             <div id="scrollView"></div>
           </div>
-          <div class="rightpanel k-grid">
-            <p id="vendor"></p>
-            <h2 id="name"></h2>
-            <h3 id="price"></h3>
-            <div class="footer k-pager-wrap k-grid-pager k-widget k-floatwrap k-pager-lg">              
-              <button id="viewProduct" class="k-button" onClick="tutupLihatBarang()">Tutup</button>
-              <button id="buyProduct" class="k-button k-primary" onClick="beliBarang()">Tambah ke Keranjang</button>
+          <div class="rightpanel">
+            <div class="k-grid">
+              <p id="vendor"></p>
+              <h2 id="name"></h2>
+              <h3 id="price"></h3>
+              <div class="footer k-pager-wrap k-grid-pager k-widget k-floatwrap k-pager-lg">
+                <button id="viewProduct" class="k-button" onClick="tutupLihatBarang()">Tutup</button>
+                <button id="buyProduct" class="k-button k-primary" onClick="beliBarang()">Tambah ke Keranjang</button>
+              </div>
             </div>
           </div>
         </div>
@@ -44,6 +46,17 @@
   <script id="scrollview-template" type="text/x-kendo-template">
       <img src="#:url#"/>
   </script>
+  <div id="window">
+    <div>
+      <img id="popUpImg" style="width: 150px; height: 150px; object-fit: contain; float: left; margin-right: 2rem;" />
+      <p id="popUpVendor"></p>
+      <h2 id="popUpName"></h2>
+      <h3 id="popUpPrice"></h3>
+    </div>
+    <div class="footer">
+      <button id="buyProduct" class="k-button k-primary" onClick="lihatCart()">Lihat Keranjang</button>
+    </div>
+  </div>
 </body>
 
 </html>
