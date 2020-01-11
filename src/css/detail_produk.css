@@ -1,46 +1,25 @@
-#scrollview-home .photo {
-    display: inline-block;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+#scrollView{
+    height: 210px;
+    width: 420px;
+    margin-top: 16px;
+}
+#scrollView img{
+    height: 210px;
+    width: 420px;
+    object-fit: contain;
+}
+#price{
+    font-weight: bold;
+}
+.leftpanel{
+    float: left;
+    margin-right: 1rem;
+}
+.rightpanel{
+    margin-top: 1rem;
 }
 
-.photo1 {
-    background-image: url("https://via.placeholder.com/320x240");
-}
-
-.photo2 {
-    background-image: url("https://via.placeholder.com/320x240");
-}
-
-.photo3 {
-    background-image: url("https://via.placeholder.com/320x240");
-}
-
-.photo4 {
-    background-image: url("https://via.placeholder.com/320x240");
-}
-
-.photo5 {
-    background-image: url("https://via.placeholder.com/320x240");
-}
-
-.photo6 {
-    background-image: url("https://via.placeholder.com/320x240");
-}
-
-.photo7 {
-    background-image: url("https://via.placeholder.com/320x240");
-}
-
-.photo8 {
-    background-image: url("https://via.placeholder.com/320x240");
-}
-
-.photo9 {
-    background-image: url("https://via.placeholder.com/320x240");
-}
-
-.photo10 {
-    background-image: url("https://via.placeholder.com/320x240");
+.footer{
+    text-align: right;
+    top: 3rem;
 }

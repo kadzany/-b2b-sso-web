@@ -695,3 +695,58 @@ ul.keyboard-legend li a {
     display: block;
   }
 }
+
+
+a.link-button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+.action-link.primary{
+    border: 1px solid red;
+    background-color: red;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #fff;
+}
+
+.action-link.primary:hover 
+{
+    text-decoration: none;
+    background-color: red;
+    color: #999;
+}
+
+.action-link.secondary{
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: red;
+}
+
+.action-link.secondary:hover 
+{
+    text-decoration: none;
+    color: #999;
+}
+
+@media screen and (max-width: 1023px) {
+  .page {
+    max-width:100%;
+    margin: 0;
+    padding: 10px;
+    background: #fff;
+    border: 0;
+  }
+  
+  .hidden-on-narrow {
+    display: none !important;
+  }
+  .responsive-message {
+    display: block;
+  }
+}

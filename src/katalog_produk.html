@@ -33,15 +33,32 @@
         <script src="js/katalog_produk.js"></script>
     </div>
     <script type="text/x-kendo-template" id="productTemplate">
-    <div class="product">
-        <img src="#:images[0].url#" style="max-width: 100px"/>
-        <h3>#:name#</h3>        
-        <div style="display: inline-block;">
-            <button id="buyProduct" class="k-primary" style="padding: 5px; margin: 0px 5px;" onClick="beliBarang()">Beli Barang</button>
-            <button id="viewProduct" style="padding: 5px; margin: 0px 5px;" onClick="lihatBarang()">Lihat</button>
+        <div class="product">
+            <div class="image">
+                <img src="#:images[0].url#">
+            </div>
+            <div class="extra">
+                <p class="product-name">#:name#</p>               
+                <p class="product-price"><strong>Rp. #:max_price#</strong></p>
+            </div>
+            <div class="footer">
+                <button id="buyProduct" class="k-button k-primary" onClick="beliBarang('#:id#')">Beli Barang</button>
+                <button id="viewProduct" class="k-button" onClick="lihatBarang('#:id#')">Lihat Detail</button>
+            </div>
+        </div>
+    </script>
+    <div id="window">
+        <div>
+            <img id="popUpImg" style="width: 150px; height: 150px; object-fit: contain; float: left; margin-right: 2rem;" />
+            <p id="popUpVendor"></p>
+            <h2 id="popUpName"></h2>
+            <h3 id="popUpPrice"></h3>
+        </div>
+        <div class="footer">
+            <input type="hidden" id="productIdHiddenInput"/>
+            <button id="buyProduct" class="k-button k-primary" onClick="lihatCart()">Lihat Keranjang</button>
         </div>
     </div>
-    </script>
 </body>
 
 </html>
