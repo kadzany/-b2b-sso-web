@@ -1,3 +1,7 @@
+function checkout(){
+    window.location = "checkout.html";
+}
+
 (function(){
     $(document).ready(function (){
         var dataSource = new kendo.data.DataSource({
@@ -49,7 +53,7 @@
         $("#grid").kendoGrid({
             dataSource: dataSource,
             height: 550,
-            groupable: true,
+            groupable: false,
             sortable: true,
             pageable: {
                 refresh: true,
