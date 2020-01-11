@@ -1,0 +1,15 @@
+#details-container
+{
+    padding: 10px;
+}
+
+#details-container h2
+{
+    margin: 0;
+}
+
+#details-container dt
+{
+    margin:0;
+    display: inline;
+}
