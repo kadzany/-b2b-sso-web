@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  @@include('./partials/styles.html')
+  <link href="/css/detail_po.css" rel="stylesheet" />
+  <title>Detail Purchase Order</title>
+</head>
+
+<body>
+  <div class="ui container">
+    @@include('./partials/header.html')
+    <div class="ui grid">
+      <div class="three wide column">
+        @@include('./partials/menu.html')
+            <!-- Load Bot Framework Client API -->
+    <script src="https://unpkg.com/botframework-directlinejs@0.11.5/dist/directline.js"></script>
+
+    <!-- Load Adaptive Cards Client API -->
+    <script src="https://unpkg.com/adaptivecards/dist/adaptivecards.js"></script>
+      </div>
+      <div class="thirteen wide column">
+        <!-- Page content -->
+        <div id="app">
+          <div class="k-card">
+            <div class="k-card-header">
+              <h2 class="k-card-title">Detail Purchase Order</h2>
+            </div>
+            <div class="k-card-body">
+              <div class="container">
+                <div>
+                  <h4>Requester: </h4>
+                  <label id="requester">Requester</label>
+                  <h4>Approver: </h4>
+                  <label id="approver">Approver</label>
+                </div>
+                <div>
+                  <h4>Requested Date: </h4>
+                  <label id="req-date">Requested Date</label>
+                  <h4>Fullfillment Date: </h4>
+                  <label id="fullfill-date">Fullfillment Date</label>
+                </div>
+              </div>
+              <div class="po-box">
+                <h3>Purchase Order by Catalogue</h3>
+                <div id="grid-store-checkout"></div>
+              </div>
+              <div class="po-box">
+                <h3>Purchase Order by Requested</h3>
+                <div id="grid-request-checkout"></div>
+              </div>
+            </div>
+          </div>
+          <div id="chat"  style="margin-top: 2%;"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Scripts -->
+    @@include('./partials/scripts.html')
+    <script src="js/revisi_pr.js"></script>
+    <script>
+        window.DirectLineAgent = kendo.Class.extend({
+            init: function (chat, secret) {
+                this.chat = chat;
+                this.iconUrl = "../img/logo.jpg";
+
+                this.agent = new DirectLine.DirectLine({ secret: secret });
+
+                this.agent.activity$.subscribe($.proxy(this.onResponse, this));
+            },
+
+            postMessage: function (args) {
+                var postArgs = {
+                    text: args.text,
+                    type: args.type,
+                    timestamp: args.timestamp,
+                    from: args.from
+                };
+
+                this.agent.postActivity(postArgs)
+                    .subscribe();
+            },
+
+            onResponse: function (response) {
+                if (response.from.id === this.chat.getUser().id) {
+                    return;
+                }
+
+                response.from.iconUrl = this.iconUrl;
+
+                this.renderMessage(response);
+
+                this.renderAttachments(response);
+
+                this.renderSuggestedActions(response.suggestedActions);
+            },
+
+            renderMessage: function (message) {
+                if (message.text || message.type == "typing") {
+                    this.chat.renderMessage(message, message.from);
+                }
+            },
+
+            renderAttachments: function (data) {
+                this.chat.renderAttachments(data, data.from);
+            },
+
+            renderSuggestedActions: function (suggestedActions) {
+                var actions = [];
+
+                if (suggestedActions && suggestedActions.actions) {
+                    actions = suggestedActions.actions;
+                }
+
+                this.chat.renderSuggestedActions(actions);
+            }
+        });
+    </script>
+  </div>
+</body>
+
+</html>

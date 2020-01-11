@@ -752,10 +752,14 @@ a.link-button {
 }
 
 
-ul.menu-notif li.item a{
-    color: #5a5a5a;
-}
-
-ul.menu-notif li.item a:hover{
-    text-decoration: unset;
+.k-chat{
+    height:400px;
+    max-height:100%;
+    display:-ms-flexbox;
+    display:flex;
+    -ms-flex-direction:column;
+    flex-direction:column;
+    overflow:hidden;
+    margin:auto;
+    max-width:100% !important;
 }
