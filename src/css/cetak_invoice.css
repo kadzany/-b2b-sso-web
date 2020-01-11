@@ -40,11 +40,11 @@
     font-size: 12px;
 }
 
-    .addresses:after {
-        display: block;
-        content: "";
-        clear: both;
-    }
+.addresses:after {
+    display: block;
+    content: "";
+    clear: both;
+}
 
 .for {
     float: left;
