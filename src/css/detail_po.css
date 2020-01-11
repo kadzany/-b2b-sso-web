@@ -11,9 +11,3 @@
 .app{
     margin-bottom: 1%;
 }
-
-.k-dialog .k-content.k-window-content.k-dialog-content,
-    .k-dialog .k-content iframe.k-content{
-        padding: 0;
-        margin: 0;
-    }
