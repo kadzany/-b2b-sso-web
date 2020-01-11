@@ -750,3 +750,16 @@ a.link-button {
     display: block;
   }
 }
+
+
+.k-chat{
+    height:600px;
+    max-height:100%;
+    display:-ms-flexbox;
+    display:flex;
+    -ms-flex-direction:column;
+    flex-direction:column;
+    overflow:hidden;
+    margin:auto;
+    max-width:100% !important;
+}
