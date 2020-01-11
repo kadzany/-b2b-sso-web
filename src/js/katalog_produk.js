@@ -43,6 +43,40 @@ function beliBarang(id) {
 (function () {
     $(document).ready(function () {
 
+        var top10UpdatedBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=15&offset=1&sort=-updated_at";
+        window.api.get(top10UpdatedBaseUrl).then(function (res) {
+            if (res) {
+                coverflow('player').setup({
+                    flash: '/lib/coverflow.swf',
+                    playlist: res.data.data.map(function (i) {
+                        return {
+                            title: i.name,
+                            description: "",
+                            image: i.images[0].url,
+                            link: "/detail_produk.html?id=" + i.id,
+                            duration: 150
+                        };
+                    }),
+                    width: '100%',
+                    height: 250,
+                    y: -20,
+                    backgroundcolor: "cccccc",
+                    coverwidth: 180,
+                    coverheight: 220,
+                    fixedsize: true,
+                    textoffset: 50,
+                    textstyle: ".coverflow-text{color:#000000;text-align:center;font-family:Arial Rounded MT Bold,Arial;} .coverflow-text h1{font-size:14px;font-family:inherit;font-weight:normal;line-height:21px;} .coverflow-text h2{font-size:12px;font-family:inherit;font-weight:normal;} .coverflow-text a{color:#0000EE;}"
+                }).on('ready', function() {
+                    this.on('click', function(index, link) {
+                        window.location = link;
+                    });
+                });
+            }
+        });
+
+        // == the default
+
+
         function onDataBound() {
             console.log("ListView data bound");
         }
