@@ -12,7 +12,7 @@ function beliBarang(id) {
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
-        
+
         const catalogUrl = 'https://apibisnis.blanja.com/api/v1/catalog/products/' + id;
         window.api.get(catalogUrl).then(function (res) {
             if (res) {
@@ -20,7 +20,7 @@ function beliBarang(id) {
                 $('#popUpVendor').html(res.data.supplier.store_name);
                 $('#popUpName').html(res.data.name);
                 $('#popUpPrice').html("Rp. " + numberWithCommas(res.data.max_price));
-                $('#popUpImg').attr("src", res.data.images[0].url);                
+                $('#popUpImg').attr("src", res.data.images[0].url);
             }
         });
 
@@ -43,6 +43,7 @@ function beliBarang(id) {
 (function () {
     $(document).ready(function () {
 
+        // slider, coverflow products
         var top10UpdatedBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=15&offset=1&sort=-updated_at";
         window.api.get(top10UpdatedBaseUrl).then(function (res) {
             if (res) {
@@ -66,17 +67,31 @@ function beliBarang(id) {
                     fixedsize: true,
                     textoffset: 50,
                     textstyle: ".coverflow-text{color:#000000;text-align:center;font-family:Arial Rounded MT Bold,Arial;} .coverflow-text h1{font-size:14px;font-family:inherit;font-weight:normal;line-height:21px;} .coverflow-text h2{font-size:12px;font-family:inherit;font-weight:normal;} .coverflow-text a{color:#0000EE;}"
-                }).on('ready', function() {
-                    this.on('click', function(index, link) {
+                }).on('ready', function () {
+                    this.on('click', function (index, link) {
                         window.location = link;
                     });
                 });
             }
         });
 
-        // == the default
+        // const categoryBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/categories";
+        // window.api.get(categoryBaseUrl).then(function (res) {
+        //     if (res) {
+        //         var dataSource = new kendo.data.DataSource({
+        //             data: res,
+        //             pageSize: 12
+        //         });
+        //         $("#listViewCategory").kendoListView({
+        //             dataSource: dataSource,
+        //             dataBound: onDataBound,
+        //             change: onChange,
+        //             template: kendo.template($("#categoryTemplate").html())
+        //         });
+        //     }
+        // });
 
-
+        // the default process for product list
         function onDataBound() {
             console.log("ListView data bound");
         }

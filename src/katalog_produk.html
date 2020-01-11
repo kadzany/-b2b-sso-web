@@ -26,6 +26,9 @@
                 <div id="app">
                     <h2>Katalog Produk</h2>
                     <div id="player"></div>
+                    <br/>
+                    <div id="listViewCategory"></div>
+                    <h2>Produk Berdasarkan Kategori</h2>
                     <div id="listView"></div>
                     <div id="pager" class="k-pager-wrap"></div>
                 </div>
@@ -47,6 +50,13 @@
             <div class="footer">
                 <button id="buyProduct" class="k-button k-primary" onClick="beliBarang('#:id#')">Beli Barang</button>
                 <button id="viewProduct" class="k-button" onClick="lihatBarang('#:id#')">Lihat Detail</button>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-kendo-template" id="categoryTemplate">
+        <div class="product">
+            <div class="extra">
+                <a href="#"><p class="product-name">#:name#</p></a>
             </div>
         </div>
     </script>

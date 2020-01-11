@@ -2,33 +2,34 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  @@include('./partials/styles.html')
-  <link rel="stylesheet" href="/css/coverflow.css"/>
-  <script src="lib/coverflow.js"></script>
-  <title>SSO eProcurement</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @@include('./partials/styles.html')
+    <link href="/css/katalog_produk.css" rel="stylesheet" />
+    <title>SSO eProcurement</title>
 </head>
 
 <body>
-  <div class="ui container">
-    @@include('./partials/header.html')
-    <div class="ui grid">
-      <div class="three wide column">
-        @@include('./partials/menu.html')
-      </div>
-      <div class="thirteen wide column">
-        <!-- Page content -->
-        <div id="app">
-          <h2>Welcome to SSO!</h2>          
+    <script>
+    </script>
+    <div class="ui container">
+        @@include('./partials/header.html')
+        <div class="ui grid">
+            <div class="three wide column">
+                @@include('./partials/menu.html')
+            </div>
+            <div class="thirteen wide column">
+                <!-- Page content -->
+                <div id="app">
+                   <h3>Redirected to catalog...<a href="/produk_katalog.html">click here!</a></h3>
+                </div>
+            </div>
         </div>
-      </div>
+        <!-- Scripts -->
+        @@include('./partials/scripts.html')
+        <script src="js/home.js"></script>
     </div>
-    <!-- Scripts -->
-    @@include('./partials/scripts.html')
-    <script src="js/home.js"></script>
-  </div>
 </body>
 
 </html>
