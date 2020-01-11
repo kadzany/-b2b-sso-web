@@ -750,3 +750,12 @@ a.link-button {
     display: block;
   }
 }
+
+
+ul.menu-notif li.item a{
+    color: #5a5a5a;
+}
+
+ul.menu-notif li.item a:hover{
+    text-decoration: unset;
+}
