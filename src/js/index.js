@@ -14,7 +14,7 @@
         }).then(
             function (res) {
                 if (res) {
-                    window.location = 'home.html';
+                    window.location = 'katalog_produk.html';
                     sessionStorage.setItem('token', res.token);
                 }
             }
