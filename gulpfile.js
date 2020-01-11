@@ -108,8 +108,8 @@ var buildScripts = function (done) {
 
 	// Repeated JavaScript tasks
 	var jsTasks = lazypipe()
-		.pipe(uglify)
-		.pipe(optimizejs)
+		// .pipe(uglify)
+		// .pipe(optimizejs)
 		.pipe(dest, paths.scripts.output);
 
 	// Make sure this feature is activated before running

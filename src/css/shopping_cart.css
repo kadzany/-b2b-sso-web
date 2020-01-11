@@ -1,0 +1,14 @@
+#action-button {
+    margin-bottom: 100px;
+}
+
+.product-name {
+    color: red;
+    font-weight: bold;
+}
+
+.product-photo img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @@include('./partials/styles.html')
-    <link href="/css/shopping_cart.css" rel="stylesheet">
+    <link href="/css/pr-approval-list.css" rel="stylesheet">
     <title>SSO eProcurement</title>
 </head>
 
@@ -20,25 +20,34 @@
         <div class="thirteen wide column">
             <!-- Page content -->
             <div id="app">
-                <h2>Shopping Cart by Katalog</h2>
-                <small>Daftar pembelian barang berdasarkan katalog.</small>    
+                <h2>Purchase Requisition Approval</h2>
                 <div id="grid"></div>
                 <br />
 
                 <h2>Additional List</h2>
-                <small>Untuk tambahan barang yang tidak terdapat di katalog.</small>          
+                <small>Untuk tambahan barang yang tidak terdapat di catalog.</small>          
                 <div id="grid-editable"></div>
                 <br />
 
-                <div style="margin-bottom: 80px; text-align: right;">
-                    <button id="checkout" class="k-button k-primary" onClick="checkout()">Checkout</button>
+                <div style="margin-bottom: 80px;">
+                    <a class="action-link primary" href="#">Approve</a>
+                    <a class="action-link secondary" href="#">Reject</a>
                 </div>
             </div>
         </div>
     </div>
+    
+    <!-- Scripts -->
+    <script id="template" type="text/x-kendo-template">
+        <label class="search-label" for="searchBox">Search Grid:</label>
+        <input type="search" id="searchBox" class="k-textbox" style="width: 250px"/>
+        <input type="button" id="btnSearch" class="k-button" value="Search"/>
+        <input type="button" id="btnReset" class="k-button" value="Reset"/>
+    </script>
+
     @@include('./partials/scripts.html')
     <script src="https://demos.telerik.com/kendo-ui/content/shared/js/products.js"></script>
-    <script src="js/shopping_cart.js"></script>
+    <script src="js/pr_approval_list.js"></script>
   </div>
 </body>
 
