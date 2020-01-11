@@ -4,54 +4,23 @@ function checkout(){
 
 (function(){
     $(document).ready(function (){
-        var dataSource = new kendo.data.DataSource({
-            data: products,
-            pageSize: 5
-        });
-
-        var crudServiceBaseUrl = "https://demos.telerik.com/kendo-ui/service";
+        var serviceBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=5&offset=1&sort=-max_price";
         var crudDataSource = new kendo.data.DataSource({
             transport: {
                 read:  {
-                    url: crudServiceBaseUrl + "/Products",
-                    dataType: "jsonp"
-                },
-                update: {
-                    url: crudServiceBaseUrl + "/Products/Update",
-                    dataType: "jsonp"
-                },
-                destroy: {
-                    url: crudServiceBaseUrl + "/Products/Destroy",
-                    dataType: "jsonp"
-                },
-                create: {
-                    url: crudServiceBaseUrl + "/Products/Create",
-                    dataType: "jsonp"
-                },
-                parameterMap: function(options, operation) {
-                    if (operation !== "read" && options.models) {
-                        return {models: kendo.stringify(options.models)};
-                    }
+                    url:serviceBaseUrl,
+                    dataType: "json"
                 }
             },
             batch: true,
             pageSize: 10,
             schema: {
-                model: {
-                    id: "ProductID",
-                    fields: {
-                        ProductID: { editable: false, nullable: true },
-                        ProductName: { validation: { required: true } },
-                        UnitPrice: { type: "number", validation: { required: true, min: 1} },
-                        Discontinued: { type: "boolean" },
-                        UnitsInStock: { type: "number", validation: { min: 0, required: true } }
-                    }
-                }
+                data: "data"
             }
         });
 
         $("#grid").kendoGrid({
-            dataSource: dataSource,
+            dataSource: crudDataSource,
             height: 550,
             groupable: false,
             sortable: true,
@@ -67,22 +36,22 @@ function checkout(){
                 { selectable: true, width: "50px" },
                 {
                     template: 
-                        `<div class='product-photo' style='background-image: url(https://demos.telerik.com/kendo-ui/content/web/foods/#:data.ProductID#.jpg);'></div>
-                        <div casss='product-info'><small><a href='return false;' data='#:data.ProductID#'><i class='pencil alternate icon small'></i>&nbsp;Note</a></small></div>`,
-                    field: "ProductName",
+                        `<div class='product-photo'><img src="#:images[0].url#"/></div>
+                         <div casss='product-info'><small><a href='return false;' data='#:id#'><i class='pencil alternate icon small'></i>&nbsp;Note</a></small></div>`,
+                    field: "name",
                     title: "Product Info",
                     width: 240 
                 }, 
                 {
-                    field: "UnitPrice",
+                    field: "max_price",
                     title: "Price",
                     format: "{0:c}", 
                     width: 80
                 }, 
                 {
                     template :
-                        "<div><b>#:ProductName#</b>, a product of #:Category.Description#</div>",
-                    field: "Category.Description",
+                        "<div>#:unit#</div>",
+                    field: "unit",
                     title: "Description"
                 },
                 {
@@ -94,7 +63,7 @@ function checkout(){
         });
 
         $("#grid-editable").kendoGrid({
-            dataSource: crudDataSource,
+            dataSource: null,
             pageable: true,
             height: 200,
             toolbar: ["create"],
