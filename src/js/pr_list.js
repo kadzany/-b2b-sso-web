@@ -76,7 +76,7 @@
 
         function showDetails(e) {
             e.preventDefault();
-            window.location.replace("detail_po.html");
+            window.location.replace("detail_pr.html");
         }
 
         
