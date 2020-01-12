@@ -11,7 +11,7 @@ function beliBarang(){
             return;
         }
 
-        $("#window").kendoWindow({
+        $("#Window").kendoWindow({
             width: "600px",
             title: "Produk berhasil ditambahkan ke dalam keranjang.",
             visible: false,
@@ -50,6 +50,7 @@ function lihatCart(){
                 // set the name, price, other info
                 $('#vendor').html(res.data.supplier.store_name);
                 $('#name').html(res.data.name);
+                $('#description').html(res.data.description);
                 $('#price').html("Rp. " + numberWithCommas(res.data.max_price));
                 
                 // also set for the popup confirmatin window

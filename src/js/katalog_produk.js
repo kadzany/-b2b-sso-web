@@ -28,7 +28,7 @@ function beliBarang(id) {
             return;
         }
 
-        $("#window").kendoWindow({
+        $("#Window").kendoWindow({
             width: "600px",
             title: "Produk berhasil ditambahkan ke dalam keranjang.",
             visible: false,
@@ -47,7 +47,7 @@ function beliBarang(id) {
         var top10UpdatedBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=15&offset=1&sort=-updated_at";
         window.api.get(top10UpdatedBaseUrl).then(function (res) {
             if (res) {
-                coverflow('player').setup({
+                coverflow('Showcase').setup({
                     flash: '/lib/coverflow.swf',
                     playlist: res.data.data.map(function (i) {
                         return {
@@ -75,25 +75,9 @@ function beliBarang(id) {
             }
         });
 
-        // const categoryBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/categories";
-        // window.api.get(categoryBaseUrl).then(function (res) {
-        //     if (res) {
-        //         var dataSource = new kendo.data.DataSource({
-        //             data: res,
-        //             pageSize: 12
-        //         });
-        //         $("#listViewCategory").kendoListView({
-        //             dataSource: dataSource,
-        //             dataBound: onDataBound,
-        //             change: onChange,
-        //             template: kendo.template($("#categoryTemplate").html())
-        //         });
-        //     }
-        // });
-
         // the default process for product list
         function onDataBound() {
-            console.log("ListView data bound");
+            console.log("ProductList data bound");
         }
 
         function onChange() {
@@ -120,11 +104,11 @@ function beliBarang(id) {
                     pageSize: 12
                 });
 
-                $("#pager").kendoPager({
+                $("#Pager").kendoPager({
                     dataSource: dataSource
                 });
 
-                $("#listView").kendoListView({
+                $("#ProductList").kendoListView({
                     dataSource: dataSource,
                     dataBound: onDataBound,
                     change: onChange,
