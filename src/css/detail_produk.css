@@ -1,25 +1,42 @@
 #scrollView{
     height: 210px;
     width: 420px;
-    margin-top: 16px;
+    margin: 10px;
+    border:transparent;
 }
+
 #scrollView img{
     height: 210px;
     width: 420px;
     object-fit: contain;
 }
+
 #price{
     font-weight: bold;
 }
-.leftpanel{
-    float: left;
-    margin-right: 1rem;
+
+.product {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #e3e3e3;
+    box-shadow: 0 1px 2px 0 #e3e3e3;
 }
+
+.lefpanel{    
+    margin: 10px 0 10px 10px;    
+}
+
 .rightpanel{
-    margin-top: 1rem;
+    margin: 10px 10px 10px 5px;    
+    width: 48%;
 }
 
 .footer{
+    padding: 0;
+    width: 100%;
     text-align: right;
-    top: 3rem;
+}
+
+.footer button {
+    margin: 5px 0 5px 5px;    
 }
