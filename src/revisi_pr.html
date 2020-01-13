@@ -57,6 +57,27 @@
             <div class = "k-card-actions">
               <!--add comment's container in HTML-->
               <div id="comments-container" class="jquery-comments"></div>
+              <!-- script for handling comment-->
+              <script>
+                $('#comments-container').comments({
+                  profilePictureURL: 'https://viima-app.s3.amazonaws.com/media/public/defaults/user-icon.png',
+                  textareaPlaceholderText: 'Leave a comment',
+                  enableUpvoting: false,
+                  enableAttachments: true,
+                  enableNavigation: false,
+                  postCommentOnEnter: true,
+                  getComments: function(success, error) {
+                      var commentsArray = [{
+                          id: 1,
+                          created: '2015-10-01',
+                          content: 'Lorem ipsum dolort sit amet',
+                          fullname: 'Simon Powell',
+                          user_has_upvoted: false
+                      }];
+                      success(commentsArray);
+                  }
+                });
+              </script>
             </div>
           </div>
         </div>
@@ -65,27 +86,6 @@
     <!-- Scripts -->
     @@include('./partials/scripts.html')
     <script src="js/revisi_pr.js"></script>
-    <!-- script for handling comment-->
-    <script>
-      $('#comments-container').comments({
-        profilePictureURL: 'https://viima-app.s3.amazonaws.com/media/public/defaults/user-icon.png',
-        textareaPlaceholderText: 'Leave a comment',
-        enableUpvoting: false,
-        enableAttachments: true,
-        enableNavigation: false,
-        postCommentOnEnter: true,
-        getComments: function(success, error) {
-            var commentsArray = [{
-                id: 1,
-                created: '2015-10-01',
-                content: 'Lorem ipsum dolort sit amet',
-                fullname: 'Simon Powell',
-                user_has_upvoted: false
-            }];
-            success(commentsArray);
-        }
-      });
-    </script>
   </div>
 </body>
 
