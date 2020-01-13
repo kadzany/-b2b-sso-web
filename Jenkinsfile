@@ -55,21 +55,20 @@ pipeline {
                 }
             }
         }
-        // stage('Build to Development') {
-        //     when {
-        //         anyOf{
-        //             branch 'master'
-        //             branch 'release'
-        //             branch 'develop'
-        //             branch 'unit-test'
-        //         }
-        //     }
-        //     agent { label "jenkins-agent-ansible-1" }
-        //     steps {
-        //         unstash 'ws'
-        //         sh 'ansible -i hosts -m ping all --extra-vars "ansible_user=ubuntu ansible_password=telkomdev"'
-        //         sh 'ansible-playbook development.yaml -i hosts'
-        //     }
-        // }
+        stage('Build to Development') {
+            when {
+                anyOf{
+                    branch 'master'
+                    branch 'develop'
+                }
+            }
+            agent {label "HELIO"}
+            steps {
+                unstash 'ws'
+                sh 'ansible -i hosts -m ping all'
+                // sh 'ansible -i hosts -m ping all --extra-vars "ansible_user=ubuntu ansible_password=telkomdev"'
+                // sh 'ansible-playbook development.yaml -i hosts'
+            }
+        }
     }
 }
