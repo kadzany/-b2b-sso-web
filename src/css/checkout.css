@@ -79,3 +79,12 @@
 #total-section h3 {
     text-align: left;
 }
+
+.total-label {
+    display: inline-block;
+    margin-right: 1%;
+}
+
+.total-field {
+    display: inline-block;
+}

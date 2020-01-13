@@ -5,9 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  @@include('./partials/styles.html')
-  <link href="/css/detail_po.css" rel="stylesheet" />
   <title>SSO eProcurement</title>
+  @@include('./partials/styles.html')
+  <link rel="stylesheet" type="text/css" href="css/jquery-comments.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -16,11 +17,6 @@
     <div class="ui grid">
       <div class="three wide column">
         @@include('./partials/menu.html')
-            <!-- Load Bot Framework Client API -->
-    <script src="https://unpkg.com/botframework-directlinejs@0.11.5/dist/directline.js"></script>
-
-    <!-- Load Adaptive Cards Client API -->
-    <script src="https://unpkg.com/adaptivecards/dist/adaptivecards.js"></script>
       </div>
       <div class="thirteen wide column">
         <!-- Page content -->
@@ -32,18 +28,19 @@
             <div class="k-card-body">
               <div class="container">
                 <div>
-                  <h4>Requester: </h4>
+                  <h3>Requester: </h3>
                   <label id="requester">Requester</label>
-                  <h4>Approver: </h4>
+                  <h3>Approver: </h3>
                   <label id="approver">Approver</label>
                 </div>
                 <div>
-                  <h4>Requested Date: </h4>
+                  <h3>Requested Date: </h3>
                   <label id="req-date">Requested Date</label>
-                  <h4>Fullfillment Date: </h4>
+                  <h3>Fullfillment Date: </h3>
                   <label id="fullfill-date">Fullfillment Date</label>
                 </div>
               </div>
+              <!--showing table of purchase order-->
               <div class="po-box">
                 <h3>Purchase Order by Catalogue</h3>
                 <div id="grid-store-checkout"></div>
@@ -53,73 +50,44 @@
                 <div id="grid-request-checkout"></div>
               </div>
             </div>
+            <div class = "k-card-actions">
+              <div style="margin-top: 1%; margin-bottom: 1%;">
+                <h2>Komentar</h2>
+              </div>
+              <!--add comment's container in HTML-->
+              <div id="comments-container" class="jquery-comments"></div>
+              
+            </div>
           </div>
-          <div id="chat"  style="margin-top: 2%;"></div>
         </div>
       </div>
     </div>
-    <!-- Scripts -->
-    @@include('./partials/scripts.html')
-    <script src="js/revisi_pr.js"></script>
-    <script>
-        window.DirectLineAgent = kendo.Class.extend({
-            init: function (chat, secret) {
-                this.chat = chat;
-                this.iconUrl = "../img/logo.jpg";
-
-                this.agent = new DirectLine.DirectLine({ secret: secret });
-
-                this.agent.activity$.subscribe($.proxy(this.onResponse, this));
-            },
-
-            postMessage: function (args) {
-                var postArgs = {
-                    text: args.text,
-                    type: args.type,
-                    timestamp: args.timestamp,
-                    from: args.from
-                };
-
-                this.agent.postActivity(postArgs)
-                    .subscribe();
-            },
-
-            onResponse: function (response) {
-                if (response.from.id === this.chat.getUser().id) {
-                    return;
-                }
-
-                response.from.iconUrl = this.iconUrl;
-
-                this.renderMessage(response);
-
-                this.renderAttachments(response);
-
-                this.renderSuggestedActions(response.suggestedActions);
-            },
-
-            renderMessage: function (message) {
-                if (message.text || message.type == "typing") {
-                    this.chat.renderMessage(message, message.from);
-                }
-            },
-
-            renderAttachments: function (data) {
-                this.chat.renderAttachments(data, data.from);
-            },
-
-            renderSuggestedActions: function (suggestedActions) {
-                var actions = [];
-
-                if (suggestedActions && suggestedActions.actions) {
-                    actions = suggestedActions.actions;
-                }
-
-                this.chat.renderSuggestedActions(actions);
-            }
-        });
-    </script>
   </div>
+   <!-- Scripts -->
+   @@include('./partials/scripts.html')
+   <script type="text/javascript" src="lib/jquery-comments.min.js"></script>
+   <script src="js/revisi_pr.js"></script>
+   <!-- script for handling comment-->
+   <script>
+     $('#comments-container').comments({
+       profilePictureURL: 'https://viima-app.s3.amazonaws.com/media/public/defaults/user-icon.png',
+       textareaPlaceholderText: 'Tuliskan komentar anda di sini',
+       enableUpvoting: false,
+       enableAttachments: true,
+       enableNavigation: false,
+       postCommentOnEnter: true,
+       getComments: function(success, error) {
+           var commentsArray = [{
+               id: 1,
+               created: '2015-10-01',
+               content: 'Lorem ipsum dolort sit amet',
+               fullname: 'Simon Powell',
+               user_has_upvoted: false
+           }];
+           success(commentsArray);
+       }
+     });
+   </script>
 </body>
 
 </html>

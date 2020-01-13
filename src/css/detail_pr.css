@@ -1,7 +1,7 @@
 .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding:0.5%;
 }
 
 .po-box{
