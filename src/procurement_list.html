@@ -11,39 +11,29 @@
 </head>
 
 <body>
-  <div class="ui container">
-    @@include('./partials/header.html')
-    <div class="ui grid">
-      <div class="three wide column">
-        @@include('./partials/menu.html')
-      </div>
-      <div class="thirteen wide column">
-        <!-- Page content -->
-        <div id="app">
-          <h2>Daftar Procurement</h2>
-          <div id="po-box">
-            <div id="grid-po-list"></div>
-            <div id="details">
-                <div id="grid"></div>
-            </div>
-            <script type="text/x-kendo-template" id="template">
-                <div id="details-container">
-                    <h2>#= poNumber #</h2>
-                    <dl>
-                        <dt>Created Date: #= kendo.toString(createdDate, "dd/MM/yyyy") #</dt>
-                    </dl>
-                    <p>#=poFromStore[1].productName #</p>
-                    <div id = "grid"></div>
-                </div>
-            </script>
-          </div>    
+    <div class="ui container">
+        @@include('./partials/header.html')
+        <div class="ui grid">
+        <div class="three wide column">
+            @@include('./partials/menu.html')
         </div>
-      </div>
+        <div class="thirteen wide column">
+            <!-- Page content -->
+            <div id="app">
+            <h2 class="red">Daftar Procurement</h2>
+            <div id="po-box">
+                <div id="grid-po-list"></div>
+                <div id="details">
+                    <div id="grid"></div>
+                </div>            
+            </div>    
+            </div>
+        </div>
+        </div>
+        <!-- Scripts -->
+        @@include('./partials/scripts.html')
+        <script src="js/procurement_list.js"></script>
     </div>
-    <!-- Scripts -->
-    @@include('./partials/scripts.html')
-    <script src="js/pr_list.js"></script>
-  </div>
 </body>
 
 </html>

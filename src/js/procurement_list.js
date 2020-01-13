@@ -7,7 +7,7 @@
 
         var po_data = [
             {
-                PrNumber: 'PR001', CreatedDate:'01/01/2020', Customer: 'Telkom', Status: 'Approved', Approver: "admin SSO", FullfillmentDate: '03/01/2020',
+                PrNumber: 'PR001', CreatedDate:'01/01/2020', Customer: 'PT Sinar Abadi', Status: 'Approved', Approver: "admin SSO", FullfillmentDate: '03/01/2020',
                 poFromStore:[
                     { productName: "QUESO CABRALES", unitPrice: 1000, qty: 5,uom:'kg', remark:"Budget maksimal Rp 3.000.000,00" },
                     { productName: "ALICE MUTTON", unitPrice: 2000, qty: 7,uom:'kg',remark:"Budget maksimal Rp 3.000.000,00" },
@@ -16,22 +16,22 @@
                 ]
             },
             {
-                PrNumber: 'PR002', CreatedDate:'01/01/2020', Customer: 'Yakes', Status: 'Rejected', Approver: "admin SSO", FullfillmentDate: '03/01/2020'
+                PrNumber: 'PR002', CreatedDate:'01/01/2020', Customer: 'PT Dedi Jaya', Status: 'Rejected', Approver: "admin SSO", FullfillmentDate: '03/01/2020'
             },
             {
-                PrNumber: 'PR003', CreatedDate:'01/01/2020', Customer: 'Yakes', Status: 'Requested', Approver: "admin SSO", FullfillmentDate: '03/01/2020'
+                PrNumber: 'PR003', CreatedDate:'01/01/2020', Customer: 'PT Dedi Jaya', Status: 'Assigned', Approver: "admin SSO", FullfillmentDate: '03/01/2020'
             },
             {
-                PrNumber: 'PR004', CreatedDate:'01/01/2020', Customer: 'Yakes', Status: 'Requested', Approver: "admin SSO", FullfillmentDate: '03/01/2020'
+                PrNumber: 'PR004', CreatedDate:'01/01/2020', Customer: 'PT Harapan Indah', Status: 'Assigned', Approver: "admin SSO", FullfillmentDate: '03/01/2020'
             }
         ];
 
         var po_schema = {
             model: {
-                PrNumber : {type: "string"},
-                CreatedDate: {type: "string"},
-                Customer: {type: "string"},
-                Status: {type: "string"}
+                poNumber : {type: "string"},
+                createdDate: {type: "string"},
+                customer: {type: "string"},
+                status: {type: "string"}
             }
         };
 
@@ -48,7 +48,7 @@
             },
             sortable: true,
             scrollable: true,
-            toolbar: [{text: "Create New PR", click: showCreate }],
+            toolbar: ["create"],
             columns: [
                 {
                     field: "PrNumber",
@@ -60,7 +60,7 @@
                 },
                 {
                     field: "Customer",
-                    title: "Customer"
+                    title: "Vendor Procurement"
                 },
                 {
                     field: "Status",
@@ -69,30 +69,20 @@
                 {
                     command: [
                         { text: "View Details", click: showDetails },
-                        { text: "edit", click: showEdit },
+                        "edit",
                         "destroy"
                     ],
                     title: "Action", 
                     width: "280px"
                 }
             ],
-            editable: "false"
+            editable: "inline"
         });
 
         function showDetails(e) {
             e.preventDefault();
-            window.location.replace("pr_detail.html");
-        }
-
-        function showEdit(e) {
-            e.preventDefault();
-            window.location.replace("pr_edit.html");
-        }
-
-        function showCreate(e) {
-            e.preventDefault();
-            window.location.replace("pr_edit.html");
-        }
+            window.location.replace("po_detail.html");
+        }       
         
  });
 })();

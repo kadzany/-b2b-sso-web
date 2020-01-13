@@ -20,24 +20,8 @@
                     <div class="print-button">
                         <button class="export-pdf k-button k-primary" onclick="getPDF('.pdf-page')">Cetak Invoice</button>
                         <button class="k-button">Simpan</button>
-                    </div>
-                    <script>
-                        function getPDF(selector) {
-                            kendo.drawing.drawDOM($(selector)).then(function (group) {
-                                kendo.drawing.pdf.saveAs(group, "Invoice.pdf");
-                            });
-                        }
-                    </script>
-                    <script type="text/x-kendo-template" id="template">
-                        <div class="product">
-                            <img src="../img/logo.jpg" alt="#: productName # image" />
-                            <h2>#:productName#</h2>
-                            <h3>#:kendo.toString(unitPrice, "c")#</h3>
-                            <p>
-                            #:qty# (#:uom#)
-                            </p>
-                        </div>
-                    </script>
+                    </div>                    
+                    
                     <div class="page-container">
 
                         <div class="pdf-page">
@@ -75,25 +59,38 @@
                                 
                                 <div class="pdf-body">
                                     <div id="checkout-box">
+                                        <div class="box-top">
+                                            <h3>Checkout Shopping Cart</h3>
+                                        </div>
                                         <div id="listView-store-checkout"></div>
-                                        <div id="total-section">
-                                          <h3>Sub Total</h3>
-                                          <h5>Jumlah Barang</h5>
-                                          <div id="sum-order-store"></div>
-                                          <h5>Total Harga</h5>
-                                          <div id="subtotal-store"></div>
+                                        <div id="total-section" class="box-bottom">
+                                            <h3>Sub Total</h3>
+                                            <div class="total-unit">
+                                                <h5>Jumlah Barang</h5>
+                                                <div id="sum-order-store"></div>
+                                            </div>
+                                            <div class="total-price">
+                                                <h5>Total Harga</h5>
+                                                <div id="subtotal-store"></div>
+                                            </div>
                                         </div>
                                     </div>
                                     
                                     <div id="checkout-box">
-                                        <h3>Checkout Procurement</h3>
+                                        <div class="box-top">
+                                            <h3>Checkout Procurement</h3>
+                                        </div>                                        
                                         <div id="grid-request-checkout"></div>
-                                        <div id = "total-section">
-                                          <h3>Sub Total</h3>
-                                          <h5>Jumlah Barang</h5>
-                                          <div id="sum-order-request"></div>
-                                          <h5>Total Harga</h5>
-                                          <div id="subtotal-request"></div>
+                                        <div id = "total-section" class="box-bottom">
+                                            <h3>Sub Total</h3>
+                                            <div class="total-unit">
+                                                <h5>Jumlah Barang</h5>
+                                                <div id="sum-order-request"></div>
+                                            </div>
+                                            <div class="total-price">
+                                                <h5>Total Harga</h5>
+                                                <div id="subtotal-request"></div>
+                                            </div>
                                         </div>
                                     </div>                                
                                     <div class="k-card">
@@ -130,6 +127,28 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Script -->
+        <script>
+            function getPDF(selector) {
+                kendo.drawing.drawDOM($(selector)).then(function (group) {
+                    kendo.drawing.pdf.saveAs(group, "Invoice.pdf");
+                });
+            }
+        </script>
+            
+        <script type="text/x-kendo-template" id="template">
+            <div class="product">
+                <div class="product-image">
+                    <img src="#:images[0].url#" alt="#:name# image" />
+                </div>
+                <div class="product-info">
+                    <h2>#:name#</h2>
+                    <h3>Rp #:max_price#</h3>
+                    #:min_quantity# (#:unit#)
+                </div>
+            </div>
+        </script>
         @@include('./partials/scripts.html')
         <script src="js/cetak_invoice.js"></script>
     </div>

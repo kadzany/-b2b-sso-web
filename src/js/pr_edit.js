@@ -63,11 +63,11 @@
                 { selectable: true, width: "50px" },
                 {
                     template: 
-                        `<div class='product-photo' style='background-image: url(https://demos.telerik.com/kendo-ui/content/web/foods/#:data.ProductID#.jpg);'></div>
-                        <div casss='product-info'><small><a href='return false;' data='#:data.ProductID#'><i class='pencil alternate icon small'></i>&nbsp;Note</a></small></div>`,
+                        "<div class='product-photo' style='background-image: url(https://demos.telerik.com/kendo-ui/content/web/foods/#:data.ProductID#.jpg);'></div>" +
+                        "<div casss='product-info'><small><a href='return false;' data='#:data.ProductID#'><i class='pencil alternate icon small'></i>&nbsp;Note</a></small></div>",
                     field: "ProductName",
                     title: "Product Info",
-                    width: 240 
+                    width: 150 
                 }, 
                 {
                     field: "UnitPrice",
@@ -77,7 +77,7 @@
                 }, 
                 {
                     template :
-                        "<div><b>#:ProductName#</b>, a product of #:Category.Description#</div>",
+                        "<div><b>#:ProductName#</b><br />A product of #:Category.Description#</div>",
                     field: "Category.Description",
                     title: "Description"
                 },
@@ -90,24 +90,33 @@
 
         $("#grid-editable").kendoGrid({
             dataSource: crudDataSource,
-            pageable: true,
-            height: 200,
+            pageable: {
+                refresh: true,
+                pageSizes: true,
+                buttonCount: 5
+            },
+            height: 260,
             toolbar: ["create"],
             columns: [
                 { selectable: true, width: "50px" },
                 "ProductName",
                 { field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "120px" },
                 { field: "UnitsInStock", title:"Quantity", width: "120px" },
-                { field: "Remark", width: "120px", editor: customBoolEditor }
+                { field: "Remark", title:"Remark", width: "120px" },
+                { command: ["edit", "destroy"], title: "&nbsp;", width: "200px" }
             ],
             editable: "inline"
         });
 
-        var  customBoolEditor = function(container, options) {
-            var guid = kendo.guid();
-            $('<input class="k-checkbox" id="' + guid + '" type="checkbox" name="Discontinued" data-type="boolean" data-bind="checked:Discontinued">').appendTo(container);
-            $('<label class="k-checkbox-label" for="' + guid + '">&#8203;</label>').appendTo(container);
-        };
+        $("#SaveBtn").click(function (e) {
+            e.preventDefault();
+            window.location.replace("pr_list.html");
+        });
+    
+        $("#CancelBtn").click(function (e) {
+            e.preventDefault();
+            window.location.replace("pr_list.html");
+        });
 
         $(".numerictextbox").kendoNumericTextBox({
             spinners: true

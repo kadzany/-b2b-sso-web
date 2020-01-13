@@ -89,4 +89,33 @@ $(document).ready(function () {
     $("#approver").text(po_data[0].approver);
     $("#req-date").text(po_data[0].createdDate);
     $("#fullfill-date").text(po_data[0].fullfillmentDate);
+
+    var editor = $("#editor").kendoEditor()
+            .data("kendoEditor");
+
+    var dialog = $("#editorDialog").kendoDialog({
+        width: "500px",
+        title: "Catatan Persetujuan",
+        visible: false,
+        actions: [
+            { text: 'Approve', primary: true, action: updateText },
+            { text: 'Cancel' }
+        ],
+        open: function () {
+        editor.refresh();
+        }
+    }).data("kendoDialog");
+
+    $("#OpenBtn").click(function () {
+        dialog.open();
+    });
+
+    $("#BackBtn").click(function (e) {
+        e.preventDefault();
+        window.location.replace("po_list.html");
+    });
+
+    function updateText() {
+        $("#content").html(editor.value());
+    }
 });
