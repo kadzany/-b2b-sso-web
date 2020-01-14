@@ -21,26 +21,46 @@
             <!-- Page content -->
             <div id="app">
                 <h1> Detail kontrak</h1>
-                <button id="uploadBtn" class="k-button">
-                    Import data sekaligus
-                </button>
-                <div id="window">
-                    <h3>Upload data produk anda dengan file Excel dengan format yang telah ditentukan oleh team SSO</h3>
-                    <p>Download format excel yang telah ditentukan <a href="www.google.com">di sini</a></p> 
-                    <input name="files" id="sso-excel" type="file" />
+                <div style="margin-bottom:1%;">
+                    <button id="uploadBtn" class="k-button">
+                        Import data sekaligus
+                    </button>
+                    <div id="window">
+                        <h3>Upload data produk anda dengan file Excel dengan format yang telah ditentukan oleh team SSO</h3>
+                        <p>Download format excel yang telah ditentukan <a href="www.google.com">di sini</a></p> 
+                        <input name="files" id="sso-excel" type="file" />
+                    </div>
                 </div>
-                
-                
+                <div class="detail-container">
+                    <ul id="fieldlist">
+                        <li>
+                            <label>Nomor kontrak</label>
+                            <p id="no-kontrak">nomor kontrak</p>
+                        </li>
+                        <li>
+                            <label>Judul kontrak</label>
+                            <p id="judul-kontrak">judul kontrak</p>
+                        </li>
+                        <li>
+                            <label>Tanggal kontrak dimulai</label>
+                            <p id="starteddate-kontrak">started date</p>
+                        </li>
+                        <li>
+                            <label>Tanggal kontrak berakhir</label>
+                            <p id="enddate-kontrak">end date</p>
+                        </li>
+                    </ul>
+                </div>
                 <div class="form-container">
                     <form id="kontrakForm">
                         <ul id="fieldlist">
                             <li>
                                 <label>Nama vendor</label>
-                                <label id="vendorname">Nama vendor</label>
+                                <p id="vendorname">Nama vendor</p>
                             </li>
                             <li>
                                 <label for="productname" class="required">Nama produk</label>
-                                <input type="text" id="products" name="productname" class="k-textbox" placeholder="Nama produk" required validationMessage="Enter {0}" />
+                                <input type="text" id="products" name="productname" class="k-textbox" placeholder="Tulis atau pilih nama produk" required validationMessage="Enter {0}" style="width:300px;" />
                             </li>
                             <li>
                                 <label for="productimage" class="required">Gambar produk</label>
@@ -48,11 +68,11 @@
                             </li>
                             <li>
                                 <label for="categories" class="required">Kategori</label>
-                                <input type="text" id="categories" name="categories" class="k-textbox" placeholder="Pilih kategori" required validationMessage="Enter {0}" />
+                                <input type="text" id="categories" name="categories" class="k-textbox" placeholder="Pilih kategori" required validationMessage="Enter {0}" style="width:300px;"/>
                             </li>
                             <li>
                                 <label for="brands">Brand</label>
-                                <input type="text" id="brands" name="brands" class="k-textbox" placeholder="Pilih brand" required validationMessage="Enter {0}" />
+                                <input type="text" id="brands" name="brands" class="k-textbox" placeholder="Pilih brand" required validationMessage="Enter {0}" style="width:300px;"/>
                             </li>
                             <li>
                                 <label for="uom">UOM</label>
@@ -63,8 +83,8 @@
                                 <span class="k-invalid-msg" data-for="uom"></span>
                             </li>
                             <li>
-                                <label for="description" class="required">Deskripsi</label>
-                                <input type="text" id="description" name="description" class="k-textbox" placeholder="Deskripsi" required validationMessage="Enter {0}" style="height:150px" />
+                                <label for="description" >Deskripsi</label>
+                                <input type="text" id="description" name="description" class="k-textbox" placeholder="Deskripsi" style="height:150px" />
                             </li>
                             <li>
                                 <label for="price" class="required">Harga</label>

@@ -13,7 +13,25 @@
         myWindow.data("kendoWindow").open();
     });
 
+    let contract_data = [
+        {
+            contractNumber: '1', startedDate:'01/01/2020', contractTitle: 'Kontrak 1', endDate: '03/01/2020'
+        },
+        {
+            contractNumber: '2', startedDate:'01/01/2020', contractTitle: 'Kontrak 2',endDate: '03/01/2020'
+        },
+        {
+            contractNumber: '3', startedDate:'01/01/2020', contractTitle: 'Kontrak 3', endDate: '03/01/2020'
+        }
+    ];
+
     $(document).ready(function() {
+
+        $("#no-kontrak").text(contract_data[0].contractNumber);
+        $("#starteddate-kontrak").text(contract_data[0].startedDate);
+        $("#judul-kontrak").text(contract_data[0].contractTitle);
+        $("#enddate-kontrak").text(contract_data[0].endDate);
+
         $("#files").kendoUpload({
             async: {
                 chunkSize: 11000,// bytes
