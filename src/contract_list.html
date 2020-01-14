@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @@include('./partials/styles.html')
+    <link href="/css/pr_list.css" rel="stylesheet">
+    <title>SSO eProcurement</title>
+</head>
+
+<body>
+    <div class="ui container">
+        @@include('./partials/header.html')
+        <div class="ui grid">
+            <div class="three wide column">
+                @@include('./partials/menu.html')
+            </div>
+            <div class="thirteen wide column">
+                <!-- Page content -->
+                <div id="app">
+                    <h2>List Kontrak</h2>
+                    <div id="po-box">
+                        <div id="grid-contract-list"></div>
+                        <div id="details">
+                            <div id="grid"></div>
+                        </div>
+                      </div>  
+                    
+                </div>
+            </div>
+            @@include('./partials/scripts.html')
+            <script src="js/contract_list.js"></script>
+        </div>
+</body>
+
+</html>
