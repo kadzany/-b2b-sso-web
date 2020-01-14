@@ -1,8 +1,6 @@
 ---
 - hosts: localhost
   connection: local
-  user: sergey
-  sudo: no
 
   tasks:
     - name: Print hello

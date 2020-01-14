@@ -65,9 +65,9 @@ pipeline {
             agent {label "HELIO"}
             steps {
                 unstash 'ws'
-                // sh 'ansible -i hosts -m ping all'
+                sh 'ansible -i hosts -m ping all'
                 // sh 'ansible -i hosts -m ping all --extra-vars "ansible_user=ubuntu ansible_password=telkomdev"'
-                sh 'ansible-playbook development.yaml -i hosts'
+                // sh 'ansible-playbook development.yaml -i hosts'
             }
         }
     }
