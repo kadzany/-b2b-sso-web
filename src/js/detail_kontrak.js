@@ -31,6 +31,7 @@
         $("#starteddate-kontrak").text(contract_data[0].startedDate);
         $("#judul-kontrak").text(contract_data[0].contractTitle);
         $("#enddate-kontrak").text(contract_data[0].endDate);
+        $("#vendorname").text("Vendor 1");
 
         $("#files").kendoUpload({
             async: {
