@@ -1,5 +1,39 @@
 (function(){    
+
+    var subTotal = function (data) {
+        var total = 0;
+        data.forEach(function (arrayItem) {
+            total += arrayItem.qty * arrayItem.unitPrice;
+        });
+    
+        return total;
+    };
+    
+    var sumOrder = function (data) {
+        var sum = 0;
+        data.forEach(function (arrayItem) {
+            sum += arrayItem.qty;
+        });
+        return sum;
+    };
+
     $(document).ready(function() {
+
+        var serviceBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=5&offset=1&sort=-max_price";
+        var DataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: serviceBaseUrl,
+                    dataType: "json"
+                }
+            },
+            batch: true,
+            pageSize: 10,
+            schema: {
+                data: "data"
+            }
+        });
+
 
         let data = [
             { productName: "QUESO CABRALES", unitPrice: 1000, qty: 5,uom:'kg', remark:"Budget maksimal Rp 3.000.000,00" },
@@ -13,34 +47,15 @@
         });
 
         $("#listView-store-checkout").kendoListView({
-            dataSource: dataSource,
+            dataSource: DataSource,
             scrollable:"true",
             template: kendo.template($("#template").html())
         });
 
-        let subTotal = function(data){
-            let total = 0;
-            data.forEach(function (arrayItem){
-                total += arrayItem.qty * arrayItem.unitPrice;
-            });
-
-            return total;
-        };
-
-        let sumOrder = function(data){
-            let sum = 0;
-            data.forEach(function (arrayItem){
-                sum += arrayItem.qty;
-            });
-
-            return sum;
-        };
-
         let subTotalStore = subTotal(data);
-        let sumOrderStore = sumOrder(data);
-
         $("#subtotal-store").text(subTotalStore);
 
+        let sumOrderStore = sumOrder(data);
         $("#sum-order-store").text(sumOrderStore);
 
         let request_schema = {
@@ -69,9 +84,9 @@
             { 
                 field: "productName", 
                 title: "Item Description",
-                template: "<div class='product-photo'" +
-                "style='background-image: url(../img/logo.jpg);'></div>" +
-                "<div class='product-name'>#: productName #</div>"
+                template: 
+                    "<!-- <div class='product-photo'style='background-image: url(../img/logo.jpg);'></div> -->" +
+                    "<div class='product-name'>#: productName #</div>"
             },
             {
                 field: "qty", 
@@ -103,22 +118,19 @@
         });
 
         let subTotalRequest = subTotal(data);
-        let sumOrderRequest = sumOrder(data);
-
         $("#subtotal-request").text(subTotalRequest);
 
+        let sumOrderRequest = sumOrder(data);
         $("#sum-order-request").text(sumOrderRequest);
 
         let totalPrice = function(subtotal_store,subtotal_request){
             return subtotal_store + subtotal_request;
         };
-
         $("#totalPrice").text(totalPrice(subTotalStore,subTotalRequest));
 
         let totalUnit = function(sum_unit_store,sum_unit_request){
             return sum_unit_store + sum_unit_request;
         };
-
         $("#totalUnit").text(totalUnit(sumOrderStore,sumOrderRequest));
     });
 })();

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @@include('./partials/styles.html')
-    <link href="/css/shopping_cart.css" rel="stylesheet">
+    <link href="/css/pr_edit.css" rel="stylesheet">
     <title>SSO eProcurement</title>
 </head>
 
@@ -20,38 +20,34 @@
         <div class="thirteen wide column">
             <!-- Page content -->
             <div id="app">
-                <h2 class="red">Shopping Cart by Katalog</h2>
-                <small>Daftar pembelian barang berdasarkan katalog.</small>    
+                <h2 class="red">Purchase Order</h2>
                 <div id="grid"></div>
                 <br />
 
                 <h2 class="red">Additional List</h2>
-                <small>Untuk tambahan barang yang tidak terdapat di katalog.</small>          
+                <small>Untuk tambahan barang yang tidak terdapat di catalog.</small>          
                 <div id="grid-editable"></div>
                 <br />
 
-                <div style="margin-bottom: 80px; text-align: right;">
-                    <button id="checkout" class="k-button k-primary" onClick="checkout()">Checkout</button>
+                <div style="margin-bottom: 80px;">
+                    <a id="SaveBtn" class="action-link primary" href="#">Save</a>
+                    <a id="CancelBtn" class="action-link secondary" href="#">Cancel</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--Script -->
-    <script type="text/x-kendo-template" id="NoteTemplate">
-        <div class="product">
-            <div class="extra">
-                <textarea></textarea>
-            </div>
-            <div class="footer">
-                <button id="buyProduct" class="k-button k-primary" onClick="beliBarang('#:id#')">Save Note</button>
-                <button id="viewProduct" class="k-button" onClick="lihatBarang('#:id#')">Cancel</button>
-            </div>
-        </div>
+    
+    <!-- Scripts -->
+    <script id="template" type="text/x-kendo-template">
+        <label class="search-label" for="searchBox">Search Grid:</label>
+        <input type="search" id="searchBox" class="k-textbox" style="width: 250px"/>
+        <input type="button" id="btnSearch" class="k-button" value="Search"/>
+        <input type="button" id="btnReset" class="k-button" value="Reset"/>
     </script>
+
     @@include('./partials/scripts.html')
     <script src="https://demos.telerik.com/kendo-ui/content/shared/js/products.js"></script>
-    <script src="js/shopping_cart.js"></script>
+    <script src="js/po_edit.js"></script>
   </div>
 </body>
 

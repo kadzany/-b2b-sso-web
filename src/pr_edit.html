@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @@include('./partials/styles.html')
-    <link href="/css/pr-approval-list.css" rel="stylesheet">
+    <link href="/css/pr_edit.css" rel="stylesheet">
     <title>SSO eProcurement</title>
 </head>
 
@@ -20,18 +20,18 @@
         <div class="thirteen wide column">
             <!-- Page content -->
             <div id="app">
-                <h2>Purchase Requisition Approval</h2>
+                <h2 class="red">Purchase Requisition</h2>
                 <div id="grid"></div>
                 <br />
 
-                <h2>Additional List</h2>
+                <h2 class="red">Additional List</h2>
                 <small>Untuk tambahan barang yang tidak terdapat di catalog.</small>          
                 <div id="grid-editable"></div>
                 <br />
 
                 <div style="margin-bottom: 80px;">
-                    <a class="action-link primary" href="#">Approve</a>
-                    <a class="action-link secondary" href="#">Reject</a>
+                    <a id="SaveBtn" class="action-link primary" href="#">Save</a>
+                    <a id="CancelBtn" class="action-link secondary" href="#">Cancel</a>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
 
     @@include('./partials/scripts.html')
     <script src="https://demos.telerik.com/kendo-ui/content/shared/js/products.js"></script>
-    <script src="js/pr_approval_list.js"></script>
+    <script src="js/pr_edit.js"></script>
   </div>
 </body>
 

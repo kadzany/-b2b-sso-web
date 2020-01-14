@@ -5,7 +5,7 @@ function checkout() {
 (function () {
     $(document).ready(function () {
         var serviceBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=5&offset=1&sort=-max_price";
-        var crudDataSource = new kendo.data.DataSource({
+        var DataSource = new kendo.data.DataSource({
             transport: {
                 read: {
                     url: serviceBaseUrl,
@@ -19,8 +19,36 @@ function checkout() {
             }
         });
 
+        var CrudDataSource = [
+            {ProductName: "Memory Card", UnitPrice: "Rp.150,000", Quantity: "1", Remark: ""}
+        ];
+
+        var CrudSchema = {
+            model: {
+                ProductName : {type: "string"
+            },
+                UnitPrice: {type: "string"},
+                Quantity: {type: "string"},
+                Remark: {type: "string"}
+            }
+        };
+
+        $(".ShowNote").click(function(e){
+            e.preventDefault();
+        
+            $("#NoteTemplate").kendoWindow({
+                width: "600px",
+                title: "Tambahkan Catatan.",
+                visible: false,
+                actions: [
+                    "Close"
+                ],
+                close: onClose
+            }).data("kendoWindow").center().open();
+        });
+
         $("#grid").kendoGrid({
-            dataSource: crudDataSource,
+            dataSource: DataSource,
             height: 550,
             groupable: false,
             sortable: true,
@@ -34,7 +62,7 @@ function checkout() {
                 {
                     template:
                         `<div class='product-photo'><img src="#:images[0].url#"/></div>
-                         <div casss='product-info'><small><a href='return false;' data='#:id#'><i class='pencil alternate icon small'></i>&nbsp;Note</a></small></div>`,
+                         <div casss='product-info'><small><a class='ShowNote' href='' data='#:id#'><i class='pencil alternate icon small'></i>&nbsp;Note</a></small></div>`,
                     field: "name",
                     title: "Product Info",
                     width: 340
@@ -65,25 +93,26 @@ function checkout() {
         });
 
         $("#grid-editable").kendoGrid({
-            dataSource: null,
+            dataSource: {
+                data: CrudDataSource,
+                schema: CrudSchema,
+                pageSize: 20
+            },
             pageable: true,
             height: 200,
             toolbar: ["create"],
             columns: [
                 { selectable: true, width: "50px" },
                 "ProductName",
-                { field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "120px" },
-                { field: "UnitsInStock", title: "Quantity", width: "120px" },
-                { field: "Remark", width: "120px", editor: customBoolEditor },
+                { field: "UnitPrice", title: "Unit Price", width: "120px" },
+                { field: "Quantity", title: "Quantity", width: "120px" },
+                { field: "Remark", width: "120px" },
                 { command: ["edit", "destroy"], title: "&nbsp;", width: "250px" }],
             editable: "inline"
         });
 
-        var customBoolEditor = function (container, options) {
-            var guid = kendo.guid();
-            $('<input class="k-checkbox" id="' + guid + '" type="checkbox" name="Discontinued" data-type="boolean" data-bind="checked:Discontinued">').appendTo(container);
-            $('<label class="k-checkbox-label" for="' + guid + '">&#8203;</label>').appendTo(container);
-        };
+        
+        
 
         $(".numerictextbox").kendoNumericTextBox({
             spinners: true
