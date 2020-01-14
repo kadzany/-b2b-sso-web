@@ -1,9 +1,9 @@
 ---
-- name: Build to server
-  hosts: development
-  become: yes
-  become_user: root
-  tasks: 
-  - name: Get ubuntu version
-      command: "lsb_release -cs"
-      register: ubuntu_version
+- hosts: localhost
+  connection: local
+  user: sergey
+  sudo: no
+
+  tasks:
+    - name: Print hello
+      debug: msg="Hey how are you {{ name }}"
