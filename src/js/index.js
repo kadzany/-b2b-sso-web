@@ -1,12 +1,14 @@
 (function () {
     $('#loginButton').click(function () {
-        // need to be removed later
-        window.location = 'home.html';
-        sessionStorage.setItem('token', 'asdfg');
-
         const form = document.forms.loginForm;
 
         if (!form) return;
+
+        // need to be removed later
+        window.location = 'home.html';
+        sessionStorage.setItem('token', 'asdfg');
+        sessionStorage.setItem('user_email', form.elements.email.value);
+        sessionStorage.setItem('user_role', form.elements.role.value);
 
         window.api.post('/authentication_token', {
             email: form.elements.email.value,
