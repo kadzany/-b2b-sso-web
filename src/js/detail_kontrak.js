@@ -1,3 +1,7 @@
+function lihatListProduct() {
+    window.location = "product_list_vendor.html";
+}
+
 (function(){
     let myWindow = $("#window");
 
