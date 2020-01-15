@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @@include('./partials/styles.html')
+    <link href="/css/product_list_vendor.css" rel="stylesheet">
+    <title>SSO eProcurement</title>
+</head>
+
+<body>
+    <div class="ui container">
+        @@include('./partials/header.html')
+        <div class="ui grid">
+            <div class="three wide column">
+                @@include('./partials/menu.html')
+            </div>
+            <div class="thirteen wide column">
+                <!-- Page content -->
+                <div id="app">
+                    <h2>List Produk</h2>   
+                    <div id="grid-products"></div>      
+                </div>
+            </div>
+            @@include('./partials/scripts.html')
+            <script src="js/product_list_vendor.js"></script>
+            <script id="statusTemplate" type="text/x-kendo-template">
+
+                <div style="width:100%;text-align:center">
+                    # if (status === 1 ) { #
+                    <span class="verified">#: Verified #</span>
+                    # } else if (status === 2) {
+                    <span class="waiting">#: Waiting to be reviewed #</span>
+                    # }else { #
+                    <span class="revisi">#: Perlu direvisi #</span>
+                    # } #
+                </div>
+                <div style="width:100%;text-align:center">#: status #</div>
+            </script>
+            <!--Script for changing status and showing grid-->
+            <script>
+                function showStatus(data){
+                    if (data === 1){
+                        return "<label class='label verified'>Approved</label>";
+                    }
+                    else if (data === 2){
+                        return "<label class='label waiting'>Menunggu direview</label>";
+                    }
+                    else {
+                        return "<label class='label revisi'>Perlu direvisi</label>";
+                    }
+                }
+
+                $(document).ready(function(){
+                    let data = [
+                        { productName: "QUESO CABRALES", unitPrice: 1000, qty: 5, uom: 'kg', status: 1 },
+                        { productName: "ALICE MUTTON", unitPrice: 2000, qty: 7, uom: 'kg', status: 2 },
+                        { productName: "GENEN SHOUYU", unitPrice: 3000, qty: 3, uom: 'kg', status: 3},
+                        { productName: "CHARTREUSE VERTE", unitPrice: 4000, qty: 1, uom: 'kg', status: 1 }
+                    ];
+
+                    let products_schema = {
+                        model: {
+                            num: { type: "number" },
+                            productName: { type: "string" },
+                            qty: { type: "number" },
+                            unitPrice: { type: "number" },
+                            status: { type: "number" }
+                        },
+                        parse: function (data) {
+                            $.each(data, function (i) {
+                                this.num = i + 1;
+                            });
+                            return data;
+                        }
+                    };
+
+                    let products_columns = [
+                        {
+                            field: "num",
+                            title: "Nomor",
+                            width: 80
+                        },
+                        {
+                            field: "productName",
+                            title: "Item Description",
+                            template: "<div class='product-photo'" +
+                                "style='background-image: url(../img/logo.jpg);'></div>" +
+                                "<div class='product-name'>#: productName #</div>"
+                        },
+                        {
+                            field: "qty",
+                            title: "Quantity"
+                        },
+                        {
+                            field: "unitPrice",
+                            title: "Harga per Unit"
+                        },
+                        {
+                            field: "status",
+                            title: "Status",
+                            template:"#=showStatus(status)#"
+                        }
+                    ];
+
+
+                    $("#grid-products").kendoGrid({
+                        dataSource: {
+                            data: data,
+                            schema: products_schema
+                        },
+                        editable: false,
+                        sortable: false,
+                        scrollable: true,
+                        columns: products_columns,
+            
+                    });
+                });
+            </script>
+        </div>
+</body>
+
+</html>
