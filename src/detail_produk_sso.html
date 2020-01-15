@@ -20,14 +20,7 @@
         <div class="thirteen wide column">
             <!-- Page content -->
             <div id="app">
-                <h1> Form Input Data Produk</h1>
-                <div style="margin-bottom:1%;">
-                    <div id="window">
-                        <h3>Upload data produk anda dengan file Excel dengan format yang telah ditentukan oleh team SSO</h3>
-                        <p>Download format excel yang telah ditentukan <a href="www.google.com">di sini</a></p> 
-                        <input name="files" id="sso-excel" type="file" />
-                    </div>
-                </div>
+                <h1>Detail Kontrak Produk</h1>
                 <div class="detail-container">
                     <ul id="fieldlist">
                         <li>
@@ -61,7 +54,7 @@
                             </li>
                             <li>
                                 <label>Gambar Produk</label>
-                                <div>
+                                <div style="display: grid;">
                                     <div id="listView"></div>
                                     <div id="pager" class="k-pager-wrap"> </div>
                                 </div>
@@ -98,11 +91,13 @@
                                     <input type="text" id="tinggi" name="tinggi" class="k-textbox" placeholder="Tinggi produk" style="width: 120px;" readonly/>
                                 </div>
                             </li>
-                            <li class="confirm">
-                                <button class="k-button k-primary" type="submit" style="float: right;" onclick="lihatListProduct()">Simpan</button>
-                            </li>
                         </ul>
                     </form>
+                    <button id="verifyBtn" class="k-button k-primary" type="submit" style="float: right;"">Verify</button>
+                    <button id="revBtn" class="k-button" type="submit" style="float: right; margin-right: 20px ;"">Revisi</button>
+                    <div id="window">
+                        <div id="editor" style="height:200px; border-color: #d5d5d5;" ></div>
+                    </div>
                 </div>
             </div>
 
@@ -160,24 +155,22 @@
         </div>
     </script>
     
-    <script>
-        function addNew(widgetId, value) {
-            var widget = $("#" + widgetId).getKendoMultiColumnComboBox();
-            var dataSource = widget.dataSource;
+    <script>   
+        let myWindow = $("#window");
+        $("#editor").kendoEditor()
+        .data("kendoEditor");
 
-            if (confirm("Are you sure?")) {
-                dataSource.add({
-                    ProductID: 0,
-                    ProductName: value
-                });
+        myWindow.kendoWindow({
+            width: "505px",
+            height: "315px",
+            title: "Catatan Revisi",
+            actions: ["Close"],
+            visible:false
+        });
 
-                dataSource.one("sync", function() {
-                    widget.select(dataSource.view().length - 1);
-                });
-
-                dataSource.sync();
-            }
-        };
+        $("#revBtn").click(function(){
+            myWindow.data("kendoWindow").open();
+        })
     </script>
 
   </div>

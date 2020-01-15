@@ -3,15 +3,6 @@ function lihatListProduct() {
 }
 
 (function(){
-    let myWindow = $("#window");
-
-    myWindow.kendoWindow({
-        width: "505px",
-        height: "315px",
-        title: "Import data sekaligus dengan Excel",
-        actions: ["Close"],
-        visible:false
-    });
 
     let contract_data = [
         {
@@ -32,53 +23,6 @@ function lihatListProduct() {
         $("#judul-kontrak").text(contract_data[0].contractTitle);
         $("#enddate-kontrak").text(contract_data[0].endDate);
         $("#vendorname").text("Vendor 1");
-
-        $("#files").kendoUpload({
-            async: {
-                chunkSize: 11000,// bytes
-                saveUrl: "chunkSave",
-                removeUrl: "remove",
-                autoUpload: true
-            }
-        });
-
-        $("#sso-excel").kendoUpload({
-            async: {
-                chunkSize: 11000,// bytes
-                saveUrl: "chunkSave",
-                removeUrl: "remove",
-                autoUpload: true
-            }
-        });
-
-        var crudServiceBaseUrl = "https://demos.telerik.com/kendo-ui/service";
-        var dataSource = new kendo.data.DataSource({
-            batch: true,
-            transport: {
-                read:  {
-                    url: crudServiceBaseUrl + "/Products",
-                    dataType: "jsonp"
-                },
-                create: {
-                    url: crudServiceBaseUrl + "/Products/Create",
-                    dataType: "jsonp"
-                },
-                parameterMap: function(options, operation) {
-                    if (operation !== "read" && options.models) {
-                        return {models: kendo.stringify(options.models)};
-                    }
-                }
-            },
-            schema: {
-                model: {
-                    id: "ProductID",
-                    fields: {
-                        ProductID: { type: "number" },
-                        ProductName: { type: "string" }
-                    }
-                }
-            }
-        });
 
         $("#products").kendoMultiColumnComboBox({
             filter: "startswith",
@@ -124,7 +68,7 @@ function lihatListProduct() {
                     dataType: "jsonp"
                 }
             },
-            pageSize: 5
+            pageSize: 2
         });
 
         $("#pager").kendoPager({
@@ -133,8 +77,8 @@ function lihatListProduct() {
 
         $("#listView").kendoListView({
             dataSource: dataSource,
-            selectable: "multiple",
             template: kendo.template($("#template").html())
         });
     });
+
 })();
