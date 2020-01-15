@@ -4,32 +4,33 @@ function checkout() {
 
 (function () {
     $(document).ready(function () {
-        var serviceBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=5&offset=1&sort=-max_price";
+        // commented, later must retrieve from the shopping cart
+        // var serviceBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=5&offset=1&sort=-max_price";
+        var prodArray = JSON.parse(window.sessionStorage.getItem("shopping_cart"));
+        if(!prodArray) prodArray = { data: [] };        
         var DataSource = new kendo.data.DataSource({
-            transport: {
-                read: {
-                    url: serviceBaseUrl,
-                    dataType: "json"
-                }
-            },
-            batch: true,
+            // transport: {
+            //     read: {
+            //         url: serviceBaseUrl,
+            //         dataType: "json"
+            //     }
+            // },
+            // batch: true,
+            data: prodArray,
             pageSize: 10,
             schema: {
                 data: "data"
             }
         });
 
-        var CrudDataSource = [
-            {ProductName: "Memory Card", UnitPrice: "Rp.150,000", Quantity: "1", Remark: ""}
-        ];
+        var CrudDataSource = [];
 
         var CrudSchema = {
             model: {
-                ProductName : {type: "string"
-            },
-                UnitPrice: {type: "string"},
-                Quantity: {type: "string"},
-                Remark: {type: "string"}
+                ProductName : "",
+                UnitPrice: "",
+                Quantity: 0,
+                Remark: ""
             }
         };
 
@@ -61,17 +62,23 @@ function checkout() {
                 { selectable: true, width: "50px" },
                 {
                     template:
-                        `<div class='product-photo'><img src="#:images[0].url#"/></div>
-                         <div casss='product-info'><small><a class='ShowNote' href='' data='#:id#'><i class='pencil alternate icon small'></i>&nbsp;Note</a></small></div>`,
+                        `<div class='product-photo' style='float: left; margin-right: 15px;'>                            
+                            <img src="#:images[0].url#"/>
+                        </div>
+                         <div casss='product-info'>
+                            <p>#:supplier.store_name#</p>
+                            <h3>#:name#</h3>
+                            <small><a class='ShowNote' href='' data='#:id#'><i class='pencil alternate icon small'></i>&nbsp;Note</a></small>
+                         </div>`,
                     field: "name",
                     title: "Product Info",
-                    width: 340
+                    width: 440
                 },
                 {
                     field: "max_price",
                     title: "Price",
                     format: "Rp. {0:#,##}",
-                    width: 280
+                    width: 180
                 },
                 {
                     template:
@@ -86,9 +93,9 @@ function checkout() {
                     width: 150
                 }],
             dataBound: function () {
-                this.tbody.find(".numerictextbox").each(function () {
-                    $(this).kendoNumericTextBox();
-                });
+                // this.tbody.find(".numerictextbox").each(function () {
+                //     $(this).kendoNumericTextBox();
+                // });
             }
         });
 
@@ -103,16 +110,13 @@ function checkout() {
             toolbar: ["create"],
             columns: [
                 { selectable: true, width: "50px" },
-                "ProductName",
+                { field: "ProductName", title: "Product Name", width: "120px" },
                 { field: "UnitPrice", title: "Unit Price", width: "120px" },
                 { field: "Quantity", title: "Quantity", width: "120px" },
                 { field: "Remark", width: "120px" },
                 { command: ["edit", "destroy"], title: "&nbsp;", width: "250px" }],
             editable: "inline"
         });
-
-        
-        
 
         $(".numerictextbox").kendoNumericTextBox({
             spinners: true

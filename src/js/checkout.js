@@ -1,5 +1,9 @@
 var lihatInvoice = function() {
     window.location = "cetak_invoice.html";
+};
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 var subTotal = function (data) {
@@ -22,15 +26,21 @@ var sumOrder = function (data) {
 
 (function () {
     $(document).ready(function () {
-        var serviceBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=5&offset=1&sort=-max_price";
+        //var serviceBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=5&offset=1&sort=-max_price";
+        var prodArray = JSON.parse(window.sessionStorage.getItem("shopping_cart"));
+        if(!prodArray) prodArray = { data: [] };
+        prodArray.data.forEach(el => {
+            el.max_price = numberWithCommas(el.max_price);
+        });
         var DataSource = new kendo.data.DataSource({
-            transport: {
-                read: {
-                    url: serviceBaseUrl,
-                    dataType: "json"
-                }
-            },
-            batch: true,
+            // transport: {
+            //     read: {
+            //         url: serviceBaseUrl,
+            //         dataType: "json"
+            //     }
+            // },            
+            // batch: true,
+            data: prodArray,
             pageSize: 10,
             schema: {
                 data: "data"

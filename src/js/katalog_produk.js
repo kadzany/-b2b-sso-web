@@ -21,6 +21,12 @@ function beliBarang(id) {
                 $('#popUpName').html(res.data.name);
                 $('#popUpPrice').html("Rp. " + numberWithCommas(res.data.max_price));
                 $('#popUpImg').attr("src", res.data.images[0].url);
+
+                // set the array in the sessionStorage
+                var prodArray = JSON.parse(window.sessionStorage.getItem("shopping_cart"));
+                if(!prodArray) prodArray = {data: []};
+                prodArray.data.push(res.data);
+                window.sessionStorage.setItem("shopping_cart", JSON.stringify(prodArray));
             }
         });
 
@@ -60,13 +66,13 @@ function beliBarang(id) {
                     }),
                     width: '100%',
                     height: 250,
-                    y: -20,
-                    backgroundcolor: "cccccc",
+                    y: 0,
+                    backgroundcolor: "ccc",
                     coverwidth: 180,
-                    coverheight: 220,
+                    coverheight: 225,
                     fixedsize: true,
                     textoffset: 50,
-                    textstyle: ".coverflow-text{color:#000000;text-align:center;font-family:Arial Rounded MT Bold,Arial;} .coverflow-text h1{font-size:14px;font-family:inherit;font-weight:normal;line-height:21px;} .coverflow-text h2{font-size:12px;font-family:inherit;font-weight:normal;} .coverflow-text a{color:#0000EE;}"
+                    textstyle: ".coverflow-text{color:#000000;text-align:center;font-family:Arial Rounded MT Bold,Arial; background-color: rgba(0,0,0,0.5); color: #fff; border-radius: 5px; width: 300px; margin-left: -150px; position: absolute; padding: 3px 10px; left: 50%;} .coverflow-text h1{font-size:14px;font-family:inherit;font-weight:normal;line-height:21px;} .coverflow-text h2{font-size:12px;font-family:inherit;font-weight:normal;} .coverflow-text a{color:#0000EE;}"
                 }).on('ready', function () {
                     this.on('click', function (index, link) {
                         window.location = link;
@@ -93,7 +99,7 @@ function beliBarang(id) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
 
-        const catalogUrl = 'https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=100&offset=1&sort=-created_at';
+        const catalogUrl = 'https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=150&offset=0&sort=-updated_at';
         window.api.get(catalogUrl).then(function (res) {
             if (res && res.data && res.data.data) {
                 var dataSource = new kendo.data.DataSource({
@@ -116,5 +122,5 @@ function beliBarang(id) {
                 });
             }
         });
-    });
-})();
+});
+}) ();
