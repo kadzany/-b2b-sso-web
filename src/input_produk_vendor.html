@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  @@include('./partials/styles.html')
+  <link href="/css/input_produk_vendor.css" rel="stylesheet" />
+  <title>SSO eProcurement</title>
+</head>
+
+<body>
+    <div class="ui container">
+    @@include('./partials/header.html')
+    <div class="ui grid">
+        <div class="three wide column">
+            @@include('./partials/menu.html')
+        </div>
+        <div class="thirteen wide column">
+            <!-- Page content -->
+            <div id="app">
+                <h1> Form Input Data Produk</h1>
+                <div style="margin-bottom:1%;">
+                    <button id="uploadBtn" class="k-button">
+                        Import data sekaligus
+                    </button>
+                    <div id="window">
+                        <h3>Upload data produk anda dengan file Excel dengan format yang telah ditentukan oleh team SSO</h3>
+                        <p>Download format excel yang telah ditentukan <a href="www.google.com">di sini</a></p> 
+                        <input name="files" id="sso-excel" type="file" />
+                    </div>
+                </div>
+                <div class="detail-container">
+                    <ul id="fieldlist">
+                        <li>
+                            <label>Nomor kontrak</label>
+                            <p id="no-kontrak">nomor kontrak</p>
+                        </li>
+                        <li>
+                            <label>Judul kontrak</label>
+                            <p id="judul-kontrak">judul kontrak</p>
+                        </li>
+                        <li>
+                            <label>Tanggal kontrak dimulai</label>
+                            <p id="starteddate-kontrak">started date</p>
+                        </li>
+                        <li>
+                            <label>Tanggal kontrak berakhir</label>
+                            <p id="enddate-kontrak">end date</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-container">
+                    <form id="kontrakForm">
+                        <ul id="fieldlist">
+                            <li>
+                                <label>Nama vendor</label>
+                                <p id="vendorname">Nama vendor</p>
+                            </li>
+                            <li>
+                                <label for="productname" class="required">Nama produk</label>
+                                <input type="text" id="products" name="productname" class="k-textbox" placeholder="Tulis atau pilih nama produk" required validationMessage="Enter {0}" style="width:300px;" />
+                            </li>
+                            <li>
+                                <label for="productimage" class="required">Gambar produk</label>
+                                <input name="files" id="files" type="file" aria-label="files" />
+                            </li>
+                            <li>
+                                <label for="categories" class="required">Kategori</label>
+                                <input type="text" id="categories" name="categories" class="k-textbox" placeholder="Tulis atau pilih kategori" required validationMessage="Enter {0}" style="width:300px;"/>
+                            </li>
+                            <li>
+                                <label for="brands">Brand</label>
+                                <input type="text" id="brands" name="brands" class="k-textbox" placeholder="Tulis atau pilih brand" required validationMessage="Enter {0}" style="width:300px;"/>
+                            </li>
+                            <li>
+                                <label for="uom">UOM</label>
+                                <select name="uom" id="uom" required data-required-msg="Pilih unit of measurement" >
+                                    <option>kg</option>
+                                    <option>pcs</option>
+                                </select>
+                                <span class="k-invalid-msg" data-for="uom"></span>
+                            </li>
+                            <li>
+                                <label for="description" >Deskripsi</label>
+                                <input type="text" id="description" name="description" class="k-textbox" placeholder="Deskripsi" style="height:150px" />
+                            </li>
+                            <li>
+                                <label for="price" class="required">Harga</label>
+                                <input type="text" id="price" name="price" class="k-textbox" placeholder="Harga produk" required validationMessage="Enter {0}" />
+                            </li>
+                            <li>
+                                <label>Volume</label>
+                                <div>
+                                    <input type="text" id="panjang" name="panjang" class="k-textbox" placeholder="Panjang produk" style="width: 120px;" />
+                                    <input type="text" id="lebar" name="lebar" class="k-textbox" placeholder="Lebar produk" style="width: 120px;"/>
+                                    <input type="text" id="tinggi" name="tinggi" class="k-textbox" placeholder="Tinggi produk" style="width: 120px;" />
+                                </div>
+                            </li>
+                            <li class="confirm">
+                                <button class="k-button k-primary" type="submit" style="float: right;" onclick="lihatListProduct()">Simpan</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        </div>
+        </div>
+    <!-- Scripts -->
+    @@include('./partials/scripts.html')
+    <script src="js/input_produk_vendor.js"></script>
+    <script id="noDataTemplate" type="text/x-kendo-tmpl">
+        <div>
+           Data tidak ditemukan. Tambahkan data baru '#: instance.text() #' ?
+        </div>
+        <br />
+        <button class="k-button" onclick="addNew('#: instance.element[0].id #', '#: instance.text() #')">Add new item</button>
+    </script>
+    
+    <script>
+        function addNew(widgetId, value) {
+            var widget = $("#" + widgetId).getKendoMultiColumnComboBox();
+            var dataSource = widget.dataSource;
+
+            if (confirm("Are you sure?")) {
+                dataSource.add({
+                    ProductID: 0,
+                    ProductName: value
+                });
+
+                dataSource.one("sync", function() {
+                    widget.select(dataSource.view().length - 1);
+                });
+
+                dataSource.sync();
+            }
+        };
+    </script>
+  </div>
+
+
+</body>
+
+</html>

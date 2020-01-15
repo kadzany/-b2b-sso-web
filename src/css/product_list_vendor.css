@@ -1,0 +1,53 @@
+.label {
+    color: white;
+    padding: 8px;
+}
+
+
+.product-photo {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-size: 100px 100px;
+    background-position: center center;
+    vertical-align: middle;
+    line-height: 32px;
+    margin-left: 5px;
+}
+
+.product
+{
+    height: 110px;
+    margin: 0;
+    padding: 5px;
+}
+
+.product img
+{
+    float: left;
+    width: 110px;
+    height: 110px;
+}
+.product h2
+{
+    margin: 0;
+    padding: 10px 0 0 10px;
+    font-size: .9em;
+    font-weight: bold;
+}
+
+.product-name {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 32px;
+    padding-left: 3px;
+}
+  
+.verified {background-color: #4CAF50;} /* Green */
+.waiting {background-color: #ff9800;} /* Orange */
+.revisi {background-color: #f44336;} /* Red */
+.not-submitted {background-color:gray;} /* Gray */
+
+.k-alt, .k-pivot-layout > tbody > tr:first-child > td:first-child, .k-resource.k-alt, .k-separator{
+    background-color: white !important; 
+}
