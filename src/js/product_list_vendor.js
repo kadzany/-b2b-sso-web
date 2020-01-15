@@ -80,7 +80,7 @@ $(document).ready(function(){
 
     function showDetails(e) {
         e.preventDefault();
-        window.location.replace("detail_kontrak.html");
+        window.location.replace("input_produk_vendor.html");
     }
 
     $("#grid-products").kendoGrid({
