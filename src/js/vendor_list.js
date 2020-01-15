@@ -1,7 +1,7 @@
 (function(){
 
     function showDetails(){
-        window.location = "katalog_produk.html";
+        window.location = "contract_list_sso.html";
     }
 
     $(document).ready(function () {
