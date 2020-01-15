@@ -96,8 +96,13 @@
                     <button id="verifyBtn" class="k-button k-primary" type="submit" style="float: right;"">Verify</button>
                     <button id="revBtn" class="k-button" type="submit" style="float: right; margin-right: 20px ;"">Revisi</button>
                     <div id="window">
-                        <div id="editor" style="height:200px; border-color: #d5d5d5;" ></div>
+                        <textarea id="editor" style="height:200px; border-color: #d5d5d5;" ></textarea>
+
                     </div>
+                </div>
+                <div class="notes-container">
+                    <h2>Catatan</h2>
+                    <div id="notes-content"></div>
                 </div>
             </div>
 
@@ -156,21 +161,27 @@
     </script>
     
     <script>   
-        let myWindow = $("#window");
-        $("#editor").kendoEditor()
-        .data("kendoEditor");
+        let editor = $("#editor").kendoEditor().data("kendoEditor");
 
-        myWindow.kendoWindow({
+        let myWindow = $("#window").kendoDialog({
             width: "505px",
             height: "315px",
             title: "Catatan Revisi",
-            actions: ["Close"],
-            visible:false
-        });
+            actions: [{ text: 'Approve', primary: true, action: updateText },
+            { text: 'Cancel' }],
+            visible:false,
+            open: function () {
+                editor.refresh();
+            }
+        }).data("kendoDialog");
 
         $("#revBtn").click(function(){
-            myWindow.data("kendoWindow").open();
-        })
+            myWindow.open();
+        });
+
+        function updateText() {
+            $("#notes-content").html(editor.value());
+        }
     </script>
 
   </div>
