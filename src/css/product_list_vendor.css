@@ -46,6 +46,7 @@
 .verified {background-color: #4CAF50;} /* Green */
 .waiting {background-color: #ff9800;} /* Orange */
 .revisi {background-color: #f44336;} /* Red */
+.not-submitted {background-color:gray;} /* Gray */
 
 .k-alt, .k-pivot-layout > tbody > tr:first-child > td:first-child, .k-resource.k-alt, .k-separator{
     background-color: white !important; 

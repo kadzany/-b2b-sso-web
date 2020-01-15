@@ -18,15 +18,15 @@ function showStatus(data){
 }
 
 function lihatKatalog() {
-    window.location = "katalog_produk.html";
+    window.location = "product_list_vendor.html";
 }
 
 $(document).ready(function(){
     let data = [
-        { productName: "QUESO CABRALES", unitPrice: 1000, qty: 5, uom: 'kg', status: 1 },
-        { productName: "ALICE MUTTON", unitPrice: 2000, qty: 7, uom: 'kg', status: 2 },
-        { productName: "GENEN SHOUYU", unitPrice: 3000, qty: 3, uom: 'kg', status: 3},
-        { productName: "CHARTREUSE VERTE", unitPrice: 4000, qty: 1, uom: 'kg', status: 1 }
+        { productName: "QUESO CABRALES", unitPrice: 1000, qty: 5, uom: 'kg', status: 0 },
+        { productName: "ALICE MUTTON", unitPrice: 2000, qty: 7, uom: 'kg', status: 0 },
+        { productName: "GENEN SHOUYU", unitPrice: 3000, qty: 3, uom: 'kg', status: 0},
+        { productName: "CHARTREUSE VERTE", unitPrice: 4000, qty: 1, uom: 'kg', status: 0}
     ];
 
     let products_schema = {

@@ -1,5 +1,5 @@
 function lihatListProduct() {
-    window.location = "product_list_vendor.html";
+    window.location = "product_list_vendor_bef.html";
 }
 
 (function(){
