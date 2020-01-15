@@ -1,4 +1,9 @@
 (function(){
+
+    function showDetails(){
+        window.location = "contract_list_sso.html";
+    }
+
     $(document).ready(function () {
         $("#grid").kendoGrid({
             dataSource: {
@@ -6,33 +11,28 @@
                 transport: {
                     read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
                 },
-                pageSize: 20
+                pageSize: 10
             },
-            height: 550,
-            groupable: true,
             sortable: true,
+            toolbar: ["search"],
             pageable: {
                 refresh: true,
                 pageSizes: true,
                 buttonCount: 5
             },
-            columns: [{
-                template: "<div class='customer-photo'" +
-                "style='background-image: url(../content/web/Customers/#:data.CustomerID#.jpg);'></div>" +
-                "<div class='customer-name'>#: ContactName #</div>",
-                field: "ContactName",
-                title: "Contact Name",
-                width: 240
-            }, {
-                field: "ContactTitle",
-                title: "Contact Title"
-            }, {
+            columns: [
+            {
                 field: "CompanyName",
-                title: "Company Name"
-            }, {
-                field: "Country",
-                width: 150
-            }]
+                title: "Nama Vendor"
+            },
+            {
+                command: [
+                    { text: "Lihat Detail", click: showDetails },
+                ],
+                title: "&nbsp", 
+                width: "280px"
+            }
+            ]
         });
     });
 })();
