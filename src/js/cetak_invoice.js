@@ -1,19 +1,41 @@
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 (function(){    
 
     var subTotal = function (data) {
         var total = 0;
-        data.forEach(function (arrayItem) {
-            total += arrayItem.Quantity * arrayItem.UnitPrice;
-        });
-    
+        if(Array.isArray(data)){
+            data.forEach(function (arrayItem) {
+                total += arrayItem.Quantity * arrayItem.UnitPrice;
+            });
+        }
+        else{
+            if(data.options && data.options.data && data.options.data.data){
+                data.options.data.data.forEach(function (arrayItem) {
+                    total += arrayItem.Quantity * arrayItem.UnitPrice;
+                });
+            }        
+        }
         return total;
     };
     
     var sumOrder = function (data) {
         var sum = 0;
-        data.forEach(function (arrayItem) {
-            sum += arrayItem.Quantity;
-        });
+        if(Array.isArray(data)){
+            data.forEach(function (arrayItem) {
+                sum += arrayItem.Quantity;
+            });
+        }
+        else{
+            if(data.options && data.options.data && data.options.data.data){
+                data.options.data.data.forEach(function (arrayItem) {
+                    sum += arrayItem.Quantity;
+                });
+            }
+            
+        }
         return sum;
     };
 
@@ -22,6 +44,9 @@
         // var serviceBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=5&offset=1&sort=-max_price";
         var prodArray = JSON.parse(window.sessionStorage.getItem("shopping_cart"));
         if(!prodArray) prodArray = { data: [] };
+        prodArray.data.forEach(el => {
+            el.max_price = numberWithCommas(el.max_price);
+        });
         var DataSource = new kendo.data.DataSource({
             // transport: {
             //     read: {
@@ -60,10 +85,10 @@
             template: kendo.template($("#template").html())
         });
 
-        let subTotalStore = subTotal(data);
-        $("#subtotal-store").text(subTotalStore);
+        let subTotalStore = subTotal(DataSource);
+        $("#subtotal-store").text("Rp. " + numberWithCommas(subTotalStore));
 
-        let sumOrderStore = sumOrder(data);
+        let sumOrderStore = sumOrder(DataSource);
         $("#sum-order-store").text(sumOrderStore);
 
         // let request_schema = {
@@ -94,11 +119,11 @@
         };
 
         let request_columns = [
-            { 
-                field: "num", 
-                title: "Nomor",
-                width: 80
-            },                
+            // { 
+            //     field: "num", 
+            //     title: "Nomor",
+            //     width: 80
+            // },                
             { 
                 field: "ProductName", 
                 title: "Item Description",
@@ -136,7 +161,7 @@
         });
 
         let subTotalRequest = subTotal(data);
-        $("#subtotal-request").text(subTotalRequest);
+        $("#subtotal-request").text("Rp." + numberWithCommas(subTotalRequest));
 
         let sumOrderRequest = sumOrder(data);
         $("#sum-order-request").text(sumOrderRequest);
@@ -144,7 +169,7 @@
         let totalPrice = function(subtotal_store,subtotal_request){
             return subtotal_store + subtotal_request;
         };
-        $("#totalPrice").text(totalPrice(subTotalStore,subTotalRequest));
+        $("#totalPrice").text("Rp." + numberWithCommas(totalPrice(subTotalStore,subTotalRequest)));
 
         let totalUnit = function(sum_unit_store,sum_unit_request){
             return sum_unit_store + sum_unit_request;

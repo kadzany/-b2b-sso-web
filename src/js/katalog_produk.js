@@ -25,6 +25,8 @@ function beliBarang(id) {
                 // set the array in the sessionStorage
                 var prodArray = JSON.parse(window.sessionStorage.getItem("shopping_cart"));
                 if(!prodArray) prodArray = {data: []};
+                res.data.Quantity = 1;
+                res.data.UnitPrice = res.data.max_price
                 prodArray.data.push(res.data);
                 window.sessionStorage.setItem("shopping_cart", JSON.stringify(prodArray));
             }
