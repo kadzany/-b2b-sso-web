@@ -739,10 +739,6 @@ a.button {
     color: #999;
 }
 
-.red {
-    color : #eb3902;
-}
-
 
 @media screen and (max-width: 1023px) {
   .page {
