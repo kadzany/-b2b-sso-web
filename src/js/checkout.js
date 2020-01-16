@@ -9,7 +9,7 @@ function numberWithCommas(x) {
 var subTotal = function (data) {
     var total = 0;
     data.forEach(function (arrayItem) {
-        total += arrayItem.qty * arrayItem.unitPrice;
+        total += arrayItem.Quantity * arrayItem.UnitPrice;
     });
 
     return total;
@@ -18,7 +18,7 @@ var subTotal = function (data) {
 var sumOrder = function (data) {
     var sum = 0;
     data.forEach(function (arrayItem) {
-        sum += arrayItem.qty;
+        sum += arrayItem.Quantity;
     });
     return sum;
 };
@@ -47,13 +47,17 @@ var sumOrder = function (data) {
             }
         });
 
+        var procurementArray = JSON.parse(window.sessionStorage.getItem("shopping_cart_procurement"));
+        if(!procurementArray) procurementArray = [];
 
-        var StaticDataSource = [
-            { productName: "QUESO CABRALES", unitPrice: 1000, qty: 5, uom: 'kg', remark: "Budget maksimal Rp 3.000.000,00" },
-            { productName: "ALICE MUTTON", unitPrice: 2000, qty: 7, uom: 'kg', remark: "Budget maksimal Rp 3.000.000,00" },
-            { productName: "GENEN SHOUYU", unitPrice: 3000, qty: 3, uom: 'kg', remark: "Budget maksimal Rp 3.000.000,00" },
-            { productName: "CHARTREUSE VERTE", unitPrice: 4000, qty: 1, uom: 'kg', remark: "Budget maksimal Rp 3.000.000,00" }
-        ];
+        // var StaticDataSource = [
+        //     { productName: "QUESO CABRALES", unitPrice: 1000, qty: 5, uom: 'kg', remark: "Budget maksimal Rp 3.000.000,00" },
+        //     { productName: "ALICE MUTTON", unitPrice: 2000, qty: 7, uom: 'kg', remark: "Budget maksimal Rp 3.000.000,00" },
+        //     { productName: "GENEN SHOUYU", unitPrice: 3000, qty: 3, uom: 'kg', remark: "Budget maksimal Rp 3.000.000,00" },
+        //     { productName: "CHARTREUSE VERTE", unitPrice: 4000, qty: 1, uom: 'kg', remark: "Budget maksimal Rp 3.000.000,00" }
+        // ];
+
+        var StaticDataSource = procurementArray;
 
         $("#StoreCheckoutListView").kendoListView({
             dataSource: DataSource,
@@ -65,22 +69,31 @@ var sumOrder = function (data) {
         $("#subtotal-store").text(subTotal(StaticDataSource));
         $("#sum-order-store").text(sumOrder(StaticDataSource));
 
+        // let request_schema = {
+        //     model: {
+        //         num: { type: "number" },
+        //         productName: { type: "string" },
+        //         uom: { type: "string" },
+        //         qty: { type: "number" },
+        //         unitPrice: { type: "number" },
+        //         remark: { type: "string" }
+        //     },
+        //     parse: function (data) {
+        //         $.each(data, function (i) {
+        //             this.num = i + 1;
+        //         });
+        //         return data;
+        //     }
+        // };
+
         let request_schema = {
             model: {
-                num: { type: "number" },
-                productName: { type: "string" },
-                uom: { type: "string" },
-                qty: { type: "number" },
-                unitPrice: { type: "number" },
-                remark: { type: "string" }
-            },
-            parse: function (data) {
-                $.each(data, function (i) {
-                    this.num = i + 1;
-                });
-                return data;
+                ProductName: "",
+                UnitPrice: "",
+                Quantity: 0,
+                Remark: ""
             }
-        };
+        };        
 
         let request_columns = [
             {
@@ -89,26 +102,22 @@ var sumOrder = function (data) {
                 width: 80
             },
             {
-                field: "productName",
+                field: "ProductName",
                 title: "Item Description",
                 template: 
                     "<!--<div class='product-photo'style='background-image: url(../img/logo.jpg);'></div>-->" +
-                    "<div class='product-name'>#: productName #</div>"
+                    "<div class='product-name'>#: ProductName #</div>"
             },
             {
-                field: "qty",
+                field: "Quantity",
                 title: "Quantity"
             },
             {
-                field: "uom",
-                title: "Satuan"
-            },
-            {
-                field: "unitPrice",
+                field: "UnitPrice",
                 title: "Harga per Unit"
             },
             {
-                field: "remark",
+                field: "Remark",
                 title: "Remark"
             }
         ];

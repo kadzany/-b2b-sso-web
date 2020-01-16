@@ -23,7 +23,9 @@ function checkout() {
             }
         });
 
-        var CrudDataSource = [];
+        var procurementArray = JSON.parse(window.sessionStorage.getItem("shopping_cart_procurement"));
+        if(!procurementArray) procurementArray = [];
+        var CrudDataSource = procurementArray;
 
         var CrudSchema = {
             model: {
