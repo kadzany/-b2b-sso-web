@@ -15,6 +15,7 @@
             $("#purchasing").show();
             $("#shopping_cart").show();
             $("#kontrak").show();
+            $("#user").show();
         }
         else if(userRole == "vendor"){
             $("#kontrak").show();
