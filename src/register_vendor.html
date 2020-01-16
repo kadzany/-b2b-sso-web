@@ -29,8 +29,8 @@
                                 <input style="width: 100%;" type="text" id="vendorname" name="vendorname" class="k-textbox" placeholder="Nama Perusahan" required validationMessage="Enter {0}" />
                             </li>
                             <li>
-                                <label for="productname" class="required">Tipe Penyalur</label>
-                                <input type="text" id="company_type" name="company_type" class="k-textbox" placeholder="Tulis atau pilih tipe penyalur" required validationMessage="Enter {0}" style="width:300px;" />
+                                <label for="type" class="required">Tipe Penyalur</label>
+                                <input id="type" class="k-textbox"  style="width:300px;" />
                             </li>
                             <li>
                                 <div class="multiple-fields">
@@ -46,7 +46,7 @@
                             </li>
                             <li>
                                 <label for="bidang_usaha" class="required">Bidang Usaha</label>
-                                <input type="text" id="bidang_usaha" name="bidang_usaha" class="k-textbox" placeholder="Tulis atau pilih bidang usaha" required validationMessage="Enter {0}" style="width:300px;"/>
+                                <input id="bidang_usaha"  class="k-textbox" style="width:300px;"/>
                             </li>
                             <li>
                                 <div class="multiple-fields">
@@ -144,21 +144,20 @@
     <script src="js/input_produk_vendor.js"></script>
     <script id="noDataTemplate" type="text/x-kendo-tmpl">
         <div>
-           Data tidak ditemukan. Tambahkan data baru '#: instance.text() #' ?
+            No data found. Do you want to add new item - '#: instance.filterInput.val() #' ?
         </div>
         <br />
-        <button class="k-button" onclick="addNew('#: instance.element[0].id #', '#: instance.text() #')">Add new item</button>
+        <button class="k-button" onclick="addNew('#: instance.element[0].id #', '#: instance.filterInput.val() #')">Add new item</button>
     </script>
-    
     <script>
         function addNew(widgetId, value) {
-            var widget = $("#" + widgetId).getKendoMultiColumnComboBox();
+            var widget = $("#" + widgetId).getKendoDropDownList();
             var dataSource = widget.dataSource;
 
             if (confirm("Are you sure?")) {
                 dataSource.add({
-                    ProductID: 0,
-                    ProductName: value
+                    text: value,
+                    value: dataSource.length +1
                 });
 
                 dataSource.one("sync", function() {
@@ -168,6 +167,29 @@
                 dataSource.sync();
             }
         };
+
+        $(document).ready(function(){
+            var data = [
+                { text: "Item1", value: "1" },
+                { text: "Item2", value: "2" },
+                { text: "Item3", value: "3" }
+            ];
+
+            $("#type").kendoDropDownList({
+                    filter: "startswith",
+                    dataTextField: "text",
+                    dataSource:data,
+                    dataValueField: "value",
+                    noDataTemplate: $("#noDataTemplate").html()
+                });
+            $("#bidang_usaha").kendoDropDownList({
+                filter: "startswith",
+                dataTextField: "text",
+                dataSource:data,
+                dataValueField: "value",
+                noDataTemplate: $("#noDataTemplate").html()
+            });
+        })
     </script>
   </div>
 
