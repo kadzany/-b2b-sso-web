@@ -8,6 +8,7 @@
         const userUrl = 'https://54.179.187.23:8443/person_logins?page=1';
         window.api.get(userUrl).then(function(res){
             if (res.data){
+
                 let dataSource = new kendo.data.DataSource({
                     data: res.data["hydra:member"],
                     pageSizes: 10
@@ -19,8 +20,13 @@
                     groupable:true,
                     resizable: true,
                     toolbar: ["search"],
+                    dataBound: function() {
+                        for (var i = 0; i < this.columns.length; i++) {
+                            this.autoFitColumn(i);
+                        }
+                    },
                     pageable: {
-                        pageSizes: true
+                        pageSizes: 10
                     },
                     columns: [
                     {
@@ -30,10 +36,6 @@
                     {
                         field: "username",
                         title: "Username"
-                    },
-                    {
-                        field: "roles",
-                        title: "Roles"
                     },
                     {
                         field: "activeFromDate",
@@ -55,7 +57,14 @@
                         field: "isActive",
                         title: "Status"
                     },
-                    ]
+                    ],
+                    detailTemplate: 'Products: <div class="second-level-grid"></div>',
+                    detailInit: function(e) {
+                        console.log(e.data.roles)
+                        e.detailRow.find(".second-level-grid").kendoGrid({
+                            dataSource: e.data.roles
+                        })
+                    }
                 });
             }
         })
