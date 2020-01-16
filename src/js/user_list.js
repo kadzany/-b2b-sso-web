@@ -1,7 +1,14 @@
-(function(){
-
     function showDetails(){
         window.location = "contract_list_sso.html";
+    }
+
+    function generateRoles(roles){
+        var template = "<ul>";
+        for (var i=0; i<roles.length;i++){
+            template = template+"<li>" + roles[i] + "</li>";
+        }
+
+        return template + "</ul>";
     }
 
     $(document).ready(function () {
@@ -24,9 +31,6 @@
                         for (var i = 0; i < this.columns.length; i++) {
                             this.autoFitColumn(i);
                         }
-                    },
-                    pageable: {
-                        pageSizes: 10
                     },
                     columns: [
                     {
@@ -57,18 +61,16 @@
                         field: "isActive",
                         title: "Status"
                     },
-                    ],
-                    detailTemplate: 'Products: <div class="second-level-grid"></div>',
-                    detailInit: function(e) {
-                        console.log(e.data.roles)
-                        e.detailRow.find(".second-level-grid").kendoGrid({
-                            dataSource: e.data.roles
-                        })
+                    {
+                        field: "roles",
+                        title: "Roles",
+                        template: "#=generateRoles(roles)#"
+
                     }
+                    ]
                 });
             }
         })
 
 
     });
-})();
