@@ -31,6 +31,7 @@ function checkout() {
             model: {
                 ProductName: "",
                 UnitPrice: "",
+                Uom: "",
                 Quantity: 0,
                 Remark: ""
             }
@@ -114,6 +115,7 @@ function checkout() {
                 { selectable: true, width: "50px" },
                 { field: "ProductName", title: "Product Name", width: "120px" },
                 { field: "UnitPrice", title: "Unit Price", width: "120px" },
+                { field: "Uom", title: "UOM", width: "80px" },
                 { field: "Quantity", title: "Quantity", width: "120px" },
                 { field: "Remark", width: "120px" },
                 { command: ["edit", "destroy"], title: "&nbsp;", width: "250px" }],

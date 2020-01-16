@@ -87,6 +87,7 @@
             model: {
                 ProductName: "",
                 UnitPrice: "",
+                Uom: "",
                 Quantity: 0,
                 Remark: ""
             }
@@ -109,10 +110,10 @@
                 field: "Quantity", 
                 title: "Quantity"
             },
-            // { 
-            //     field: "uom", 
-            //     title: "Satuan"
-            // },
+            { 
+                field: "Uom", 
+                title: "UOM"
+            },
             {
                 field: "UnitPrice", 
                 title: "Harga per Unit"

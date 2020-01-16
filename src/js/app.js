@@ -1,12 +1,6 @@
-// Menu selection
-
-  console.log('asdasdas');
-
+  // Menu selection
   var userEmail = sessionStorage.getItem('user_email');
   var userRole = sessionStorage.getItem('user_role');
-
-  console.log(userEmail);
-  console.log(userRole);
 
   $(".item_menu").hide();
 

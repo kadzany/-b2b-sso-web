@@ -90,6 +90,7 @@ var sumOrder = function (data) {
             model: {
                 ProductName: "",
                 UnitPrice: "",
+                Uom: "",
                 Quantity: 0,
                 Remark: ""
             }
@@ -115,6 +116,10 @@ var sumOrder = function (data) {
             {
                 field: "UnitPrice",
                 title: "Harga per Unit"
+            },
+            {
+                field: "Uom",
+                title: "UOM"
             },
             {
                 field: "Remark",
