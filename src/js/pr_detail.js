@@ -1,13 +1,17 @@
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
 $(document).ready(function () {
 
     let po_data = [
         {
             poNumber: 'PO1', createdDate: '01/01/2020', customer: 'Telkom', status: 'Approved', approver: "Admin SSO", fullfillmentDate: '03/01/2020',
             poFromStore: [
-                { productName: "QUESO CABRALES", unitPrice: 1000, qty: 5, uom: 'kg', remark: "Budget maksimal Rp 3.000.000,00" },
-                { productName: "ALICE MUTTON", unitPrice: 2000, qty: 7, uom: 'kg', remark: "Budget maksimal Rp 3.000.000,00" },
-                { productName: "GENEN SHOUYU", unitPrice: 3000, qty: 3, uom: 'kg', remark: "Budget maksimal Rp 3.000.000,00" },
-                { productName: "CHARTREUSE VERTE", unitPrice: 4000, qty: 1, uom: 'kg', remark: "Budget maksimal Rp 3.000.000,00" }
+                { productName: "ASUS VivoBook S330FA Intel i3-8145U 4GB 256GB SSD FHD 13.3", unitPrice: 7799000, qty: 4,uom:'buah', remark:"Budget maksimal Rp 30.000.000,00" },
+                { productName: 'Macbook Pro 2019 13" inch 512GB 8GB - MV972 Grey MV9A2 Silver 512', unitPrice: 27070000, qty: 1,uom:'buah',remark:"Budget maksimal Rp 30.000.000,00" },
+                { productName: "Vetto Stop Kontak Ms3 Tanpa Kabel (Tk)", unitPrice: 79200, qty: 3,uom:'buah',remark:"Budget maksimal Rp 300.000,00" },
+                { productName: "Vetto Box Kabel V8816 / 10m Switch + Turbo Sni", unitPrice: 155400, qty: 10,uom:'buah',remark:"Budget maksimal Rp 2.000.000,00" }
             ]
         },
         {
@@ -55,7 +59,8 @@ $(document).ready(function () {
         },
         {
             field: "unitPrice",
-            title: "Harga per Unit"
+            title: "Harga per Unit",
+            template: "Rp #=numberWithCommas(unitPrice)#"
         },
         {
             field: "remark",
@@ -68,6 +73,11 @@ $(document).ready(function () {
             data: po_data[0].poFromStore,
             schema: request_schema
         },
+        dataBound: function() {
+            for (var i = 0; i < this.columns.length; i++) {
+              this.autoFitColumn(i);
+            }
+        },
         editable: false,
         sortable: false,
         scrollable: true,
@@ -78,6 +88,11 @@ $(document).ready(function () {
         dataSource: {
             data: po_data[0].poFromStore,
             schema: request_schema
+        },
+        dataBound: function() {
+            for (var i = 0; i < this.columns.length; i++) {
+              this.autoFitColumn(i);
+            }
         },
         editable: false,
         sortable: false,
