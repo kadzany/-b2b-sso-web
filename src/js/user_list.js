@@ -27,11 +27,6 @@
                     groupable:true,
                     resizable: true,
                     toolbar: ["search"],
-                    dataBound: function() {
-                        for (var i = 0; i < this.columns.length; i++) {
-                            this.autoFitColumn(i);
-                        }
-                    },
                     columns: [
                     {
                         field: "id",
@@ -42,31 +37,30 @@
                         title: "Username"
                     },
                     {
+                        field: "roles",
+                        title: "Roles",
+                        template: "#=generateRoles(roles)#"
+
+                    },
+                    {
                         field: "activeFromDate",
-                        title: "Active From Date"
+                        title: "Active From Date",
+                        template: '#= kendo.toString(kendo.parseDate(activeFromDate, "yyyy-MM-dd"),"dd/MM/yyyy") #'
                     },
                     {
                         field: "activeToDate",
-                        title: "Active To Date"
+                        title: "Active To Date",
+                        template: '#= kendo.toString(kendo.parseDate(activeToDate, "yyyy-MM-dd"),"dd/MM/yyyy") #'
                     },
                     {
                         field: "suspendedDate",
-                        title: "Suspended Date"
+                        title: "Suspended Date",
+                        template: '#= kendo.toString(kendo.parseDate(suspendedDate, "yyyy-MM-dd"),"dd/MM/yyyy") #'
                     },
                     {
                         field: "suspendReason",
                         title: "Suspended Reason"
                     },
-                    {
-                        field: "isActive",
-                        title: "Status"
-                    },
-                    {
-                        field: "roles",
-                        title: "Roles",
-                        template: "#=generateRoles(roles)#"
-
-                    }
                     ]
                 });
             }
