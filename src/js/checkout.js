@@ -8,18 +8,38 @@ function numberWithCommas(x) {
 
 var subTotal = function (data) {
     var total = 0;
-    data.forEach(function (arrayItem) {
-        total += arrayItem.Quantity * arrayItem.UnitPrice;
-    });
+    if(Array.isArray(data)){
+        data.forEach(function (arrayItem) {
+            total += arrayItem.Quantity * arrayItem.UnitPrice;
+        });
+    }
+    else{
+        if(data.options && data.options.data && data.options.data.data){
+            data.options.data.data.forEach(function (arrayItem) {
+                total += arrayItem.Quantity * arrayItem.UnitPrice;
+            });
+        }        
+    }
+
 
     return total;
 };
 
 var sumOrder = function (data) {
     var sum = 0;
-    data.forEach(function (arrayItem) {
-        sum += arrayItem.Quantity;
-    });
+    if(Array.isArray(data)){
+        data.forEach(function (arrayItem) {
+            sum += arrayItem.Quantity;
+        });
+    }
+    else{
+        if(data.options && data.options.data && data.options.data.data){
+            data.options.data.data.forEach(function (arrayItem) {
+                sum += arrayItem.Quantity;
+            });
+        }
+        
+    }
     return sum;
 };
 
@@ -30,7 +50,7 @@ var sumOrder = function (data) {
         var prodArray = JSON.parse(window.sessionStorage.getItem("shopping_cart"));
         if(!prodArray) prodArray = { data: [] };
         prodArray.data.forEach(el => {
-            el.max_price = numberWithCommas(el.max_price);
+            el.max_price = numberWithCommas(el.max_price);           
         });
         var DataSource = new kendo.data.DataSource({
             // transport: {
@@ -66,8 +86,8 @@ var sumOrder = function (data) {
         });
 
 
-        $("#subtotal-store").text(subTotal(StaticDataSource));
-        $("#sum-order-store").text(sumOrder(StaticDataSource));
+        $("#subtotal-store").text("Rp." + numberWithCommas(subTotal(DataSource)));
+        $("#sum-order-store").text(sumOrder(DataSource));
 
         // let request_schema = {
         //     model: {
@@ -138,18 +158,18 @@ var sumOrder = function (data) {
             columns: request_columns
         });
 
-        $("#subtotal-request").text(subTotal(StaticDataSource));
+        $("#subtotal-request").text("Rp. " + numberWithCommas(subTotal(StaticDataSource)));
         $("#sum-order-request").text(sumOrder(StaticDataSource));
 
         var totalPrice = function (subtotal_store, subtotal_request) {
             return subtotal_store + subtotal_request;
         };
-        $("#totalPrice").text(totalPrice(subTotal(StaticDataSource), subTotal(StaticDataSource)));
+        $("#totalPrice").text("Rp. " + numberWithCommas(totalPrice(subTotal(DataSource), subTotal(StaticDataSource))));
         
         var totalUnit = function (sum_unit_store, sum_unit_request) {
             return sum_unit_store + sum_unit_request;
         };
-        $("#totalUnit").text(totalUnit(sumOrder(StaticDataSource), sumOrder(StaticDataSource)));
+        $("#totalUnit").text(totalUnit(sumOrder(DataSource), sumOrder(StaticDataSource)));
 
     });
 })();
