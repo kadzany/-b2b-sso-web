@@ -7,7 +7,7 @@ function checkout() {
         // commented, later must retrieve from the shopping cart
         // var serviceBaseUrl = "https://apibisnis.blanja.com/api/v1/catalog/categories/40/products?limit=5&offset=1&sort=-max_price";
         var prodArray = JSON.parse(window.sessionStorage.getItem("shopping_cart"));
-        if(!prodArray) prodArray = { data: [] };        
+        if (!prodArray) prodArray = { data: [] };
         var DataSource = new kendo.data.DataSource({
             // transport: {
             //     read: {
@@ -27,16 +27,16 @@ function checkout() {
 
         var CrudSchema = {
             model: {
-                ProductName : "",
+                ProductName: "",
                 UnitPrice: "",
                 Quantity: 0,
                 Remark: ""
             }
         };
 
-        $(".ShowNote").click(function(e){
+        $(".ShowNote").click(function (e) {
             e.preventDefault();
-        
+
             $("#NoteTemplate").kendoWindow({
                 width: "600px",
                 title: "Tambahkan Catatan.",
@@ -115,7 +115,15 @@ function checkout() {
                 { field: "Quantity", title: "Quantity", width: "120px" },
                 { field: "Remark", width: "120px" },
                 { command: ["edit", "destroy"], title: "&nbsp;", width: "250px" }],
-            editable: "inline"
+            editable: "inline",
+            save: function (e) {
+                var procurementArray = JSON.parse(window.sessionStorage.getItem("shopping_cart_procurement"));
+                if(!procurementArray) procurementArray = [];
+                if(!e.model.id){
+                    procurementArray.push(e.model);
+                }                
+                window.sessionStorage.setItem("shopping_cart_procurement", JSON.stringify(procurementArray));
+            }
         });
 
         $(".numerictextbox").kendoNumericTextBox({

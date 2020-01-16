@@ -58,6 +58,12 @@ function lihatCart(){
                 $('#popUpName').html(res.data.name);
                 $('#popUpPrice').html("Rp. " + numberWithCommas(res.data.max_price));
                 $('#popUpImg').attr("src", res.data.images[0].url);
+
+                // set the array in the sessionStorage
+                var prodArray = JSON.parse(window.sessionStorage.getItem("shopping_cart"));
+                if(!prodArray) prodArray = {data: []};
+                prodArray.data.push(res.data);
+                window.sessionStorage.setItem("shopping_cart", JSON.stringify(prodArray));
             }
         });
     });
