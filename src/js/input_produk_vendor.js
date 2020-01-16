@@ -113,7 +113,7 @@ function lihatListProduct() {
             dataTextField: "ProductName",
             dataValueField: "ProductID",
             columns: [
-                { field: "ProductName", title: "Kategori" },
+                { field: "ProductName", title: "Brand" },
                 { field: "ProductID", title: "ID" }
             ],
             dataSource: dataSource,
