@@ -6,6 +6,7 @@
 
   if(userRole == "admin"){
       $("#vendor").show();
+      $("#register_vendor").hide();
       $("#katalog").show();
       $("#purchasing").show();
       $("#shopping_cart").show();
