@@ -17,6 +17,7 @@
       $("#kontrak").show();
       $("#vendor").show();
       $("#katalog").show();
+      $("#register_alert").show();
   }
   else if(userRole == "customer"){
       $("#katalog").show();
