@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  @@include('./partials/styles.html')
+  <link href="/css/register_vendor.css" rel="stylesheet" />
+  <title>SSO eProcurement</title>
+</head>
+
+<body>
+    <div class="ui container">
+    @@include('./partials/header.html')
+    <div class="ui grid">
+        <div class="three wide column">
+            @@include('./partials/menu.html')
+        </div>
+        <div class="thirteen wide column">
+            <!-- Page content -->
+            <div id="app">
+                <h1> Form Register Vendor</h1>
+                <div class="form-container">
+                    <form id="kontrakForm" style="margin-bottom: 2%;">
+                        <ul id="fieldlist">
+                            <li>
+                                <label for="vendorname" class="required">Nama Perusahaan</label>
+                                <p id="vendorname">Nama Perusahan</p>
+                            </li>
+                            <li>
+                                <label for="type" class="required">Tipe Penyalur</label>
+                                <p id="type">Tipe Penyalur</p>
+                            </li>
+                            <li>
+                                <div class="multiple-fields">
+                                    <div class="first-field">
+                                        <label for="phone_number_1" class="required">Nomor Handphone 1</label>
+                                        <p id="phone_number_1">Nomor Handphone 1</p>
+                                    </div>
+                                    <div>
+                                        <label for="phone_number_2" class="required">Nomor Handphone 2</label>
+                                        <p id="phone_number_2">Nomor Handphone 2</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="bidang_usaha" class="required">Bidang Usaha</label>
+                                <p id="bidang_usaha">Bidang Usaha</p>
+                            </li>
+                            <li>
+                                <div class="multiple-fields">
+                                    <div class="first-field">
+                                        <label for="email_1" class="required">Email 1</label>
+                                        <p id="email_1">Email 1</p>
+                                    </div>
+                                    <div>
+                                        <label for="email_2" class="required">Email 2</label>
+                                        <p id="email_2">Email_2</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="address_1" >Alamat Perusahaan 1</label>
+                                <textarea type="text" rows="3" id="address_1" name="address_1" class="k-textbox" placeholder="Alamat Perusahaan" readonly></textarea>
+                            </li>
+                            <li>
+                                <div class="multiple-fields">
+                                    <div class="first-field">
+                                        <label for="kelurahan">Kelurahan</label>
+                                        <select name="kelurahan" id="kelurahan" required data-required-msg="Pilih kelurahan" >
+                                            <option>Sukarasa</option>
+                                            <option>Cibeureum</option>
+                                        </select>
+                                        <span class="k-invalid-msg" data-for="kelurahan"></span>
+                                    </div>
+                                    <div class="first-field">
+                                        <label for="kecamatan_1">Kecamatan</label>
+                                        <select name="kecamatan_1" id="kecamatan_1" required data-required-msg="Pilih kelurahan" >
+                                            <option>Kecamatan 1</option>
+                                            <option>Kecamatan 2</option>
+                                        </select>
+                                        <span class="k-invalid-msg" data-for="kecamatan_1"></span>
+                                    </div>
+                                    <div>
+                                        <label for="kabupaten_1">Kabupaten</label>
+                                        <select name="kabupaten_1" id="kabupaten_1" required data-required-msg="Pilih kabupaten_1" >
+                                            <option>Kabupaten1</option>
+                                            <option>Kabupaten2</option>
+                                        </select>
+                                        <span class="k-invalid-msg" data-for="kabupaten_1"></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="address_2" >Alamat Perusahaan 2</label>
+                                <textarea type="text" rows="3" id="address_2" name="address_2" class="k-textbox" placeholder="Alamat Perusahaan 2"></textarea>
+                            </li>
+                            <li>
+                                <div class="multiple-fields">
+                                    <div class="first-field">
+                                        <label for="kelurahan_2">Kelurahan</label>
+                                        <select name="kelurahan_2" id="kelurahan_2" required data-required-msg="Pilih kelurahan" >
+                                            <option>Sukarasa</option>
+                                            <option>Cibeureum</option>
+                                        </select>
+                                        <span class="k-invalid-msg" data-for="kelurahan_2"></span>
+                                    </div>
+                                    <div class="first-field">
+                                        <label for="kecamatan_2">Kecamatan</label>
+                                        <select name="kecamatan_2" id="kecamatan_2" required data-required-msg="Pilih kelurahan" >
+                                            <option>Kecamatan 1</option>
+                                            <option>Kecamatan 2</option>
+                                        </select>
+                                        <span class="k-invalid-msg" data-for="kecamatan_2"></span>
+                                    </div>
+                                    <div>
+                                        <label for="kabupaten_2">Kabupaten</label>
+                                        <select name="kabupaten_2" id="kabupaten_2" required data-required-msg="Pilih kabupaten_2" >
+                                            <option>Kabupaten1</option>
+                                            <option>Kabupaten2</option>
+                                        </select>
+                                        <span class="k-invalid-msg" data-for="kabupaten_2"></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="files">Dokumen Legalitas</label>
+                                <input name="files" id="files" type="file" aria-label="files" />
+                            </li>
+                            <li class="confirm">
+                                <button class="k-button k-primary" type="submit" style="float: right" onclick="lihatListProduct()">Simpan</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        </div>
+        </div>
+    <!-- Scripts -->
+    @@include('./partials/scripts.html')
+    <script src="js/input_produk_vendor.js"></script>
+    <script>
+        $(document).ready(function(){
+            var data = [
+                { text: "Item1", value: "1" },
+                { text: "Item2", value: "2" },
+                { text: "Item3", value: "3" }
+            ];
+
+            $("#type").kendoDropDownList({
+                    filter: "startswith",
+                    dataTextField: "text",
+                    dataSource:data,
+                    dataValueField: "value"
+                });
+            $("#bidang_usaha").kendoDropDownList({
+                filter: "startswith",
+                dataTextField: "text",
+                dataSource:data,
+                dataValueField: "value"
+            });
+        })
+    </script>
+  </div>
+
+
+</body>
+
+</html>
