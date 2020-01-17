@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  @@include('./partials/styles.html')
+  <link href="/css/register_vendor.css" rel="stylesheet" />
+  <title>SSO eProcurement</title>
+</head>
+
+<body>
+    <div class="ui container">
+    @@include('./partials/header.html')
+    <div class="ui grid">
+        <div class="three wide column">
+            @@include('./partials/menu.html')
+        </div>
+        <div class="thirteen wide column">
+            <!-- Page content -->
+            <div id="app">
+                <h1> Form Register Vendor</h1>
+                <div class="form-container">
+                    <form id="kontrakForm" style="margin-bottom: 2%;">
+                        <ul id="fieldlist">
+                            <li>
+                                <label for="vendorname" class="required">Nama Perusahaan</label>
+                                <input style="width: 100%;" type="text" id="vendorname" name="vendorname" class="k-textbox" placeholder="Nama Perusahan" required validationMessage="Enter {0}" />
+                            </li>
+                            <li>
+                                <label for="type" class="required">Tipe Penyalur</label>
+                                <input id="type" class="k-textbox"  style="width:300px;" />
+                            </li>
+                            <li>
+                                <div class="multiple-fields">
+                                    <div class="first-field">
+                                        <label for="phone_number_1" class="required">Nomor Handphone 1</label>
+                                        <input type="text" id="phone_number_1" name="phone_number_1" class="k-textbox" pattern="\d{16}" placeholder="Nomor handphone 1" required validationMessage="Enter {0}" />
+                                    </div>
+                                    <div>
+                                        <label for="phone_number_2" class="required">Nomor Handphone 2</label>
+                                        <input type="text" id="phone_number_2" name="phone_number_2" class="k-textbox" pattern="\d{16}" placeholder="Nomor handphone 2" required validationMessage="Enter {0}" />
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="bidang_usaha" class="required">Bidang Usaha</label>
+                                <input id="bidang_usaha"  class="k-textbox" style="width:300px;"/>
+                            </li>
+                            <li>
+                                <div class="multiple-fields">
+                                    <div class="first-field">
+                                        <label for="email_1" class="required">Email 1</label>
+                                        <input type="email" id="email_1" name="email_1" class="k-textbox" placeholder="e.g. myname@example.net"  required data-email-msg="Email format is not valid"  style="width: 220px;"/>
+                                    </div>
+                                    <div>
+                                        <label for="email_2" class="required">Email 2</label>
+                                        <input type="email" id="email_2" name="email_2" class="k-textbox" placeholder="e.g. myname@example.net"  required data-email-msg="Email format is not valid"  style="width: 220px;"/>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="address_1" >Alamat Perusahaan 1</label>
+                                <textarea type="text" rows="3" id="address_1" name="address_1" class="k-textbox" placeholder="Alamat Perusahaan"></textarea>
+                            </li>
+                            <li>
+                                <div class="multiple-fields">
+                                    <div class="first-field">
+                                        <label for="kelurahan">Kelurahan</label>
+                                        <select name="kelurahan" id="kelurahan" required data-required-msg="Pilih kelurahan" >
+                                            <option>Sukarasa</option>
+                                            <option>Cibeureum</option>
+                                        </select>
+                                        <span class="k-invalid-msg" data-for="kelurahan"></span>
+                                    </div>
+                                    <div class="first-field">
+                                        <label for="kecamatan_1">Kecamatan</label>
+                                        <select name="kecamatan_1" id="kecamatan_1" required data-required-msg="Pilih kelurahan" >
+                                            <option>Kecamatan 1</option>
+                                            <option>Kecamatan 2</option>
+                                        </select>
+                                        <span class="k-invalid-msg" data-for="kecamatan_1"></span>
+                                    </div>
+                                    <div>
+                                        <label for="kabupaten_1">Kabupaten</label>
+                                        <select name="kabupaten_1" id="kabupaten_1" required data-required-msg="Pilih kabupaten_1" >
+                                            <option>Kabupaten1</option>
+                                            <option>Kabupaten2</option>
+                                        </select>
+                                        <span class="k-invalid-msg" data-for="kabupaten_1"></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="address_2" >Alamat Perusahaan 2</label>
+                                <textarea type="text" rows="3" id="address_2" name="address_2" class="k-textbox" placeholder="Alamat Perusahaan 2"></textarea>
+                            </li>
+                            <li>
+                                <div class="multiple-fields">
+                                    <div class="first-field">
+                                        <label for="kelurahan_2">Kelurahan</label>
+                                        <select name="kelurahan_2" id="kelurahan_2" required data-required-msg="Pilih kelurahan" >
+                                            <option>Sukarasa</option>
+                                            <option>Cibeureum</option>
+                                        </select>
+                                        <span class="k-invalid-msg" data-for="kelurahan_2"></span>
+                                    </div>
+                                    <div class="first-field">
+                                        <label for="kecamatan_2">Kecamatan</label>
+                                        <select name="kecamatan_2" id="kecamatan_2" required data-required-msg="Pilih kelurahan" >
+                                            <option>Kecamatan 1</option>
+                                            <option>Kecamatan 2</option>
+                                        </select>
+                                        <span class="k-invalid-msg" data-for="kecamatan_2"></span>
+                                    </div>
+                                    <div>
+                                        <label for="kabupaten_2">Kabupaten</label>
+                                        <select name="kabupaten_2" id="kabupaten_2" required data-required-msg="Pilih kabupaten_2" >
+                                            <option>Kabupaten1</option>
+                                            <option>Kabupaten2</option>
+                                        </select>
+                                        <span class="k-invalid-msg" data-for="kabupaten_2"></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="files">Dokumen Legalitas</label>
+                                <input name="files" id="files" type="file" aria-label="files" />
+                            </li>
+                            <li class="confirm">
+                                <button class="k-button k-primary" type="submit" style="float: right" onclick="lihatListProduct()">Simpan</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        </div>
+        </div>
+    <!-- Scripts -->
+    @@include('./partials/scripts.html')
+    <script src="js/input_produk_vendor.js"></script>
+    <script id="noDataTemplate" type="text/x-kendo-tmpl">
+        <div>
+            No data found. Do you want to add new item - '#: instance.filterInput.val() #' ?
+        </div>
+        <br />
+        <button class="k-button" onclick="addNew('#: instance.element[0].id #', '#: instance.filterInput.val() #')">Add new item</button>
+    </script>
+    <script>
+        function addNew(widgetId, value) {
+            var widget = $("#" + widgetId).getKendoDropDownList();
+            var dataSource = widget.dataSource;
+
+            if (confirm("Are you sure?")) {
+                dataSource.add({
+                    text: value,
+                    value: dataSource.length +1
+                });
+
+                dataSource.one("sync", function() {
+                    widget.select(dataSource.view().length - 1);
+                });
+
+                dataSource.sync();
+            }
+        };
+
+        $(document).ready(function(){
+            var data = [
+                { text: "Item1", value: "1" },
+                { text: "Item2", value: "2" },
+                { text: "Item3", value: "3" }
+            ];
+
+            $("#type").kendoDropDownList({
+                    filter: "startswith",
+                    dataTextField: "text",
+                    dataSource:data,
+                    dataValueField: "value",
+                    noDataTemplate: $("#noDataTemplate").html()
+                });
+            $("#bidang_usaha").kendoDropDownList({
+                filter: "startswith",
+                dataTextField: "text",
+                dataSource:data,
+                dataValueField: "value",
+                noDataTemplate: $("#noDataTemplate").html()
+            });
+        })
+    </script>
+  </div>
+
+
+</body>
+
+</html>
