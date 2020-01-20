@@ -4,7 +4,7 @@ $("#reviseBtn").on("click",function(){
         window.location = "vendor_on_progress_list.html";
     }), function() {
         kendo.alert("Cancel revise");
-    }
+    };
 });
 
 $("#verifyBtn").on("click",function(){
@@ -13,7 +13,7 @@ $("#verifyBtn").on("click",function(){
         window.location = "vendor_on_progress_list.html";
     }), function() {
         kendo.alert("Cancel revise");
-    }
+    };
 });
 
 $(document).ready(function() {
