@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   @@include('./partials/styles.html')
-  <link href="/css/register_vendor.css" rel="stylesheet" />
+  <link href="/css/vendor_detail_sso.css" rel="stylesheet" />
   <title>SSO eProcurement</title>
 </head>
 
@@ -25,8 +25,8 @@
                     <form id="kontrakForm" style="margin-bottom: 2%;">
                         <ul id="fieldlist">
                             <li>
-                                <label for="vendorname" class="required">Nama Perusahaan</label>
-                                <p id="vendorname">Nama Perusahan</p>
+                                <label for="vendorname" class="required">Company Name</label>
+                                <p id="vendorname">Company Name</p>
                             </li>
                             <li>
                                 <label for="type" class="required">Tipe Penyalur</label>
@@ -61,8 +61,8 @@
                                 </div>
                             </li>
                             <li>
-                                <label for="address_1" >Alamat Perusahaan 1</label>
-                                <p id="address_1">Alamat Perusahaan 1</p>
+                                <label for="address_1" >Company Address 1</label>
+                                <p id="address_1">Company Address 1</p>
                             </li>
                             <li>
                                 <div class="multiple-fields">
@@ -81,8 +81,8 @@
                                 </div>
                             </li>
                             <li>
-                                <label for="address_2" >Alamat Perusahaan 2</label>
-                                <p id="address_1">Alamat Perusahaan 2</p>
+                                <label for="address_2" >Company Address 2</label>
+                                <p id="address_1">Company Address 2</p>
                             </li>
                             <li>
                                 <div class="multiple-fields">
@@ -100,25 +100,20 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <label for="files">Dokumen Legalitas</label>
-                                <ul id="treeview">
-                                    <li data-expanded="true">
-                                        <span class="k-sprite folder"></span>
-                                        Dokumen Legalitas
-                                        <ul>
-                                            <li><span class="k-sprite image"></span>logo.png</li>
-                                            <li><span class="k-sprite pdf"></span>prices.pdf</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-
-                            </li>
-                            <li class="confirm">
-                                <button class="k-button k-primary" type="submit" style="float: right" onclick="lihatListProduct()">Simpan</button>
-                            </li>
                         </ul>
                     </form>
+                    <div>
+                        <label>Legal Documents</label>
+                        <div id="treeview"></div>
+                    </div>
+                    <div>
+                        <label style="margin-top: 1%;">Notes</label>
+                        <textarea class="k-textbox" type="text" rows="3"></textarea>
+                    </div>
+                    <div style="margin-top:1%; float: right">
+                        <button id="reviseBtn" class="k-button">Revise</button>
+                        <button id="verifyBtn" class="k-button">Verify</button>
+                    </div>
                 </div>
             </div>
 
@@ -127,24 +122,8 @@
         </div>
     <!-- Scripts -->
     @@include('./partials/scripts.html')
-    <script src="js/register_vendor.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#treeview").kendoTreeView();
-        });
-    </script>
+    <script src="js/vendor_detail_sso.js"></script>
   </div>
-  <style>
-    #treeview .k-sprite {
-        background-image: url("https://demos.telerik.com/kendo-ui/content/web/treeview/coloricons-sprite.png");
-    }
-
-    .rootfolder { background-position: 0 0; }
-    .folder { background-position: 0 -16px; }
-    .pdf { background-position: 0 -32px; }
-    .html { background-position: 0 -48px; }
-    .image { background-position: 0 -64px; }
-</style>
 
 </body>
 
