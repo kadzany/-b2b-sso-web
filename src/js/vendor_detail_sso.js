@@ -10,7 +10,7 @@ $("#reviseBtn").on("click",function(){
 $("#verifyBtn").on("click",function(){
     kendo.confirm("Are you sure that you want to verify it?").then(function(){
         kendo.alert("You chose to verify it");
-        window.location = "vendor_on_progress_list.html";
+        window.location = "suratpenetapan_sso.html";
     }), function() {
         kendo.alert("Cancel revise");
     };
