@@ -1,0 +1,30 @@
+.multifield {
+    margin-top: 2%;
+    display: flex; 
+    justify-content: space-between;
+}
+
+.pdf-page {
+    position: relative;
+    margin: 0 auto;
+    padding: .4in .3in;
+    color: #333;
+    background-color: #fff;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,.3);
+    box-sizing: border-box;
+    padding-bottom: .8in;
+}
+
+label{
+    margin-right: 1em;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+#submitBtn {
+    float: right;
+    margin-top: 2%;
+}
