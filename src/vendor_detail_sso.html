@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  @@include('./partials/styles.html')
+  <link href="/css/vendor_detail_sso.css" rel="stylesheet" />
+  <title>SSO eProcurement</title>
+</head>
+
+<body>
+    <div class="ui container">
+    @@include('./partials/header.html')
+    <div class="ui grid">
+        <div class="three wide column">
+            @@include('./partials/menu.html')
+        </div>
+        <div class="thirteen wide column">
+            <!-- Page content -->
+            <div id="app">
+                <h1> Form Register Vendor</h1>
+                <div class="form-container">
+                    <form id="kontrakForm" style="margin-bottom: 2%;">
+                        <ul id="fieldlist">
+                            <li>
+                                <label for="vendorname" class="required">Company Name</label>
+                                <p id="vendorname">Company Name</p>
+                            </li>
+                            <li>
+                                <label for="type" class="required">Tipe Penyalur</label>
+                                <p id="type">Tipe Penyalur</p>
+                            </li>
+                            <li>
+                                <div class="multiple-fields">
+                                    <div class="first-field">
+                                        <label for="phone_number_1" class="required">Nomor Handphone 1</label>
+                                        <p id="phone_number_1">Nomor Handphone 1</p>
+                                    </div>
+                                    <div>
+                                        <label for="phone_number_2" class="required">Nomor Handphone 2</label>
+                                        <p id="phone_number_2">Nomor Handphone 2</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="bidang_usaha" class="required">Bidang Usaha</label>
+                                <p id="bidang_usaha">Bidang Usaha</p>
+                            </li>
+                            <li>
+                                <div class="multiple-fields">
+                                    <div class="first-field">
+                                        <label for="email_1" class="required">Email 1</label>
+                                        <p id="email_1">Email 1</p>
+                                    </div>
+                                    <div>
+                                        <label for="email_2" class="required">Email 2</label>
+                                        <p id="email_2">Email_2</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="address_1" >Company Address 1</label>
+                                <p id="address_1">Company Address 1</p>
+                            </li>
+                            <li>
+                                <div class="multiple-fields">
+                                    <div class="first-field">
+                                        <label for="kelurahan_1">Kelurahan</label>
+                                        <p id="kelurahan_1">Kelurahan 1</p>
+                                    </div>
+                                    <div class="first-field">
+                                        <label for="kecamatan_1">Kecamatan</label>
+                                        <p id="kecamatan_1">Kecamatan 1</p>
+                                    </div>
+                                    <div>
+                                        <label for="kabupaten_1">Kabupaten</label>
+                                        <p id="kabupaten_1">Kabupaten 1</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="address_2" >Company Address 2</label>
+                                <p id="address_1">Company Address 2</p>
+                            </li>
+                            <li>
+                                <div class="multiple-fields">
+                                    <div class="first-field">
+                                        <label for="kelurahan_2">Kelurahan</label>
+                                        <p id="kelurahan_2">Kelurahan 2</p>
+                                    </div>
+                                    <div class="first-field">
+                                        <label for="kecamatan_2">Kecamatan</label>
+                                        <p id="kecamatan_2">Kecamatan 2</p>
+                                    </div>
+                                    <div>
+                                        <label for="kabupaten_2">Kabupaten</label>
+                                        <p id="kabupaten_2">Kabupaten 2</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                    <div>
+                        <label>Legal Documents</label>
+                        <div id="treeview"></div>
+                    </div>
+                    <div>
+                        <label style="margin-top: 1%;">Notes</label>
+                        <textarea class="k-textbox" type="text" rows="3"></textarea>
+                    </div>
+                    <div style="margin-top:1%; float: right">
+                        <button id="reviseBtn" class="k-button">Revise</button>
+                        <button id="verifyBtn" class="k-button">Verify</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+        </div>
+    <!-- Scripts -->
+    @@include('./partials/scripts.html')
+    <script src="js/vendor_detail_sso.js"></script>
+  </div>
+
+</body>
+
+</html>

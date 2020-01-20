@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @@include('./partials/styles.html')
+    <link href="/css/suratpenetapan_sso.css" rel="stylesheet" />    
+    <title>SSO eProcurement</title>
+</head>
+<body>
+    <div class="ui container">
+        @@include('./partials/header.html')
+        <div class="ui grid">
+            <div class="three wide column">
+                @@include('./partials/menu.html')
+            </div>
+            <div class="thirteen wide column">
+                <div id="app">                
+                    
+                    <div class="page-container">
+
+                        <div class="pdf-page">
+                            <h1>Surat Penetapan Vendor</h1>
+                            <div class="multifield"">
+                                <div>
+                                    <label>Tanggal Penetapan</label>
+                                    <input id="datetimepicker" title="datetimepicker" />
+                                </div>
+                                <div>
+                                    <label>Nomor Surat</label>
+                                    <input id="nosurat"/>
+                                </div>
+                            </div>
+                            <div style="margin-top: 2%;">
+                                <h3>Upload surat penetapan</h3>
+                                <input name="files" id="files" type="file" aria-label="files" />
+                            </div>
+                            <button id=submitBtn class="k-button k-primary" onclick="submit()">Submit</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Script -->            
+        @@include('./partials/scripts.html')
+        <script src="js/suratpenetapan_sso.js"></script>
+    </div>
+    
+</body>
+</html>
