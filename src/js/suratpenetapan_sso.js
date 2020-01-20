@@ -10,7 +10,5 @@ $(document).ready(function () {
         dateInput: true
     });
 
-    $("#files").kendoUpload({
-        dropZone: ".customDropZone"
-    });
+    $("#files").kendoUpload();
 });
