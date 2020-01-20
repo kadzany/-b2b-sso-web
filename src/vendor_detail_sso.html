@@ -62,71 +62,57 @@
                             </li>
                             <li>
                                 <label for="address_1" >Alamat Perusahaan 1</label>
-                                <textarea type="text" rows="3" id="address_1" name="address_1" class="k-textbox" placeholder="Alamat Perusahaan" readonly></textarea>
+                                <p id="address_1">Alamat Perusahaan 1</p>
                             </li>
                             <li>
                                 <div class="multiple-fields">
                                     <div class="first-field">
-                                        <label for="kelurahan">Kelurahan</label>
-                                        <select name="kelurahan" id="kelurahan" required data-required-msg="Pilih kelurahan" >
-                                            <option>Sukarasa</option>
-                                            <option>Cibeureum</option>
-                                        </select>
-                                        <span class="k-invalid-msg" data-for="kelurahan"></span>
+                                        <label for="kelurahan_1">Kelurahan</label>
+                                        <p id="kelurahan_1">Kelurahan 1</p>
                                     </div>
                                     <div class="first-field">
                                         <label for="kecamatan_1">Kecamatan</label>
-                                        <select name="kecamatan_1" id="kecamatan_1" required data-required-msg="Pilih kelurahan" >
-                                            <option>Kecamatan 1</option>
-                                            <option>Kecamatan 2</option>
-                                        </select>
-                                        <span class="k-invalid-msg" data-for="kecamatan_1"></span>
+                                        <p id="kecamatan_1">Kecamatan 1</p>
                                     </div>
                                     <div>
                                         <label for="kabupaten_1">Kabupaten</label>
-                                        <select name="kabupaten_1" id="kabupaten_1" required data-required-msg="Pilih kabupaten_1" >
-                                            <option>Kabupaten1</option>
-                                            <option>Kabupaten2</option>
-                                        </select>
-                                        <span class="k-invalid-msg" data-for="kabupaten_1"></span>
+                                        <p id="kabupaten_1">Kabupaten 1</p>
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <label for="address_2" >Alamat Perusahaan 2</label>
-                                <textarea type="text" rows="3" id="address_2" name="address_2" class="k-textbox" placeholder="Alamat Perusahaan 2"></textarea>
+                                <p id="address_1">Alamat Perusahaan 2</p>
                             </li>
                             <li>
                                 <div class="multiple-fields">
                                     <div class="first-field">
                                         <label for="kelurahan_2">Kelurahan</label>
-                                        <select name="kelurahan_2" id="kelurahan_2" required data-required-msg="Pilih kelurahan" >
-                                            <option>Sukarasa</option>
-                                            <option>Cibeureum</option>
-                                        </select>
-                                        <span class="k-invalid-msg" data-for="kelurahan_2"></span>
+                                        <p id="kelurahan_2">Kelurahan 2</p>
                                     </div>
                                     <div class="first-field">
                                         <label for="kecamatan_2">Kecamatan</label>
-                                        <select name="kecamatan_2" id="kecamatan_2" required data-required-msg="Pilih kelurahan" >
-                                            <option>Kecamatan 1</option>
-                                            <option>Kecamatan 2</option>
-                                        </select>
-                                        <span class="k-invalid-msg" data-for="kecamatan_2"></span>
+                                        <p id="kecamatan_2">Kecamatan 2</p>
                                     </div>
                                     <div>
                                         <label for="kabupaten_2">Kabupaten</label>
-                                        <select name="kabupaten_2" id="kabupaten_2" required data-required-msg="Pilih kabupaten_2" >
-                                            <option>Kabupaten1</option>
-                                            <option>Kabupaten2</option>
-                                        </select>
-                                        <span class="k-invalid-msg" data-for="kabupaten_2"></span>
+                                        <p id="kabupaten_2">Kabupaten 2</p>
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <label for="files">Dokumen Legalitas</label>
-                                <input name="files" id="files" type="file" aria-label="files" />
+                                <ul id="treeview">
+                                    <li data-expanded="true">
+                                        <span class="k-sprite folder"></span>
+                                        Dokumen Legalitas
+                                        <ul>
+                                            <li><span class="k-sprite image"></span>logo.png</li>
+                                            <li><span class="k-sprite pdf"></span>prices.pdf</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
                             </li>
                             <li class="confirm">
                                 <button class="k-button k-primary" type="submit" style="float: right" onclick="lihatListProduct()">Simpan</button>
@@ -141,31 +127,24 @@
         </div>
     <!-- Scripts -->
     @@include('./partials/scripts.html')
-    <script src="js/input_produk_vendor.js"></script>
+    <script src="js/register_vendor.js"></script>
     <script>
-        $(document).ready(function(){
-            var data = [
-                { text: "Item1", value: "1" },
-                { text: "Item2", value: "2" },
-                { text: "Item3", value: "3" }
-            ];
-
-            $("#type").kendoDropDownList({
-                    filter: "startswith",
-                    dataTextField: "text",
-                    dataSource:data,
-                    dataValueField: "value"
-                });
-            $("#bidang_usaha").kendoDropDownList({
-                filter: "startswith",
-                dataTextField: "text",
-                dataSource:data,
-                dataValueField: "value"
-            });
-        })
+        $(document).ready(function() {
+            $("#treeview").kendoTreeView();
+        });
     </script>
   </div>
+  <style>
+    #treeview .k-sprite {
+        background-image: url("https://demos.telerik.com/kendo-ui/content/web/treeview/coloricons-sprite.png");
+    }
 
+    .rootfolder { background-position: 0 0; }
+    .folder { background-position: 0 -16px; }
+    .pdf { background-position: 0 -32px; }
+    .html { background-position: 0 -48px; }
+    .image { background-position: 0 -64px; }
+</style>
 
 </body>
 
