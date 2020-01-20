@@ -15,7 +15,7 @@ function showStatus(data){
 }
 
 function lihatKatalog() {
-    window.location = "katalog_produk.html";
+    window.location = "pr_detail_sso.html";
 }
 
 $(document).ready(function(){
