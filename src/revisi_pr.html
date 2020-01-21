@@ -9,6 +9,7 @@
   @@include('./partials/styles.html')
   <link rel="stylesheet" type="text/css" href="css/jquery-comments.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="/css/pr_detail_sso.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -28,17 +29,25 @@
             <div class="k-card-body">
               <div class="container">
                 <div>
-                  <h3>Requester: </h3>
-                  <label id="requester">Requester</label>
-                  <h3>Approver: </h3>
-                  <label id="approver">Approver</label>
-                </div>
-                <div>
-                  <h3>Requested Date: </h3>
-                  <label id="req-date">Requested Date</label>
-                  <h3>Fullfillment Date: </h3>
-                  <label id="fullfill-date">Fullfillment Date</label>
-                </div>
+                  <div class="up-field">
+                      <h4>Requester: </h4>
+                      <label id="requester">Requester</label>
+                  </div>
+                  <div>
+                      <h4>Approver: </h4>
+                      <label id="approver">Approver</label>
+                  </div>
+              </div>
+              <div>
+                  <div class="up-field">
+                      <h4>Requested Date: </h4>
+                      <label id="req-date">Requested Date</label>
+                  </div>
+                  <div>
+                      <h4>Fullfillment Date: </h4>
+                      <label id="fullfill-date">Fullfillment Date</label>
+                  </div>
+              </div>
               </div>
               <!--showing table of purchase order-->
               <div class="po-box">
