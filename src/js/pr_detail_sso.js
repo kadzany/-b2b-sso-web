@@ -2,7 +2,12 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
+function saveOfficer() {
+    window.location = "pr_list_sso.html";
+}
+
 $(document).ready(function () {
+
     let po_data = [
         {
             poNumber: 'PO1', createdDate: '01/01/2020', customer: 'Telkom', status: 'Approved', approver: "Admin SSO", fullfillmentDate: '03/01/2020',
@@ -21,7 +26,7 @@ $(document).ready(function () {
         }
     ];
 
-    let request_schema = {
+    let request_schema = {  
         model: {
             num: { type: "number" },
             productName: { type: "string" },
@@ -100,8 +105,35 @@ $(document).ready(function () {
     });
 
     $("#requester").text(po_data[0].customer);
-    $("#approver").text(po_data[0].approver);
     $("#req-date").text(po_data[0].createdDate);
     $("#fullfill-date").text(po_data[0].fullfillmentDate);
 
+    $("#officer").kendoComboBox({
+        dataTextField: "officer",
+        dataSource: [
+            { officer: "Dina"},
+            { officer: "Indah"},
+            { officer: "Risa"},
+            { officer: "Andi"}
+        ],
+        filter: "contains",
+        suggest: true,
+        index: 3,
+        select: function(e){
+            approver = e.item.text();
+            $("#approver").text(approver);
+        }
+    });
+
+    var dialog = $("#officerDialog").kendoDialog({
+        width: "500px",
+        title: "Diaposisi Officer ",
+        visible: false
+    }).data("kendoDialog");
+
+
+
+    $("#officerBtn").click(function () {
+        dialog.open();
+    });
 });
