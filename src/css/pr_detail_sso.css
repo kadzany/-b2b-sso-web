@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding:0.5%;
+}
+
+.po-box{
+    margin-top: 2%;
+}
+
+.app {
+    margin-bottom: 1%;
+}
+
+.officerDialog{
+    margin:1%;
+    text-align: center;
+}

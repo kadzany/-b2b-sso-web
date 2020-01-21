@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   @@include('./partials/styles.html')
-  <link href="/css/pr_detail.css" rel="stylesheet" />
+  <link href="/css/pr_detail_sso.css" rel="stylesheet" />
   <title>SSO eProcurement</title>
 </head>
 
@@ -24,7 +24,10 @@
                 <div class="k-card-header">
                 <div style="display:flex; justify-content: space-between;">
                     <h2 class="k-card-title">Detail Purchase Requisition</h2>
-                    <button class="k-button k-primary">Pilih officer</button>
+                    <button id="officerBtn" class="k-button k-primary">Pilih officer</button>
+                    <div id="officerDialog">
+                        <input id="officer" placeholder="Pilih officer" style="width: 100%;"/>
+                    </div>
                 </div>
                 </div>
                 <div class="k-card-body">
@@ -52,8 +55,8 @@
                 </div>
                 </div>
             </div>
-            <div style="margin: 20px 0 80px 0;">
-                <a id="OpenBtn" class="action-link primary" href="#">Submit</a>
+            <div class="k-card-actions">
+                <button class="k-button k-primary" style="float: right; margin-right: 0;" onclick="submitOfficer()">Submit</button>
             </div>
             </div>
         </div>
@@ -62,11 +65,8 @@
 
     <!-- Scripts -->
     @@include('./partials/scripts.html')
-    <script src="js/pr_detail.js"></script>
+    <script src="js/pr_detail_sso.js"></script>
     
-    <div id="editorDialog">
-        <textarea id="editor"></textarea>
-    </div>
 </body>
 
 </html>

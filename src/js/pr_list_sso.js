@@ -14,7 +14,7 @@ function showStatus(data){
     }
 }
 
-function lihatKatalog() {
+function showDetails() {
     window.location = "pr_detail_sso.html";
 }
 
@@ -86,11 +86,6 @@ $(document).ready(function(){
             width: "250px"
         }
     ];
-
-    function showDetails(e) {
-        e.preventDefault();
-        window.location.replace("input_produk_vendor.html");
-    }
 
     $("#grid-products").kendoGrid({
         dataSource: {
