@@ -20,44 +20,50 @@
         <div class="thirteen wide column">
             <!-- Page content -->
             <div id="app">
-            <div class="k-card">
-                <div class="k-card-header">
-                <div style="display:flex; justify-content: space-between;">
-                    <h2 class="k-card-title">Detail Purchase Requisition</h2>
-                    <button id="officerBtn" class="k-button k-primary">Pilih officer</button>
-                    <div id="officerDialog">
-                        <input id="officer" placeholder="Pilih officer" style="width: 100%;"/>
-                    </div>
-                </div>
-                </div>
-                <div class="k-card-body">
-                <div class="container">
+                <h2>Detail Purchase Requisition</h2>
+                <div class="k-card">
                     <div>
-                    <h4>Requester: </h4>
-                    <label id="requester">Requester</label>
-                    <h4>Approver: </h4>
-                    <label id="approver">Approver</label>
+                        <button id="officerBtn" class="k-button buttons">Pilih officer</button>
+                        <div id="officerDialog">
+                            <input id="officer" placeholder="Pilih officer" style="width: 100%;"/>
+                        </div>
                     </div>
-                    <div>
-                    <h4>Requested Date: </h4>
-                    <label id="req-date">Requested Date</label>
-                    <h4>Fullfillment Date: </h4>
-                    <label id="fullfill-date">Fullfillment Date</label>
+                    <div class="k-card-body">
+
+                        <div class="container">
+                            <div>
+                                <div class="up-field">
+                                    <h4>Requester: </h4>
+                                    <label id="requester">Requester</label>
+                                </div>
+                                <div>
+                                    <h4>Approver: </h4>
+                                    <label id="approver">Approver</label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="up-field">
+                                    <h4>Requested Date: </h4>
+                                    <label id="req-date">Requested Date</label>
+                                </div>
+                                <div>
+                                    <h4>Fullfillment Date: </h4>
+                                    <label id="fullfill-date">Fullfillment Date</label>
+                                </div>
+                            </div>
+                            </div>
+                        <div class="po-box">
+                            <h3>Purchase Requisition by Catalogue</h3>
+                            <div id="grid-store-checkout"></div>
+                        </div>
+                        <div class="po-box">
+                            <h3>Purchase Requisition by Requested</h3>
+                            <div id="grid-request-checkout"></div>
+                        </div>
+                        <button id="saveBtn" class="k-button k-primary" onclick="saveOfficer()">Simpan</button>
                     </div>
+    
                 </div>
-                <div class="po-box">
-                    <h3>Purchase Requisition by Catalogue</h3>
-                    <div id="grid-store-checkout"></div>
-                </div>
-                <div class="po-box">
-                    <h3>Purchase Requisition by Requested</h3>
-                    <div id="grid-request-checkout"></div>
-                </div>
-                </div>
-            </div>
-            <div class="k-card-actions">
-                <button class="k-button k-primary" style="float: right; margin-right: 0;" onclick="submitOfficer()">Submit</button>
-            </div>
             </div>
         </div>
         </div>    

@@ -2,7 +2,7 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-function submitOfficer() {
+function saveOfficer() {
     window.location = "pr_list_sso.html";
 }
 
@@ -105,19 +105,8 @@ $(document).ready(function () {
     });
 
     $("#requester").text(po_data[0].customer);
-    $("#approver").text(po_data[0].approver);
     $("#req-date").text(po_data[0].createdDate);
     $("#fullfill-date").text(po_data[0].fullfillmentDate);
-
-    var dialog = $("#officerDialog").kendoDialog({
-        width: "500px",
-        title: "Diaposisi Officer ",
-        visible: false,
-        actions: [
-            { text: 'Approve', primary: true},
-            { text: 'Cancel' }
-        ]
-    }).data("kendoDialog");
 
     $("#officer").kendoComboBox({
         dataTextField: "officer",
@@ -129,15 +118,22 @@ $(document).ready(function () {
         ],
         filter: "contains",
         suggest: true,
-        index: 3
+        index: 3,
+        select: function(e){
+            approver = e.item.text();
+            $("#approver").text(approver);
+        }
     });
+
+    var dialog = $("#officerDialog").kendoDialog({
+        width: "500px",
+        title: "Diaposisi Officer ",
+        visible: false
+    }).data("kendoDialog");
+
+
 
     $("#officerBtn").click(function () {
         dialog.open();
-    });
-
-    $("#BackBtn").click(function (e) {
-        e.preventDefault();
-        window.location.replace("pr_list.html");
     });
 });

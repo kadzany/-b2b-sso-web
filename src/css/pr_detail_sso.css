@@ -4,6 +4,10 @@
     padding:0.5%;
 }
 
+.up-field{
+    margin-bottom: 1.5em;
+}
+
 .po-box{
     margin-top: 2%;
 }
@@ -15,4 +19,14 @@
 .officerDialog{
     margin:1%;
     text-align: center;
+}
+
+#officerBtn{
+    float: right;
+    margin: 1.5%;
+}
+
+#saveBtn{
+    margin-top: 1.5em;
+    float: right
 }
