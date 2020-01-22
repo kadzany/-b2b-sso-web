@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @@include('./partials/styles.html')
+    <link href="/css/recommendation_katalog_produk.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/coverflow.css"/>
+    <script src="lib/coverflow.js"></script>
+    <title>SSO eProcurement</title>
+</head>
+
+<body>
+    <script>
+    </script>
+    <div class="ui container">
+        @@include('./partials/header.html')
+        <div class="ui grid">
+            <h2 class="red">Katalog Produk</h2>
+            <div id="Showcase"></div>
+            <br/>
+
+            <h2 class="red">Produk Berdasarkan Kategori</h2>
+            <div id="ProductList"></div>
+            <div id="Pager" class="k-pager-wrap"></div>
+        </div>
+        <!-- Scripts -->
+        @@include('./partials/scripts.html')
+        <script src="js/recommendation_katalog_produk.js"></script>
+    </div>
+    <script type="text/x-kendo-template" id="productTemplate">
+        <div class="product">
+            <div class="image">
+                <img src="#:images[0].url#">
+            </div>
+            <div class="extra">
+                <p class="product-name">#:name#</p>               
+                <p class="product-price"><strong>Rp. #:max_price#</strong></p>
+            </div>
+            <div class="footer">
+                <button id="buyProduct" class="k-button k-primary" onClick="beliBarang('#:id#')">Beli Barang</button>
+                <button id="viewProduct" class="k-button" onClick="lihatBarang('#:id#')">Lihat Detail</button>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-kendo-template" id="categoryTemplate">
+        <div class="product">
+            <div class="extra">
+                <a href="#"><p class="product-name">#:name#</p></a>
+            </div>
+        </div>
+    </script>
+
+    <div id="Window" style="display: none">
+        <div>
+            <img id="popUpImg" style="width: 150px; height: 150px; object-fit: contain; float: left; margin-right: 2rem;" />
+            <p id="popUpVendor"></p>
+            <h2 id="popUpName"></h2>
+            <h3 id="popUpPrice"></h3>
+        </div>
+        <div class="footer">
+            <input type="hidden" id="productIdHiddenInput"/>
+            <button id="buyProduct" class="k-button k-primary" onClick="lihatCart()">Lihat Keranjang</button>
+        </div>
+    </div>
+</body>
+
+</html>

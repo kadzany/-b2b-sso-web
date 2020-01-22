@@ -8,7 +8,7 @@ function reviewPr(){
 
 function openWindow(){
 
-    let link = "./katalog_produk.html";
+    let link = "./recommendation_katalog_produk.html";
     let myWindow = $("#window");
 
     if (!myWindow.data("kendoWindow")){
