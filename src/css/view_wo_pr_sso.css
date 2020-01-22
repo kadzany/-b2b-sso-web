@@ -21,7 +21,6 @@
     float: right
 }
 
-.recommendBtn{
-    background-color: #e3211d;
-    color: white;
+.k-alt, .k-pivot-layout > tbody > tr:first-child > td:first-child, .k-resource.k-alt, .k-separator{
+    background-color: white;
 }

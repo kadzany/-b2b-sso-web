@@ -66,7 +66,7 @@ $(document).ready(function () {
         {
             field: "productName",
             title: "Item",
-            template:"<div style='display:grid'>#=productName# <button class='k-button recommendBtn'>Rekomendasikan produk lain</button></div>"
+            template:"<div style='display:grid'>#=productName# <button class='k-button'>Rekomendasikan produk lain</button></div>"
         },
         {
             field: "qty",
@@ -103,6 +103,12 @@ $(document).ready(function () {
         editable: false,
         sortable: false,
         scrollable: true,
+        resizable: true,
+        dataBound: function() {
+            for (var i = 0; i < this.columns.length; i++) {
+              this.autoFitColumn(i);
+            }
+        },
         columns: request_columns
     });
 
@@ -113,7 +119,13 @@ $(document).ready(function () {
         },
         editable: false,
         sortable: false,
+        resizable: true,
         scrollable: true,
+        dataBound: function() {
+            for (var i = 0; i < this.columns.length; i++) {
+              this.autoFitColumn(i);
+            }
+        },
         columns: request_columns
     });
 
