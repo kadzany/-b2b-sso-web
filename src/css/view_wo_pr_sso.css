@@ -20,3 +20,8 @@
     margin-top: 1%;
     float: right
 }
+
+.recommendBtn{
+    background-color: #e3211d;
+    color: white;
+}

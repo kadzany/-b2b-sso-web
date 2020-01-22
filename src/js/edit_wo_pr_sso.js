@@ -66,6 +66,7 @@ $(document).ready(function () {
         {
             field: "productName",
             title: "Item",
+            template:"<div style='display:grid'>#=productName# <button class='k-button recommendBtn'>Rekomendasikan produk lain</button></div>"
         },
         {
             field: "qty",
@@ -90,18 +91,14 @@ $(document).ready(function () {
             template: templateFunction,
             editable: true,
             defaultValue: 1
-        }
+        },
+
     ];
 
     $("#grid-store-checkout").kendoGrid({
         dataSource: {
             data: po_data[0].poFromStore,
             schema: request_schema
-        },
-        dataBound: function() {
-            for (var i = 0; i < this.columns.length; i++) {
-              this.autoFitColumn(i);
-            }
         },
         editable: false,
         sortable: false,
@@ -113,11 +110,6 @@ $(document).ready(function () {
         dataSource: {
             data: po_data[0].poRequest,
             schema: request_schema
-        },
-        dataBound: function() {
-            for (var i = 0; i < this.columns.length; i++) {
-              this.autoFitColumn(i);
-            }
         },
         editable: false,
         sortable: false,
