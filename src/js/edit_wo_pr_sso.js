@@ -3,8 +3,29 @@ function numberWithCommas(x) {
 }
 
 function reviewPr(){
-    window.location = "edit_wo_pr_sso.html"
-}
+    window.location = "edit_wo_pr_sso.html";
+} 
+
+function openWindow(){
+
+    let link = "./katalog_produk.html";
+    let myWindow = $("#window");
+
+    if (!myWindow.data("kendoWindow")){
+        myWindow.kendoWindow({
+            iframe: true,
+            content: link,
+            width:700,
+            height:500,
+        });
+    } else {
+        myWindow.data("kendoWindow")
+            .content("Loading...")
+            .refresh(link)
+            .open()
+            .center();
+    }
+}  
 
 $(document).ready(function () {
     let purchase_request = [{
@@ -66,7 +87,7 @@ $(document).ready(function () {
         {
             field: "productName",
             title: "Item",
-            template:"<div style='display:grid'>#=productName# <button class='k-button'>Rekomendasikan produk lain</button></div>"
+            template:"<div style='display:grid'>#=productName# <button onclick = 'openWindow()' class='k-button'>Rekomendasikan produk lain</button><div id='window'></div></div>"
         },
         {
             field: "qty",
@@ -94,6 +115,9 @@ $(document).ready(function () {
         },
 
     ];
+
+
+  
 
     $("#grid-store-checkout").kendoGrid({
         dataSource: {
@@ -144,7 +168,6 @@ $(document).ready(function () {
             item += "<label>"
             if (pr === i) {
                 item += "<input type='radio' name='" + dataItem.uid + "' onclick='setDataItem(this);' checked=checked />";
-                console.log(dataItem.uid);
             } else {
                 item += "<input type='radio' name='" + dataItem.uid + "' onclick='setDataItem(this);'/>";
             }
