@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SSO eProcurement</title>
+  @@include('./partials/styles.html')
+  <link href="/css/pr_detail_sso.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="ui container">
+    @@include('./partials/header.html')
+    <div class="ui grid">
+      <div class="three wide column">
+        @@include('./partials/menu.html')
+      </div>
+      <div class="thirteen wide column">
+        <!-- Page content -->
+        <div id="app">
+          <div class="k-card">
+            <div class="k-card-header">
+              <h2 class="k-card-title">Review PR</h2>
+            </div>
+            <div class="k-card-body">
+              <div class="container">
+                <div>
+                  <div class="up-field">
+                      <h4>Requester: </h4>
+                      <label id="requester">Requester</label>
+                  </div>
+                  <div>
+                      <h4>Approver: </h4>
+                      <label id="approver">Approver</label>
+                  </div>
+              </div>
+              <div>
+                  <div class="up-field">
+                      <h4>Requested Date: </h4>
+                      <label id="req-date">Requested Date</label>
+                  </div>
+                  <div>
+                      <h4>Fullfillment Date: </h4>
+                      <label id="fullfill-date">Fullfillment Date</label>
+                  </div>
+              </div>
+              </div>
+              <!--showing table of purchase order-->
+              <div class="po-box">
+                <h3>Work Order</h3>
+                <div id="grid-store-checkout"></div>
+              </div>
+              <div class="po-box">
+                <h3>Procurement</h3>
+                <div id="grid-request-checkout"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- Scripts -->
+   @@include('./partials/scripts.html')
+   <script src="js/revisi_pr.js"></script>
+</body>
+
+</html>
