@@ -1,36 +1,20 @@
-/**
- * Didnt use IIFE because it causes error when showing status
- */
-
-function showStatus(data){
-    if (data === 1){
-        return "<label class='label verified'>Approved</label>";
-    }
-    else if (data === 2){
-        return "<label class='label waiting'>Menunggu direvisi</label>";
-    }
-    else {
-        return "<label class='label revisi'>Ditolak</label>";
-    }
-}
-
 function showDetails() {
-    window.location = "pr_detail_sso.html";
+    window.location = "revisi_pr.html";
 }
 
 $(document).ready(function(){
     let data = [
         {
-            PrNumber: 'PR001', CreatedDate:'01/01/2020', Customer: 'Telkom', Status: 'Approved', Approver: "Belum ditunjuk", FullfillmentDate: '03/01/2020'
+            PrNumber: 'PR001', CreatedDate:'01/01/2020', Customer: 'Telkom', Status: 'Approved', Approver: "admin SSO", FullfillmentDate: '03/01/2020'
         },
         {
-            PrNumber: 'PR002', CreatedDate:'01/01/2020', Customer: 'Yakes', Status: 1, Approver: "Belum ditunjuk", FullfillmentDate: '03/01/2020'
+            PrNumber: 'PR002', CreatedDate:'01/01/2020', Customer: 'Yakes', Status: 1, Approver: "admin SSO", FullfillmentDate: '03/01/2020'
         },
         {
-            PrNumber: 'PR003', CreatedDate:'01/01/2020', Customer: 'Yakes', Status: 2, Approver: "Belum ditunjuk", FullfillmentDate: '03/01/2020'
+            PrNumber: 'PR003', CreatedDate:'01/01/2020', Customer: 'Yakes', Status: 2, Approver: "admin SSO", FullfillmentDate: '03/01/2020'
         },
         {
-            PrNumber: 'PR004', CreatedDate:'01/01/2020', Customer: 'Yakes', Status: 3, Approver: "Belum ditunjuk", FullfillmentDate: '03/01/2020'
+            PrNumber: 'PR004', CreatedDate:'01/01/2020', Customer: 'Yakes', Status: 3, Approver: "admin SSO", FullfillmentDate: '03/01/2020'
         }
     ];
 
@@ -69,15 +53,6 @@ $(document).ready(function(){
             title: "Tanggal Dipenuhi"
         },
         {
-            field: "Status",
-            title: "Status",
-            template:"#=showStatus(Status)#"
-        },
-        {
-            field: "Approver",
-            title: "SSO Approver"
-        },
-        {
             command: {
                 text: "Lihat Detail",
                 click: showDetails
@@ -96,11 +71,6 @@ $(document).ready(function(){
         sortable: false,
         scrollable: true,
         columns: products_columns,
-        dataBound: function() {
-            for (var i = 0; i < this.columns.length; i++) {
-            this.autoFitColumn(i);
-            }
-        }
     });
 
 

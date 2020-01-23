@@ -2,8 +2,8 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-function reviewPR(){
-    window.location = 'view_pr_sso_officer.html';
+function reviewPr(){
+    window.location = "edit_pr_sso_officer.html";
 }
 
 $(document).ready(function () {
@@ -11,10 +11,14 @@ $(document).ready(function () {
         {
             poNumber: 'PO1', createdDate: '01/01/2020', customer: 'Telkom', status: 'Approved', approver: "Admin SSO", fullfillmentDate: '03/01/2020',
             poFromStore: [
-                { productName: "ASUS VivoBook S330FA Intel i3-8145U 4GB 256GB SSD FHD 13.3", unitPrice: 7799000, qty: 4,uom:'buah', remark:"Budget maksimal Rp 30.000.000,00" },
-                { productName: 'Macbook Pro 2019 13" inch 512GB 8GB - MV972 Grey MV9A2 Silver 512', unitPrice: 27070000, qty: 1,uom:'buah',remark:"Budget maksimal Rp 30.000.000,00" },
-                { productName: "Vetto Stop Kontak Ms3 Tanpa Kabel (Tk)", unitPrice: 79200, qty: 3,uom:'buah',remark:"Budget maksimal Rp 300.000,00" },
-                { productName: "Vetto Box Kabel V8816 / 10m Switch + Turbo Sni", unitPrice: 155400, qty: 10,uom:'buah',remark:"Budget maksimal Rp 2.000.000,00" }
+                { productName: "ASUS VivoBook S330FA Intel i3-8145U 4GB 256GB SSD FHD 13.3", unitPrice: 7799000, qty: 4,uom:'buah', remark:"Budget maksimal Rp 30.000.000,00", purchaseRequest: "WO"},
+                { productName: 'Macbook Pro 2019 13" inch 512GB 8GB - MV972 Grey MV9A2 Silver 512', unitPrice: 27070000, qty: 1,uom:'buah',remark:"Budget maksimal Rp 30.000.000,00" ,purchaseRequest: "WO"},
+                { productName: "Vetto Stop Kontak Ms3 Tanpa Kabel (Tk)", unitPrice: 79200, qty: 3,uom:'buah',remark:"Budget maksimal Rp 300.000,00",purchaseRequest: "WO" },
+                { productName: "Vetto Box Kabel V8816 / 10m Switch + Turbo Sni", unitPrice: 155400, qty: 10,uom:'buah',remark:"Budget maksimal Rp 2.000.000,00",purchaseRequest: "WO"}
+            ],
+            poRequest:[
+                { productName: "Printer HP Laser MFP 137fnw", unitPrice: 2500000, qty: 5,uom:'unit', remark:"Warna hitam semua", purchaseRequest: "Procurement"},
+                { productName: "Tissue Paseo Smart 250", unitPrice: 5000, qty: 100,uom:'box', remark:"Tissue Toilet", purchaseRequest: "Procurement"}
             ]
         },
         {
@@ -32,7 +36,8 @@ $(document).ready(function () {
             uom: { type: "string" },
             qty: { type: "number" },
             unitPrice: { type: "number" },
-            remark: { type: "string" }
+            remark: { type: "string" },
+            purchaseRequest: { type: "string" }
         },
         parse: function (data) {
             $.each(data, function (i) {
@@ -50,7 +55,7 @@ $(document).ready(function () {
         },
         {
             field: "productName",
-            title: "Item Description",
+            title: "Item",
         },
         {
             field: "qty",
@@ -68,6 +73,10 @@ $(document).ready(function () {
         {
             field: "remark",
             title: "Remark"
+        },
+        {
+            field: "purchaseRequest",
+            title: "Purchase Request"
         }
     ];
 
@@ -89,7 +98,7 @@ $(document).ready(function () {
 
     $("#grid-request-checkout").kendoGrid({
         dataSource: {
-            data: po_data[0].poFromStore,
+            data: po_data[0].poRequest,
             schema: request_schema
         },
         dataBound: function() {

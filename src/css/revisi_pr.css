@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding:0.5%;
+}
+
+.up-field{
+    margin-bottom: 1.5em;
+}
+
+.po-box{
+    margin-top: 2%;
+}
+
+.app {
+    margin-bottom: 1%;
+}
+
+#reviewBtn{
+    margin: 2%;
+    float: right
+}
+
+.comment-box{
+    padding: 2%;
+}
