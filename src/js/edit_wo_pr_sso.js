@@ -65,7 +65,7 @@ function detailInit(e) {
                 field: "link",
                 title: "Link",
                 width: "300px",
-                template: '<a href="\\#">#= link#</a>'
+                template: '<a href="#:link#">#= link#</a>'
             }
         ],
         resizable: true,
