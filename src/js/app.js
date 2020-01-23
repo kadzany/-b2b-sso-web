@@ -12,6 +12,8 @@
       $("#shopping_cart").show();
       $("#kontrak").show();
       $("#user").show();
+      $("#approver").show();
+      $("#officer").show();
   }
   else if(userRole == "vendor"){
       $("#kontrak").show();
