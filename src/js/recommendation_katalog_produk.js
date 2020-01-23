@@ -1,5 +1,5 @@
 function lihatBarang(id) {
-    window.location = 'detail_produk.html?id=' + id;
+    window.location = 'recommendation_detail_produk.html?id=' + id;
 }
 
 function lihatCart() {
@@ -62,7 +62,7 @@ function beliBarang(id) {
                             title: i.name,
                             description: "",
                             image: i.images[0].url,
-                            link: "/detail_produk.html?id=" + i.id,
+                            link: "/recommendation_detail_produk.html?id=" + i.id,
                             duration: 150
                         };
                     }),

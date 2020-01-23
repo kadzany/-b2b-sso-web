@@ -50,3 +50,11 @@
     padding: 2rem;
     border: transparent;
 }
+
+#Pager {
+    width: 100%;
+}
+
+.product-name{
+    width: 100%;
+}

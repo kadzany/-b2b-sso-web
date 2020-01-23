@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  @@include('./partials/styles.html')
+  <link href="/css/detail_produk.css" rel="stylesheet" />
+  <title>SSO eProcurement</title>
+</head>
+
+<body>
+  <div class="ui container">
+    @@include('./partials/header.html')
+    <div class="ui grid">
+      <!-- Page content -->
+      <div>
+        <h2 class="red">Detail Produk</h2>
+
+        <div class="product">
+            <div class="leftpanel">
+                <div id="scrollView"></div>
+            </div>
+            <div class="rightpanel">
+                <div class="k-grid">
+                <p id="vendor"></p>
+                <h2 id="name"></h2>                    
+                <h3 id="price"></h3>                
+                <div id="description"></div>
+                </div>
+            </div>
+            <div class="footer k-pager-wrap k-grid-pager k-widget k-floatwrap k-pager-lg">
+                <button id="viewProduct" class="k-button" onClick="tutupLihatBarang()">Tutup</button>
+                <button id="buyProduct" class="k-button k-primary" onClick="beliBarang()">Tambah ke Keranjang</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+    <!-- Scripts -->
+    @@include('./partials/scripts.html')
+    <script src="js/recommendation_detail_produk.js"></script>
+  </div>
+  <script id="scrollview-template" type="text/x-kendo-template">
+      <img src="#:url#"/>
+  </script>
+  <div id="Window" style="display: none">
+    <div>
+      <img id="popUpImg" style="width: 150px; height: 150px; object-fit: contain; float: left; margin-right: 2rem;" />
+      <p id="popUpVendor"></p>
+      <h2 id="popUpName"></h2>
+      <h3 id="popUpPrice"></h3>
+    </div>
+    <div class="footer">
+      <button id="buyProduct" class="k-button k-primary" onClick="lihatCart()">Lihat Keranjang</button>
+    </div>
+  </div>
+</body>
+
+</html>
