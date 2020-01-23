@@ -25,7 +25,47 @@ function openWindow(){
             .open()
             .center();
     }
-}  
+
+    var grid = $("#grid-store-checkout").data("kendoGrid");
+    grid.setOptions({
+        detailTemplate: kendo.template($("#template").html()),
+        detailInit: detailInit
+    });
+}
+
+function detailInit(e) {
+    var detailRow = e.detailRow;
+
+    detailRow.kendoGrid({
+        dataSource: {
+            type: "odata",
+            transport: {
+                read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
+            },
+            serverPaging: true,
+            serverSorting: true,
+            serverFiltering: true,
+            pageSize: 7,
+        },
+        scrollable: false,
+        sortable: true,
+        pageable: true,
+        columns: [
+            {
+                field: "productName",
+                title: "Rekomendasi Item",
+            },
+            {
+                field: "unitPrice",
+                title: "Harga per Unit",
+            },
+            {
+                field: "link",
+                title: "Link"
+            }
+        ]
+    });
+}
 
 $(document).ready(function () {
     let purchase_request = [{
@@ -116,8 +156,6 @@ $(document).ready(function () {
 
     ];
 
-
-  
 
     $("#grid-store-checkout").kendoGrid({
         dataSource: {
