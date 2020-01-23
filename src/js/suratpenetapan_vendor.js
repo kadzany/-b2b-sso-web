@@ -1,5 +1,5 @@
 function back(){
-    window.location="vendor_on_progress_list.html"
+    window.location="vendor_on_progress_list.html";
 }
 
 $(document).ready(function () {

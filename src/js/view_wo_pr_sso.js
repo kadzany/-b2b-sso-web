@@ -3,7 +3,7 @@ function numberWithCommas(x) {
 }
 
 function reviewPr(){
-    window.location = "edit_wo_pr_sso.html"
+    window.location = "edit_wo_pr_sso.html";
 }
 
 $(document).ready(function () {
