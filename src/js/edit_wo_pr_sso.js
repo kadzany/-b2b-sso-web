@@ -31,39 +31,49 @@ function openWindow(){
         detailTemplate: kendo.template($("#template").html()),
         detailInit: detailInit
     });
+
+    var grid_procurement = $("#grid-request-checkout").data("kendoGrid");
+    grid_procurement.setOptions({
+        detailTemplate: kendo.template($("#template").html()),
+        detailInit: detailInit
+    });
 }
 
 function detailInit(e) {
     var detailRow = e.detailRow;
+    var example_data = [
+        { productName: 'LAPTOP ASUS A409FJ-EK551T i5-8265U/4GB DDR4/512GB SSD/2GB MX230-Win10', unitPrice: 8390000, link: "https://www.blanja.com/katalog/p/com/laptop-asus-a409fj-ek551t-i5-8265u-4gb-ddr4-512gb-ssd-2gb-mx230-win10-26507413"},
+        { productName: "Macbook Pro MUHN2 13inch Touchbar 2019 Ssd 128gb Space Grey", unitPrice: 17838300, link:"https://www.blanja.com/katalog/p/com/macbook-pro-muhn2-13inch-touchbar-2019-ssd-128gb-space-grey-25063208"},
+    ];
 
     detailRow.kendoGrid({
         dataSource: {
-            type: "odata",
-            transport: {
-                read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
-            },
-            serverPaging: true,
-            serverSorting: true,
-            serverFiltering: true,
-            pageSize: 7,
+            data: example_data
         },
-        scrollable: false,
-        sortable: true,
-        pageable: true,
         columns: [
             {
                 field: "productName",
                 title: "Rekomendasi Item",
+                width: "600px"
             },
             {
                 field: "unitPrice",
                 title: "Harga per Unit",
+                width: "300px"
             },
             {
                 field: "link",
-                title: "Link"
+                title: "Link",
+                width: "300px",
+                template: '<a href="\\#">#= link#</a>'
             }
-        ]
+        ],
+        resizable: true,
+        dataBound: function() {
+            for (var i = 0; i < this.columns.length; i++) {
+              this.autoFitColumn(i);
+            }
+        },
     });
 }
 
