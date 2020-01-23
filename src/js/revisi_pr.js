@@ -2,6 +2,10 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
+function reviewPR(){
+    window.location = 'view_pr_sso_officer.html';
+}
+
 $(document).ready(function () {
     let po_data = [
         {
