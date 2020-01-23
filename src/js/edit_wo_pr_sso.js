@@ -1,11 +1,9 @@
+// converting number to currency alike
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-function reviewPr(){
-    window.location = "edit_wo_pr_sso.html";
-} 
-
+// function for opening window catalog (to recommend another product)
 function openWindow(){
 
     let link = "./recommendation_katalog_produk.html";
@@ -26,26 +24,33 @@ function openWindow(){
             .center();
     }
 
-    var grid = $("#grid-store-checkout").data("kendoGrid");
+    // when the window is opened, it will create another grid to store recommended's product
+    var grid = $("#grid-store-checkout").data("kendoGrid"); //recommendation's grid for in-store request
     grid.setOptions({
         detailTemplate: kendo.template($("#template").html()),
         detailInit: detailInit
     });
+    grid.expandRow(".k-master-row:first"); //auto open the recommendation row
 
-    var grid_procurement = $("#grid-request-checkout").data("kendoGrid");
+    var grid_procurement = $("#grid-request-checkout").data("kendoGrid");  //recommendation's grid for procurement request
     grid_procurement.setOptions({
         detailTemplate: kendo.template($("#template").html()),
         detailInit: detailInit
     });
+    grid_procurement.expandRow(".k-master-row:first"); //auto open the recommendation row
 }
 
+//function called when creating recommendation's grid
 function detailInit(e) {
+    //creating the grid in detailRow (Kendo UI's feature)
     var detailRow = e.detailRow;
+
     var example_data = [
         { productName: 'LAPTOP ASUS A409FJ-EK551T i5-8265U/4GB DDR4/512GB SSD/2GB MX230-Win10', unitPrice: 8390000, link: "https://www.blanja.com/katalog/p/com/laptop-asus-a409fj-ek551t-i5-8265u-4gb-ddr4-512gb-ssd-2gb-mx230-win10-26507413"},
         { productName: "Macbook Pro MUHN2 13inch Touchbar 2019 Ssd 128gb Space Grey", unitPrice: 17838300, link:"https://www.blanja.com/katalog/p/com/macbook-pro-muhn2-13inch-touchbar-2019-ssd-128gb-space-grey-25063208"},
     ];
 
+    // creating grid
     detailRow.kendoGrid({
         dataSource: {
             data: example_data
@@ -78,6 +83,7 @@ function detailInit(e) {
 }
 
 $(document).ready(function () {
+    // variable for storing PR data (will be used in radio button columns)
     let purchase_request = [{
             "id": 1,
             "text": "WO"
@@ -206,6 +212,7 @@ $(document).ready(function () {
     $("#req-date").text(po_data[0].createdDate);
     $("#fullfill-date").text(po_data[0].fullfillmentDate);
 
+    // function for showing radio button column in grid
     function templateFunction(dataItem) {
         var cell = "";
         var pr = dataItem.purchaseRequest - 1;
@@ -213,21 +220,22 @@ $(document).ready(function () {
         for (var i = 0; i < purchase_request.length; i++) {
             var item = "";
 
-            item += "<label>"
+            item += "<label>";
             if (pr === i) {
                 item += "<input type='radio' name='" + dataItem.uid + "' onclick='setDataItem(this);' checked=checked />";
             } else {
                 item += "<input type='radio' name='" + dataItem.uid + "' onclick='setDataItem(this);'/>";
             }
             item += purchase_request[i].text;
-            item += "</label>"
+            item += "</label>";
             item += "</br>";
 
             cell += item;
         }
         return cell;
-    };
+    }
 
+    // function for setting data item in radio button's column
     function setDataItem(item) {
         var grid = $("#grid").data("kendoGrid");
         var row = $(item).closest("tr");
@@ -240,8 +248,8 @@ $(document).ready(function () {
                 ID = i;
                 break;
             }
-        };
+        }
 
         dataItem.set("purchaseRequest", ID + 1);
-    };
+    }
 });
