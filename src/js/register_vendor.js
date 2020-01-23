@@ -1,5 +1,7 @@
 function lihatListProduct() {
     window.location = "product_list_vendor_bef.html";
+    data = $("#kontrakForm").serializeJSON();
+    console.log(data);
 }
 
 $(document).ready(function() {
