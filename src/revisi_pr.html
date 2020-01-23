@@ -9,7 +9,7 @@
   @@include('./partials/styles.html')
   <link rel="stylesheet" type="text/css" href="css/jquery-comments.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link href="/css/pr_detail_sso.css" rel="stylesheet" />
+  <link href="/css/revisi_pr.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -24,7 +24,7 @@
         <div id="app">
           <div class="k-card">
             <div class="k-card-header">
-              <h2 class="k-card-title">Detail Purchase Order</h2>
+              <h2 class="k-card-title">Detail Purchase Requisition</h2>
             </div>
             <div class="k-card-body">
               <div class="container">
@@ -51,20 +51,23 @@
               </div>
               <!--showing table of purchase order-->
               <div class="po-box">
-                <h3>Purchase Order by Catalogue</h3>
+                <h3>by Catalogue</h3>
                 <div id="grid-store-checkout"></div>
               </div>
               <div class="po-box">
-                <h3>Purchase Order by Requested</h3>
+                <h3>by Requested</h3>
                 <div id="grid-request-checkout"></div>
               </div>
             </div>
-            <div class = "k-card-actions">
-              <div style="margin-top: 1%; margin-bottom: 1%;">
-                <h2>Komentar</h2>
+            <div style="display: grid;">
+              <div>
+                <button id="reviewBtn" class="k-button k-primary" onclick="reviewPR()">Review Purchase Requisition</button>
               </div>
-              <!--add comment's container in HTML-->
-              <div id="comments-container" class="jquery-comments"></div>
+              <div class="comment-box">
+                <h2>Komentar</h2>
+                  <!--add comment's container in HTML-->
+                <div id="comments-container" class="jquery-comments"></div>
+              </div>
               
             </div>
           </div>
