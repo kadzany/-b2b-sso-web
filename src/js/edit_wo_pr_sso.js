@@ -64,7 +64,8 @@ function detailInit(e) {
             {
                 field: "unitPrice",
                 title: "Harga per Unit",
-                width: "300px"
+                width: "300px",
+                template: "Rp #=numberWithCommas(unitPrice)#"
             },
             {
                 field: "link",
