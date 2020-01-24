@@ -68,9 +68,7 @@
                 },
                 {
                     command: [
-                        { text: "View Details", click: showDetails },
-                        { text: "edit", click: showEdit },
-                        "destroy"
+                        { text: "View Details", click: showDetails }
                     ],
                     title: "Action", 
                     width: "280px"
@@ -82,11 +80,6 @@
         function showDetails(e) {
             e.preventDefault();
             window.location.replace("po_detail.html");
-        }
-
-        function showEdit(e) {
-            e.preventDefault();
-            window.location.replace("po_edit.html");
         }
         
  });
