@@ -49,7 +49,6 @@
             },
             sortable: true,
             scrollable: true,
-            toolbar: [{text: "Create New PO", click: showCreate }],
             columns: [
                 {
                     field: "PrNumber",
@@ -86,11 +85,6 @@
         }
 
         function showEdit(e) {
-            e.preventDefault();
-            window.location.replace("po_edit.html");
-        }
-
-        function showCreate(e) {
             e.preventDefault();
             window.location.replace("po_edit.html");
         }
