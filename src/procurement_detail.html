@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   @@include('./partials/styles.html')
-  <link href="/css/pr_detail.css" rel="stylesheet" />
-  <title>SSO eProcurement</title>
+  <link href="/css/procurement_detail.css" rel="stylesheet" />
+  <title>Detail Procurement</title>
 </head>
 
 <body>
@@ -20,9 +20,12 @@
         <div class="thirteen wide column">
             <!-- Page content -->
             <div id="app">
+            <div class = "backBtn">
+                <a id="BackBtn" href="procurement_list.html"><< Back to List</a>
+            </div>
             <div class="k-card">
                 <div class="k-card-header">
-                <h2 class="k-card-title">Detail Purchase Order</h2>
+                <h2 class="k-card-title">Detail Procurement</h2>
                 </div>
                 <div class="k-card-body">
                 <div class="container">
@@ -39,22 +42,24 @@
                     <label id="fullfill-date">Fullfillment Date</label>
                     </div>
                 </div>
-                <div class="po-box">
-                    <h3>Purchase Requisition by Catalogue</h3>
-                    <div id="grid-store-checkout"></div>
-                </div>
-                <div class="po-box">
-                    <h3>Purchase Requisition by Requested</h3>
-                    <div id="grid-request-checkout"></div>
+                <div id="tabstrip" style="margin-top: 1%;">
+                    <ul>
+                        <li class="k-state-active">Work Order</li>
+                        <li>Procurement</li>
+                    </ul>
+                    <div>
+                        <h3>Daftar Work Order</h3>
+                        <div id="grid-store-checkout"></div>
+                        <button id="approveWoBtn" class="k-button k-primary">Setujui Work Order</button>
+                    </div>
+                    <div>
+                        <h3>Daftar Procurement</h3>
+                        <div id="grid-request-checkout"></div>
+                        <button id="approveProcBtn" class="k-button k-primary">Setujui Procurement</button>
+                    </div>
                 </div>
                 </div>
             </div>
-
-            <div style="margin: 20px 0 80px 0;">
-                <a id="OpenBtn" class="action-link primary" href="#">Approve</a>
-                <a id="BackBtn" class="action-link secondary" href="#">Back to List</a>
-            </div>
-
             </div>
         </div>
         </div>    
@@ -62,7 +67,7 @@
 
     <!-- Scripts -->
     @@include('./partials/scripts.html')
-    <script src="js/po_detail.js"></script>
+    <script src="js/procurement_detail.js"></script>
     
     <div id="editorDialog">
         <textarea id="editor"></textarea>

@@ -5,9 +5,9 @@
          * variables for showing list of POs
         */
 
-        var po_data = [
+        var procurement = [
             {
-                PrNumber: 'PR001', CreatedDate:'01/01/2020', Customer: 'PT Sinar Abadi', Status: 'Approved', Approver: "admin SSO", FullfillmentDate: '03/01/2020',
+                ProcurementNumber: 'PR001', CreatedDate:'01/01/2020', Customer: 'PT Sinar Abadi', Status: 'Approved', Approver: "admin SSO", FullfillmentDate: '03/01/2020',
                 poFromStore:[
                     { productName: "QUESO CABRALES", unitPrice: 1000, qty: 5,uom:'kg', remark:"Budget maksimal Rp 3.000.000,00" },
                     { productName: "ALICE MUTTON", unitPrice: 2000, qty: 7,uom:'kg',remark:"Budget maksimal Rp 3.000.000,00" },
@@ -16,29 +16,29 @@
                 ]
             },
             {
-                PrNumber: 'PR002', CreatedDate:'01/01/2020', Customer: 'PT Dedi Jaya', Status: 'Rejected', Approver: "admin SSO", FullfillmentDate: '03/01/2020'
+                ProcurementNumber: 'PR002', CreatedDate:'01/01/2020', Customer: 'PT Dedi Jaya', Status: 'Rejected', Approver: "admin SSO", FullfillmentDate: '03/01/2020'
             },
             {
-                PrNumber: 'PR003', CreatedDate:'01/01/2020', Customer: 'PT Dedi Jaya', Status: 'Assigned', Approver: "admin SSO", FullfillmentDate: '03/01/2020'
+                ProcurementNumber: 'PR003', CreatedDate:'01/01/2020', Customer: 'PT Dedi Jaya', Status: 'Assigned', Approver: "admin SSO", FullfillmentDate: '03/01/2020'
             },
             {
-                PrNumber: 'PR004', CreatedDate:'01/01/2020', Customer: 'PT Harapan Indah', Status: 'Assigned', Approver: "admin SSO", FullfillmentDate: '03/01/2020'
+                ProcurementNumber: 'PR004', CreatedDate:'01/01/2020', Customer: 'PT Harapan Indah', Status: 'Assigned', Approver: "admin SSO", FullfillmentDate: '03/01/2020'
             }
         ];
 
-        var po_schema = {
+        var procurement_schema = {
             model: {
-                poNumber : {type: "string"},
+                procurementNumber : {type: "string"},
                 createdDate: {type: "string"},
                 customer: {type: "string"},
                 status: {type: "string"}
             }
         };
 
-        $("#grid-po-list").kendoGrid({
+        $("#grid-procurement-list").kendoGrid({
             dataSource: {
-                data: po_data,
-                schema: po_schema,
+                data: procurement,
+                schema: procurement_schema,
                 pageSize: 20
             },
             pageable: {
@@ -48,15 +48,14 @@
             },
             sortable: true,
             scrollable: true,
-            toolbar: ["create"],
             columns: [
                 {
-                    field: "PrNumber",
-                    title: "Nomor PR"
+                    field: "ProcurementNumber",
+                    title: "Nomor Procurement"
                 },
                 {
                     field: "CreatedDate",
-                    title: "Tanggal PR dibuat"
+                    title: "Tanggal Procurement dibuat"
                 },
                 {
                     field: "Customer",
@@ -68,20 +67,22 @@
                 },
                 {
                     command: [
-                        { text: "View Details", click: showDetails },
-                        "edit",
-                        "destroy"
+                        { text: "View Details", click: showDetails }
                     ],
                     title: "Action", 
                     width: "280px"
                 }
             ],
-            editable: "inline"
+            dataBound: function() {
+                for (var i = 0; i < this.columns.length; i++) {
+                  this.autoFitColumn(i);
+                }
+            }
         });
 
         function showDetails(e) {
             e.preventDefault();
-            window.location.replace("po_detail.html");
+            window.location.replace("procurement_detail.html");
         }       
         
  });
