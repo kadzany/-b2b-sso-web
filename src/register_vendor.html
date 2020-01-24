@@ -30,7 +30,7 @@
                             </li>
                             <li>
                                 <label for="type" class="required">Tipe Penyalur</label>
-                                <input id="type" class="k-textbox"  style="width:300px;" />
+                                <input id="type" name="tipe_penyalur" class="k-textbox"  style="width:300px;" />
                             </li>
                             <li>
                                 <div class="multiple-fields">
@@ -46,7 +46,7 @@
                             </li>
                             <li>
                                 <label for="bidang_usaha" class="required">Bidang Usaha</label>
-                                <input id="bidang_usaha"  class="k-textbox" style="width:300px;"/>
+                                <input id="bidang_usaha" name="bidang_usaha" class="k-textbox" style="width:300px;"/>
                             </li>
                             <li>
                                 <div class="multiple-fields">
@@ -141,7 +141,8 @@
         </div>
     <!-- Scripts -->
     @@include('./partials/scripts.html')
-    <script src="js/input_produk_vendor.js"></script>
+    <script src="js/register_vendor.js"></script>
+    <script src="lib/jquery.serializejson.js"></script>
     <script id="noDataTemplate" type="text/x-kendo-tmpl">
         <div>
             No data found. Do you want to add new item - '#: instance.filterInput.val() #' ?
