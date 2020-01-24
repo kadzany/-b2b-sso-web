@@ -16,3 +16,21 @@
     padding: 0;
     margin: 0;
 }
+
+.backBtn {
+    margin-bottom: 1%;
+}
+
+#approveWoBtn {
+    margin-top: 1%;
+    float: right;
+}
+
+#approveProcBtn {
+    margin-top: 1%;
+    float: right;
+}
+
+#tabstrip {
+    margin-top: 1%;
+}
