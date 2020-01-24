@@ -39,18 +39,24 @@
                     <label id="fullfill-date">Fullfillment Date</label>
                     </div>
                 </div>
-                <div class="po-box">
-                    <h3>Purchase Requisition by Catalogue</h3>
-                    <div id="grid-store-checkout"></div>
-                </div>
-                <div class="po-box">
-                    <h3>Purchase Requisition by Requested</h3>
+                <div id="tabstrip">
+                    <ul>
+                        <li class="k-state-active">Work Order</li>
+                        <li>Procurement</li>
+                    </ul>
+                    <div>
+                        <h3>Purchase Requisition by Catalogue</h3>
+                        <div id="grid-store-checkout"></div>
+                    </div>
+                    <div>
+                        <h3>Purchase Requisition by Requested</h3>
                     <div id="grid-request-checkout"></div>
+                    </div>
                 </div>
                 </div>
             </div>
 
-            <div style="margin: 20px 0 80px 0;">
+            <div style="margin: 20px 0 80px 0;float: right;">
                 <a id="OpenBtn" class="action-link primary" href="#">Approve</a>
                 <a id="BackBtn" class="action-link secondary" href="#">Back to List</a>
             </div>
